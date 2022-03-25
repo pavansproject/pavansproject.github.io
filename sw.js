@@ -2,7 +2,7 @@ self.addEventListener('install', function(e) {
     e.waitUntil(
       caches.open('supremecacher').then(function(something) {
         return something.addAll([
-            'https://pavansproject.github.io/indexer.html',
+            'https://pavansproject.github.io/index.html',
             'https://pavansproject.github.io/something.js'
         ]);
       })
