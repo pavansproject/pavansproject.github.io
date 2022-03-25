@@ -1,0 +1,21 @@
+{
+    "name": "Pavans test project",
+    "short_name": "Pavans Project",
+    "description": "At this point, sigh",
+    "icons": [
+        {
+            "src": "/computer 512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "/computer 128x128.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/pavansproject.github.io/index.html",
+    "display": "fullscreen",
+    "theme_color": "#B12A34",
+    "background-color": "#B12A34"
+}
