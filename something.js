@@ -8,7 +8,14 @@ if ("serviceWorker" in navigator) {
 /*const config = {
 	id,
   };*/
-const app = new Realm.App({ id: application-1-ukdhb});
+//const app = new Realm.App({ id: application-1-ukdhb});
+
+const id = "application-1-ukdhb"; // replace this with your App ID
+const config = {
+	id,
+  };
+  const app = new Realm.App(config);
+  
 
 
 
