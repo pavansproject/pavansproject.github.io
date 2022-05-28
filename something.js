@@ -29,8 +29,11 @@ async function loginAnonymous() {
 		console.error("Failed to log in", err);
 	}
 }
-const user = await loginAnonymous();
-console.log("Successfully logged in!", user.id);
+async function something() {
+	const user = await loginAnonymous();
+	console.log("Successfully logged in!", user.id);
+}
+something();
 
 /*async function hello() {
 	console.log("have hope");
