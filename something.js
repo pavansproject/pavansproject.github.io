@@ -4,13 +4,19 @@ if ("serviceWorker" in navigator) {
 }
 
 //import * as Realm from "realm-web";
-/*const app = new Realm.App({id: application-1-ukdhb});
-
-const credentials = Realm.Credentials.anonymous();
-const user = await app.logIn(credentials);
-console.assert(user.id === app.currentUser.id);*/
-const id = application-1-ukdhb;
+const id = application-1-ukdhb; // replace this with your App ID
 const config = {
 	id,
-};
+  };
 const app = new Realm.App(config);
+
+
+async function hello() {
+	console.log("have hope");
+	const result = await user.functions.summed(2, 3);
+	console.log(result);
+};
+hello();
+
+
+
