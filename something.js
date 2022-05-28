@@ -3,12 +3,12 @@ if ("serviceWorker" in navigator) {
 	console.log("Service worker is registered");
 }
 
-//import * as Realm from "realm-web";
+import * as Realm from "realm-web";
 const id = application-1-ukdhb; // replace this with your App ID
-const config = {
+/*const config = {
 	id,
-  };
-const app = new Realm.App(config);
+  };*/
+const app = new Realm.App(application-1-ukdhbss);
 
 
 async function hello() {
