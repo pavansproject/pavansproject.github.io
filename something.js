@@ -3,7 +3,7 @@ if ("serviceWorker" in navigator) {
 	console.log("Service worker is registered");
 }
 
-import * as Realm from "realm-web";
+//import * as Realm from "realm-web";
 //const id = "application-1-ukdhb"; // replace this with your App ID
 /*const config = {
 	id,
