@@ -37,6 +37,8 @@ something();
 
 async function hello() {
 	console.log("have hope");
+	const user = await loginAnonymous();
+	console.log("breakpoint 1, this means its using the user variable");
 	const result = await user.functions.summed(2, 3);
 	console.log(result);
 }
