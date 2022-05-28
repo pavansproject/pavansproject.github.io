@@ -13,18 +13,28 @@ if ("serviceWorker" in navigator) {
 const id = "application-1-ukdhb"; // replace this with your App ID
 const config = {
 	id,
-  };
-  const app = new Realm.App(config);
-  
+};
+const app = new Realm.App(config);
 
+async function loginAnonymous() {
+	// Create an anonymous credential
+	const credentials = Realm.Credentials.anonymous();
+	try {
+		// Authenticate the user
+		const user = await app.logIn(credentials);
+		// `App.currentUser` updates to match the logged in user
+		console.assert(user.id === app.currentUser.id);
+		return user;
+	} catch (err) {
+		console.error("Failed to log in", err);
+	}
+}
+const user = await loginAnonymous();
+console.log("Successfully logged in!", user.id);
 
-
-async function hello() {
+/*async function hello() {
 	console.log("have hope");
 	const result = await user.functions.summed(2, 3);
 	console.log(result);
 };
-hello();
-
-
-
+hello();*/
