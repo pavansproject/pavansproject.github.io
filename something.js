@@ -3,7 +3,7 @@ if ("serviceWorker" in navigator) {
 	console.log("Service worker is registered");
 }
 
-import * as Realm from "realm-web";
+//import * as Realm from "realm-web";
 const app = new Realm.App({id: application-1-ukdhb});
 
 const credentials = Realm.Credentials.anonymous();
