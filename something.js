@@ -35,9 +35,9 @@ async function something() {
 }
 something();
 
-/*async function hello() {
+async function hello() {
 	console.log("have hope");
 	const result = await user.functions.summed(2, 3);
 	console.log(result);
-};
-hello();*/
+}
+hello();
