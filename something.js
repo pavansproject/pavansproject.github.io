@@ -26,6 +26,7 @@ async function loginEmailPassword(email, password) {
 		  console.log("umm");
 	  }
 	}
+	console.log("Pavan is not insane", user);
   };
   //const email = document.getElementById("userthing").value;
   //const password = document.getElementById("passthing").value;
