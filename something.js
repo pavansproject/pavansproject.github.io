@@ -15,25 +15,31 @@ const config = {
 	id,
 };
 const app = new Realm.App(config);
-
+let user;
 async function loginAnonymous() {
 	// Create an anonymous credential
 	const credentials = Realm.Credentials.anonymous();
 	try {
 		// Authenticate the user
-		const user = await app.logIn(credentials);
+		user = await app.logIn(credentials);
 		// `App.currentUser` updates to match the logged in user
 		console.assert(user.id === app.currentUser.id);
 		return user;
 	} catch (err) {
 		console.error("Failed to log in", err);
 	}
+	return user;
 }
-async function something() {
-	const user = await loginAnonymous();
+let bob = user;
+console.log(user);
+
+async function something(user) {
+	user = await loginAnonymous();
 	console.log("Successfully logged in!", user.id);
+	let hello = user.id;
+	return hello;
 }
-something();
+
 
 async function hello() {
 	console.log("have hope");
