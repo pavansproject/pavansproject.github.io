@@ -11,8 +11,35 @@ const config = {
 const app = new Realm.App(config);
 
 //Time for email and password authentication
-
-
+async function loginEmailPassword(email, password) {
+	// Create an anonymous credential
+	const credentials = Realm.Credentials.emailPassword(email, password);
+	try {
+	  // Authenticate the user
+	  const user = await app.logIn(credentials);
+	  // `App.currentUser` updates to match the logged in user
+	  console.assert(user.id === app.currentUser.id);
+	  return user;
+	} catch (err) {
+	  console.error("Failed to log in", err);
+	  if(err.status = "401"){
+		  console.log("umm");
+	  }
+	}
+  };
+  const email = document.getElementById("userthing");
+  const password = document.getElementById("passthing");
+  //const user = loginEmailPassword(email, password);
+  //console.log("Successfully logged in!", user);
+  
+  /*async function hello() {
+	console.log("have hope");
+	const user = await loginEmailPassword();
+	const result = await user.functions.summed(2, 3);
+	console.log("breakpoint 1, this means its done the math");
+	console.log(result);
+}
+hello();*/
 
 
 
