@@ -30,8 +30,8 @@ async function loginEmailPassword(email, password) {
   };
 
   function okletsgo(){
-	const email = document.getElementById("userthing");
-	const password = document.getElementById("passthing");
+	const email = document.getElementById("userthing").innerText;
+	const password = document.getElementById("passthing").innerText;
 	const user = loginEmailPassword(email, password);
 	console.log("Successfully logged in!", user);
 	alert("success?");
