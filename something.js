@@ -28,6 +28,13 @@ async function loginEmailPassword(email, password) {
 	}
 	console.log("Pavan is not insane", user);
   };
+
+  function okletsgo(){
+	const email = document.getElementById("userthing");
+	const password = document.getElementById("passthing");
+	const user = loginEmailPassword(email, password);
+	console.log("Successfully logged in!", user);
+  }
   //const email = document.getElementById("userthing").value;
   //const password = document.getElementById("passthing").value;
   //const user = loginEmailPassword(email, password);
