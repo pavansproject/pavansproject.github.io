@@ -3,19 +3,36 @@ if ("serviceWorker" in navigator) {
 	console.log("Service worker is registered");
 }
 
-//import * as Realm from "realm-web";
-//const id = "application-1-ukdhb"; // replace this with your App ID
-/*const config = {
-	id,
-  };*/
-//const app = new Realm.App({ id: application-1-ukdhb});
 
-const id = "application-1-ukdhb"; // replace this with your App ID
+const id = "application-1-ukdhb"; 
 const config = {
 	id,
 };
 const app = new Realm.App(config);
-let user;
+
+//Time for email and password authentication
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Note: The problem here is that the user variable from the loginAnonymous
+ function is being restricted to just the function scope, and I have been 
+ trying to get it into the global scope. This is so that I won't have to 
+ do "const user = await loginAnonymous();" each time I want to have it use
+  something that depends on the user.*/
+/*let user;
 async function loginAnonymous() {
 	// Create an anonymous credential
 	const credentials = Realm.Credentials.anonymous();
@@ -39,7 +56,7 @@ async function something(user) {
 	let hello = user.id;
 	return hello;
 }
-
+console.log(hello.id);
 
 async function hello() {
 	console.log("have hope");
@@ -48,4 +65,4 @@ async function hello() {
 	const result = await user.functions.summed(2, 3);
 	console.log(result);
 }
-hello();
+hello();*/
