@@ -10,13 +10,15 @@ const config = {
 };
 const app = new Realm.App(config);
 const okapp = Realm.App.getApp("application-1-ukdhb");
-
+let hello;
 async function keepgoing() {
 	//const email = document.getElementById("userthing").value;
 	//const password = document.getElementById("passthing").value;
 	const bob = await loginEmailPassword(
 		email = document.getElementById("userthing").value,
 		password = document.getElementById("passthing").value);
+	hello = bob;
+	console.log("YOU DID IT PAVAN!!!!!" + hello);
 }
 
 
