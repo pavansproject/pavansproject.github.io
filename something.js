@@ -19,6 +19,7 @@ async function keepgoing() {
 		password = document.getElementById("passthing").value);
 	hello = bob;
 	console.log("YOU DID IT PAVAN!!!!!" + hello);
+	alert("lets slow it down now");
 }
 
 async function please() {
