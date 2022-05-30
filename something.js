@@ -14,19 +14,21 @@ const app = new Realm.App(config);
 async function loginEmailPassword(email = document.getElementById("userthing").value, password = document.getElementById("passthing").value) {
 	// Create an anonymous credential
 	const credentials = Realm.Credentials.emailPassword(email, password);
-	try {
-	  // Authenticate the user
-	  const user = await app.logIn(credentials);
-	  // `App.currentUser` updates to match the logged in user
-	  console.assert(user.id === app.currentUser.id);
-	  return user;
-	} catch (err) {
-	  console.error("Failed to log in", err);
-	  if(err.status = "401"){
-		  console.log("umm");
-	  }
+	let sigh = () => {
+		try {
+			// Authenticate the user
+			const user = await app.logIn(credentials);
+			// `App.currentUser` updates to match the logged in user
+			console.assert(user.id === app.currentUser.id);
+			return user;
+		} catch (err) {
+			console.error("Failed to log in", err);
+			if (err.status = "401") {
+				console.log("umm");
+			}
+		}
 	}
-	return user;
+	return sigh;
   };
 
   /*const suser = function okletsgo(){
