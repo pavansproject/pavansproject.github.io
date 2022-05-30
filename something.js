@@ -12,8 +12,8 @@ const app = new Realm.App(config);
 const okapp = Realm.App.getApp("application-1-ukdhb");
 
 async function keepgoing() {
-	const email = document.getElementById("userthing").value;
-	const password = document.getElementById("passthing").value;
+	//const email = document.getElementById("userthing").value;
+	//const password = document.getElementById("passthing").value;
 	const bob = await loginEmailPassword(
 		email = document.getElementById("userthing").value,
 		password = document.getElementById("passthing").value);
