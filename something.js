@@ -11,7 +11,7 @@ const config = {
 const app = new Realm.App(config);
 
 //Time for email and password authentication
-let sigh = async function loginEmailPassword(email = document.getElementById("userthing").value, password = document.getElementById("passthing").value) {
+async function loginEmailPassword(email = document.getElementById("userthing").value, password = document.getElementById("passthing").value) {
 	// Create an anonymous credential
 	const credentials = Realm.Credentials.emailPassword(email, password);
 	let sigh = async () => {
@@ -43,7 +43,7 @@ let sigh = async function loginEmailPassword(email = document.getElementById("us
   	//const email = document.getElementById("userthing").value;
 	//const password = document.getElementById("passthing").value;
   	//const user = loginEmailPassword(email, password);
-	console.log("Successfully logged in!", sigh);
+	console.log("I got somewhere I think");
 
 
   	function huh(){
