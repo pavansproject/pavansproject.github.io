@@ -22,6 +22,16 @@ async function keepgoing() {
 }
 
 
+
+
+async function signup() {
+	const signemail = document.getElementById("usersignupthing").value;
+	const signpass = document.getElementById("passsignupthing").value;
+	await app.emailPasswordAuth.registerUser({signemail, signpass});
+	console.log("You have signed up!");
+}
+
+
 async function loginEmailPassword(email, password) {
   // Create an anonymous credential
   const credentials = Realm.Credentials.emailPassword(email, password);
@@ -47,6 +57,11 @@ async function loginEmailPassword(email, password) {
 	console.log("breakpoint 1, this means its done the math");
 	console.log(result);
 };
+
+
+
+
+
 
 
 
