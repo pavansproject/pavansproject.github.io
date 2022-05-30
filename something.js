@@ -9,7 +9,7 @@ const config = {
 	id,
 };
 const app = new Realm.App(config);
-
+const okapp = Realm.App.getApp("application-1-ukdhb");
 //Time for email and password authentication
 async function loginEmailPassword(email = document.getElementById("userthing").value, password = document.getElementById("passthing").value) {
 	// Create an anonymous credential
@@ -21,6 +21,7 @@ async function loginEmailPassword(email = document.getElementById("userthing").v
 				const user = await app.logIn(credentials);
 				// `App.currentUser` updates to match the logged in user
 				console.assert(user.id === app.currentUser.id);
+				console.log("First step: " + user);
 				return user;
 			} catch (err) {
 				console.error("Failed to log in", err);
@@ -29,8 +30,10 @@ async function loginEmailPassword(email = document.getElementById("userthing").v
 				}
 			}
 		}
+		console.log("Second step: " + user);
 		return user;
 	}
+	console.log("Third step: " + sigh);
 	return sigh;
   };
   
