@@ -11,7 +11,7 @@ const config = {
 const app = new Realm.App(config);
 
 //Time for email and password authentication
-async function loginEmailPassword(email, password) {
+async function loginEmailPassword(email = document.getElementById("userthing").value, password = document.getElementById("passthing").value) {
 	// Create an anonymous credential
 	const credentials = Realm.Credentials.emailPassword(email, password);
 	try {
@@ -29,7 +29,7 @@ async function loginEmailPassword(email, password) {
 	return user;
   };
 
-  const suser = function okletsgo(){
+  /*const suser = function okletsgo(){
 	const email = document.getElementById("userthing").value;
 	const password = document.getElementById("passthing").value;
 	const user = loginEmailPassword(email, password);
@@ -37,7 +37,12 @@ async function loginEmailPassword(email, password) {
 	huh();
 	alert("success?");
 	return user;
-  };
+  };*/
+  	//const email = document.getElementById("userthing").value;
+	//const password = document.getElementById("passthing").value;
+  	//const user = loginEmailPassword(email, password);
+	console.log("Successfully logged in!", user);
+
 
   	function huh(){
 		console.log("user should be accessible");
