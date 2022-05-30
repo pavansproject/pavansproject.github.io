@@ -39,10 +39,7 @@ async function loginEmailPassword(email, password) {
   }
 }
 
-
-
-
-
+//This is a test function
   async function okyeahnow() {
 	console.log("have hope");
 	console.log("Calculating 1 + 1")
