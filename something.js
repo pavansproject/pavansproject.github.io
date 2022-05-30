@@ -35,7 +35,7 @@ async function loginEmailPassword(email = document.getElementById("userthing").v
   };
   
   let bob;
-  function keepgoing() {
+  function keepgoing(email, password) {
 	  bob = loginEmailPassword(email, password);
 	  console.log("I did it!" + bob);
   }
