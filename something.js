@@ -15,7 +15,7 @@ async function loginEmailPassword(email = document.getElementById("userthing").v
 	// Create an anonymous credential
 	const credentials = Realm.Credentials.emailPassword(email, password);
 	let sigh = async () => {
-		try {
+		let user = function ok() {try {
 			// Authenticate the user
 			const user = await app.logIn(credentials);
 			// `App.currentUser` updates to match the logged in user
@@ -26,10 +26,12 @@ async function loginEmailPassword(email = document.getElementById("userthing").v
 			if (err.status = "401") {
 				console.log("umm");
 			}
-		}
+		}}
+		return user;
 	}
 	return sigh;
   };
+  let bob;
 
   /*const suser = function okletsgo(){
 	const email = document.getElementById("userthing").value;
