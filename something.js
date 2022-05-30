@@ -27,6 +27,7 @@ async function keepgoing() {
 async function signup() {
 	const signemail = document.getElementById("usersignupthing").value;
 	const signpass = document.getElementById("passsignupthing").value;
+	console.log(document.getElementById("passsignupthing").value.length);
 	await app.emailPasswordAuth.registerUser({signemail, signpass});
 	console.log("You have signed up!");
 }
