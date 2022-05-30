@@ -36,9 +36,9 @@ async function loginEmailPassword(email, password) {
 	console.log("Successfully logged in!", user);
 	alert("success?");
 	return user;
+  }
 	console.log("user should be accessible");
 	console.log(user);
-  }
   //const email = document.getElementById("userthing").value;
   //const password = document.getElementById("passthing").value;
   //const user = loginEmailPassword(email, password);
