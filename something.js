@@ -29,7 +29,7 @@ async function loginEmailPassword(email, password) {
 	return user;
   };
 
-  function okletsgo(){
+  const suser = function okletsgo(){
 	const email = document.getElementById("userthing").value;
 	const password = document.getElementById("passthing").value;
 	const user = loginEmailPassword(email, password);
@@ -38,10 +38,10 @@ async function loginEmailPassword(email, password) {
 	alert("success?");
 	return user;
   };
-  console.log("Ignore this error" + user);
+
   	function huh(){
 		console.log("user should be accessible");
-		console.log(user);
+		console.log(suser);
 	  };
 	
   //const email = document.getElementById("userthing").value;
