@@ -10,8 +10,56 @@ const config = {
 };
 const app = new Realm.App(config);
 const okapp = Realm.App.getApp("application-1-ukdhb");
+
+async function keepgoing() {
+	const email = document.getElementById("userthing").value;
+	const password = document.getElementById("passthing").value;
+	const bob = await loginEmailPassword(
+		email = document.getElementById("userthing").value,
+		password = document.getElementById("passthing").value);
+}
+
+
+async function loginEmailPassword(email, password) {
+  // Create an anonymous credential
+  const credentials = Realm.Credentials.emailPassword(email, password);
+  try {
+    // Authenticate the user
+    const user = await app.logIn(credentials);
+    // `App.currentUser` updates to match the logged in user
+    console.assert(user.id === app.currentUser.id);
+    return user;
+  } catch (err) {
+    console.error("Failed to log in", err);
+	if(err.status = "401"){
+		console.log("ummm");
+	}
+  }
+}
+
+//const user = await loginEmailPassword("joe.jasper@example.com", "passw0rd");
+//console.log("Successfully logged in!", user);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Time for email and password authentication
-async function loginEmailPassword(email = document.getElementById("userthing").value, password = document.getElementById("passthing").value) {
+/*async function loginEmailPassword(email = document.getElementById("userthing").value, password = document.getElementById("passthing").value) {
 	// Create an anonymous credential
 	const credentials = Realm.Credentials.emailPassword(email, password);
 	let sigh = async () => {
@@ -41,7 +89,31 @@ async function loginEmailPassword(email = document.getElementById("userthing").v
   function keepgoing(email, password) {
 	  bob = loginEmailPassword(email, password);
 	  console.log("I did it!" + bob);
-  }
+  }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   /*const suser = function okletsgo(){
 	const email = document.getElementById("userthing").value;
 	const password = document.getElementById("passthing").value;
