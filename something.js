@@ -8,8 +8,8 @@ const id = "application-1-ukdhb";
 const config = {
 	id,
 };
-const app = new Realm.App(config);
-const okapp = Realm.App.getApp("application-1-ukdhb");
+//const app = new Realm.App(config);
+const app = Realm.App.getApp("application-1-ukdhb");
 let hello;
 async function keepgoing() {
 	//const email = document.getElementById("userthing").value;
