@@ -49,8 +49,7 @@ async function loginEmailPassword(email, password) {
 	const result = await hello.functions.summed(1, 1);
 	console.log("breakpoint 1, this means its done the math");
 	console.log(result);
-}
-okyeahnow();
+};
 
 
 
