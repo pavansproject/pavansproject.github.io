@@ -21,7 +21,10 @@ async function keepgoing() {
 	console.log("YOU DID IT PAVAN!!!!!" + hello);
 }
 
-
+async function please() {
+	await app.emailPasswordAuth.registerUser({email : "pavan@email.com", password : "pavanisthebest"});
+	console.log("You have signed up!");
+}
 
 
 async function signup() {
