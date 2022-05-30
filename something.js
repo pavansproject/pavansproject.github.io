@@ -26,7 +26,7 @@ async function loginEmailPassword(email, password) {
 		  console.log("umm");
 	  }
 	}
-	console.log("Pavan is not insane", user);
+	return user;
   };
 
   function okletsgo(){
@@ -34,11 +34,16 @@ async function loginEmailPassword(email, password) {
 	const password = document.getElementById("passthing").value;
 	const user = loginEmailPassword(email, password);
 	console.log("Successfully logged in!", user);
+	huh();
 	alert("success?");
 	return user;
-  }
-	console.log("user should be accessible");
-	console.log(user);
+  };
+  console.log("Ignore this error" + user);
+  	function huh(){
+		console.log("user should be accessible");
+		console.log(user);
+	  };
+	
   //const email = document.getElementById("userthing").value;
   //const password = document.getElementById("passthing").value;
   //const user = loginEmailPassword(email, password);
