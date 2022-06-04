@@ -11,12 +11,12 @@ const config = {
 //const app = new Realm.App(config);
 const app = Realm.App.getApp("application-1-ukdhb");
 let hello;
-async function keepgoing() {
+async function keepgoing(e) {
 	//const email = document.getElementById("userthing").value;
 	//const password = document.getElementById("passthing").value;
 	const bob = await loginEmailPassword(
 		email = document.getElementById("userthing").value,
-		password = document.getElementById("passthing").value);
+		password = document.getElementById("passthing").value, e);
 	hello = bob;
 	console.log("YOU DID IT PAVAN!!!!!" + hello);
 	alert("lets slow it down now");
