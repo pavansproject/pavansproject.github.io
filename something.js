@@ -34,6 +34,7 @@ async function signup() {
 	console.log("Username: " + document.getElementById("usersignupthing").value.length);
 	console.log("Password: " + document.getElementById("passsignupthing").value.length);
 	await app.emailPasswordAuth.registerUser({signemail, signpass});
+	alert("Just in case");
 	console.log("You have signed up!");
 }
 
