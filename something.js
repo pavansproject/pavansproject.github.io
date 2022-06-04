@@ -30,7 +30,7 @@ async function please() {
 
 
 
-async function loginEmailPassword(email, password) {
+async function loginEmailPassword(email, password, e) {
   // Create an anonymous credential
   const credentials = Realm.Credentials.emailPassword(email, password);
   try {
@@ -45,6 +45,7 @@ async function loginEmailPassword(email, password) {
 		console.log("ummm");
 	}
   }
+  e.preventDefault();
 }
 
 //This is a test function
@@ -58,6 +59,7 @@ async function loginEmailPassword(email, password) {
 
 //Page 2 Test function
 async function letsdothisnow() {
+	console.log(hello);
 	console.log("Beginning calculations");
 	const sure = await hello.functions.summed(2, 2);
 	console.log("Done the math");
