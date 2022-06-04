@@ -65,6 +65,14 @@ async function loginEmailPassword(email, password) {
 	console.log(result);
 };
 
+//Page 2 Test function
+async function letsdothisnow() {
+	console.log("Beginning calculations");
+	const sure = await hello.functions.summed(2, 2);
+	console.log("Done the math");
+	console.log(sure);
+}
+
 
 
 
