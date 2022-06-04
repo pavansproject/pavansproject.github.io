@@ -28,15 +28,6 @@ async function please() {
 }
 
 
-async function signup() {
-	const signemail = document.getElementById("usersignupthing").value;
-	const signpass = {'sigh' : document.getElementById("passsignupthing").value};
-	console.log("Password: " + signpass.value);
-	console.log("Password: " + document.getElementById("passsignupthing").value.length);
-	await app.emailPasswordAuth.registerUser(signemail, signpass);
-	alert("Just in case");
-	console.log("You have signed up!");
-}
 
 
 async function loginEmailPassword(email, password) {
