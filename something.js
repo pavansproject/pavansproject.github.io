@@ -31,6 +31,7 @@ async function please() {
 
 
 async function loginEmailPassword(email, password, e) {
+	e.preventDefault();
   // Create an anonymous credential
   const credentials = Realm.Credentials.emailPassword(email, password);
   try {
@@ -45,7 +46,7 @@ async function loginEmailPassword(email, password, e) {
 		console.log("ummm");
 	}
   }
-  e.preventDefault();
+  
 }
 
 //This is a test function
