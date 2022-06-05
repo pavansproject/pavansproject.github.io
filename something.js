@@ -12,6 +12,7 @@ const config = {
 const app = Realm.App.getApp("application-1-ukdhb");
 let hello;
 async function keepgoing(e) {
+	e.preventDefault();
 	//const email = document.getElementById("userthing").value;
 	//const password = document.getElementById("passthing").value;
 	const bob = await loginEmailPassword(
@@ -30,8 +31,8 @@ async function please() {
 
 
 
-async function loginEmailPassword(email, password, e) {
-	e.preventDefault();
+async function loginEmailPassword(email, password) {
+	
   // Create an anonymous credential
   const credentials = Realm.Credentials.emailPassword(email, password);
   try {
