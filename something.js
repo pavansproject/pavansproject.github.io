@@ -11,16 +11,16 @@ const config = {
 //const app = new Realm.App(config);
 const app = Realm.App.getApp("application-1-ukdhb");
 let hello;
-async function keepgoing(e) {
-	e.preventDefault();
-	//const email = document.getElementById("userthing").value;
-	//const password = document.getElementById("passthing").value;
+async function keepgoing() {
+	//e.preventDefault();
 	const bob = await loginEmailPassword(
 		email = document.getElementById("userthing").value,
 		password = document.getElementById("passthing").value, e);
 	hello = bob;
 	console.log("YOU DID IT PAVAN!!!!!" + hello);
+	console.log(hello.id);
 	alert("lets slow it down now");
+	let userinfo = localStorage.setItem("ID", hello.id);
 }
 
 async function please() {
