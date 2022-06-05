@@ -15,7 +15,7 @@ async function keepgoing() {
 	//e.preventDefault();
 	const bob = await loginEmailPassword(
 		email = document.getElementById("userthing").value,
-		password = document.getElementById("passthing").value, e);
+		password = document.getElementById("passthing").value);
 	hello = bob;
 	console.log("YOU DID IT PAVAN!!!!!" + hello);
 	console.log(hello.id);
