@@ -20,7 +20,7 @@ async function keepgoing() {
 	console.log("YOU DID IT PAVAN!!!!!" + hello);
 	console.log(hello.id);
 	alert("lets slow it down now");
-	let userinfo = localStorage.setItem("ID", hello.id);
+	//let userinfo = localStorage.setItem("ID", hello.id);
 }
 
 async function please() {
