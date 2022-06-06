@@ -29,8 +29,8 @@ async function please() {
 
 function havehope() {
 	if (hello == null) {
-		let hello2 = localStorage.getItem("ID");
-		console.log(hello2);
+		hello = localStorage.getItem("ID");
+		console.log(hello);
 	}
 }
 
@@ -65,7 +65,7 @@ async function loginEmailPassword(email, password) {
 
 //Page 2 Test function
 async function letsdothisnow() {
-	console.log(hello);
+	console.log(hello.id);
 	console.log("Beginning calculations");
 	const sure = await hello.functions.summed(2, 2);
 	console.log("Done the math");
