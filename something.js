@@ -26,7 +26,7 @@ async function please() {
 	await app.emailPasswordAuth.registerUser({email : document.getElementById("usersignupthing").value, password : document.getElementById("passsignupthing").value});
 	console.log("You have signed up!");
 }
-
+//let hello2;
 function havehope() {
 	if (hello == null) {
 		hello = localStorage.getItem("promise");
@@ -56,6 +56,7 @@ async function loginEmailPassword(email, password) {
 
 //This is a test function
   async function okyeahnow() {
+	havehope();
 	console.log("have hope");
 	console.log("Calculating 1 + 1")
 	const result = await hello.functions.summed(1, 1);
@@ -66,9 +67,10 @@ async function loginEmailPassword(email, password) {
 //Page 2 Test function
 async function letsdothisnow() {
 	havehope();
+	const app = Realm.App.getApp(APP_ID); // replace this with your App ID
 	console.log(hello.id);
 	console.log("Beginning calculations");
-	const sure = await hello.functions.summed(2, 2);
+	const sure = await hello2.functions.summed(2, 2);
 	console.log("Done the math");
 	console.log(sure);
 }
