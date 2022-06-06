@@ -19,7 +19,7 @@ async function keepgoing() {
 	console.log("This should be a promise: " + hello);
 	console.log(hello.id);
 	alert("lets slow it down now");
-	//let userinfo = localStorage.setItem("ID", hello.id);
+	let userinfo = localStorage.setItem("ID", hello.id);
 }
 
 async function please() {
@@ -27,7 +27,12 @@ async function please() {
 	console.log("You have signed up!");
 }
 
-
+function havehope() {
+	if (hello == null) {
+		let hello2 = localStorage.getItem("ID");
+		console.log(hello2);
+	}
+}
 
 
 async function loginEmailPassword(email, password) {
