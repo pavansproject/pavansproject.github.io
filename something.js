@@ -19,7 +19,7 @@ async function keepgoing() {
 	console.log("This should be a promise: " + hello);
 	console.log(hello.id);
 	alert("lets slow it down now");
-	let userinfo = localStorage.setItem("ID", hello.id);
+	let userinfo = localStorage.setItem("promise", hello);
 }
 
 async function please() {
@@ -29,7 +29,7 @@ async function please() {
 
 function havehope() {
 	if (hello == null) {
-		hello = localStorage.getItem("ID");
+		hello = localStorage.getItem("promise");
 		console.log(hello);
 	}
 }
