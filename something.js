@@ -65,6 +65,7 @@ async function loginEmailPassword(email, password) {
 
 //Page 2 Test function
 async function letsdothisnow() {
+	havehope();
 	console.log(hello.id);
 	console.log("Beginning calculations");
 	const sure = await hello.functions.summed(2, 2);
