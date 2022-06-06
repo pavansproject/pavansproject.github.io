@@ -11,6 +11,7 @@ const config = {
 //const app = new Realm.App(config);
 const app = Realm.App.getApp("application-1-ukdhb");
 let hello;
+let functionstuff;
 async function keepgoing() {
 	const bob = await loginEmailPassword(
 		email = document.getElementById("userthing").value,
@@ -20,6 +21,7 @@ async function keepgoing() {
 	console.log(hello.id);
 	alert("lets slow it down now");
 	let userinfo = localStorage.setItem("promise", hello);
+	let functioninfo = localStorage.setItem("functionstuff", hello.functions)
 }
 
 async function please() {
@@ -30,7 +32,9 @@ async function please() {
 function havehope() {
 	if (hello == null) {
 		hello = localStorage.getItem("promise");
+		functionstuff = localStorage.getItem("functionstuff");
 		console.log(hello);
+		console.log(functionstuff);
 	}
 }
 
@@ -70,7 +74,8 @@ async function letsdothisnow() {
 	const app = Realm.App.getApp("application-1-ukdhb"); // replace this with your App ID
 	console.log(hello.id);
 	console.log("Beginning calculations");
-	const sure = await hello.functions.summed(2, 2);
+	//const sure = await hello.functions.summed(2, 2);
+	const sure = await functionstuff.summed(2, 2);
 	console.log("Done the math");
 	console.log(sure);
 }
