@@ -12,12 +12,11 @@ const config = {
 const app = Realm.App.getApp("application-1-ukdhb");
 let hello;
 async function keepgoing() {
-	//e.preventDefault();
 	const bob = await loginEmailPassword(
 		email = document.getElementById("userthing").value,
 		password = document.getElementById("passthing").value);
 	hello = bob;
-	console.log("YOU DID IT PAVAN!!!!!" + hello);
+	console.log("This should be a promise: " + hello);
 	console.log(hello.id);
 	alert("lets slow it down now");
 	//let userinfo = localStorage.setItem("ID", hello.id);
