@@ -70,7 +70,7 @@ async function letsdothisnow() {
 	const app = Realm.App.getApp(APP_ID); // replace this with your App ID
 	console.log(hello.id);
 	console.log("Beginning calculations");
-	const sure = await hello2.functions.summed(2, 2);
+	const sure = await hello.functions.summed(2, 2);
 	console.log("Done the math");
 	console.log(sure);
 }
