@@ -19,7 +19,7 @@ async function keepgoing() {
 	user = bob;
 	console.log("This should be a promise: " + user);
 	console.log(user.id);
-	alert("lets slow it down now");
+	//alert("lets slow it down now");
 	let userinfo = localStorage.setItem("promise", user);
 	let functioninfo = localStorage.setItem("functionstuff", user.functions)
 }
@@ -77,7 +77,7 @@ async function letsdothisnow() {
 	const userhi = app.currentUser;
 	//console.log(user.id);
 	console.log(userhi);
-	alert("Pause everything for a second");
+	//alert("Pause everything for a second");
 	console.log("Beginning calculations");
 	const sure = await userhi.functions.summed(2, 2);
 	console.log("Done the math");
