@@ -76,7 +76,7 @@ async function letsdothisnow() {
 	//console.log(user.id);
 	console.log(userhi);
 	console.log("Beginning calculations");
-	const sure = await Realm.app.user.functions.summed(2, 2);
+	const sure = await app.userId.functions.summed(2, 2);
 	console.log("Done the math");
 	console.log(sure);
 }
