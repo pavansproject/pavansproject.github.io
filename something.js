@@ -10,30 +10,30 @@ const config = {
 };
 //const app = new Realm.App(config);
 const app = Realm.App.getApp("application-1-ukdhb");
-let hello;
+let user;
 let functionstuff;
 async function keepgoing() {
 	const bob = await loginEmailPassword(
 		email = document.getElementById("userthing").value,
 		password = document.getElementById("passthing").value);
-	hello = bob;
-	console.log("This should be a promise: " + hello);
-	console.log(hello.id);
+	user = bob;
+	console.log("This should be a promise: " + user);
+	console.log(user.id);
 	alert("lets slow it down now");
-	let userinfo = localStorage.setItem("promise", hello);
-	let functioninfo = localStorage.setItem("functionstuff", hello.functions)
+	let userinfo = localStorage.setItem("promise", user);
+	let functioninfo = localStorage.setItem("functionstuff", user.functions)
 }
 
 async function please() {
 	await app.emailPasswordAuth.registerUser({email : document.getElementById("usersignupthing").value, password : document.getElementById("passsignupthing").value});
 	console.log("You have signed up!");
 }
-//let hello2;
+//let user2;
 function havehope() {
-	if (hello == null) {
-		hello = localStorage.getItem("promise");
+	if (user == null) {
+		user = localStorage.getItem("promise");
 		functionstuff = localStorage.getItem("functionstuff");
-		console.log(hello);
+		console.log(user);
 		console.log(functionstuff);
 	}
 }
@@ -63,7 +63,7 @@ async function loginEmailPassword(email, password) {
 	havehope();
 	console.log("have hope");
 	console.log("Calculating 1 + 1")
-	const result = await hello.functions.summed(1, 1);
+	const result = await user.functions.summed(1, 1);
 	console.log("breakpoint 1, this means its done the math");
 	console.log(result);
 };
@@ -72,9 +72,9 @@ async function loginEmailPassword(email, password) {
 async function letsdothisnow() {
 	//havehope();
 	const app = Realm.App.getApp("application-1-ukdhb"); // replace this with your App ID
-	console.log(hello.id);
+	console.log(user.id);
 	console.log("Beginning calculations");
-	const sure = await hello.functions.summed(2, 2);
+	const sure = await user.functions.summed(2, 2);
 	console.log("Done the math");
 	console.log(sure);
 }
