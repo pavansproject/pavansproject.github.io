@@ -1,7 +1,7 @@
 self.addEventListener("install", function (e) {
 	e.waitUntil(
-		caches.open("supremecacher").then(function (something) {
-			return something.addAll([
+		caches.open("supremecacher").then(function(cache) {
+			return cache.addAll([
 				"https://pavansproject.github.io/index.html",
 				"https://pavansproject.github.io/something.js",
 			]);

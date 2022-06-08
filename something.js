@@ -70,16 +70,25 @@ async function loginEmailPassword(email, password) {
 
 //Page 2 Test function
 async function letsdothisnow() {
-	havehope();
-	const app = Realm.App.getApp("application-1-ukdhb"); // replace this with your App ID
+	//havehope();
+	//const app = Realm.App.getApp("application-1-ukdhb"); // replace this with your App ID
 	console.log(hello.id);
 	console.log("Beginning calculations");
-	//const sure = await hello.functions.summed(2, 2);
-	const sure = await functionstuff.summed(2, 2);
+	const sure = await hello.functions.summed(2, 2);
 	console.log("Done the math");
 	console.log(sure);
 }
 
+// Get an object with all Users, where the keys are the User IDs
+for (const userId in app.allUsers) {
+	const user = app.allUsers[userId];
+	console.log(
+	  `User with id ${user.id} is ${
+		user.isLoggedIn ? "logged in" : "logged out"
+	  }`
+	);
+  }
+  
 
 
 
