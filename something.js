@@ -29,14 +29,15 @@ async function please() {
 	console.log("You have signed up!");
 }
 //let user2;
-function havehope() {
+//Don't need this anymore! =)
+/*  function havehope() {
 	if (user == null) {
 		user = localStorage.getItem("promise");
 		functionstuff = localStorage.getItem("functionstuff");
 		console.log(user);
 		console.log(functionstuff);
 	}
-}
+}*/
 
 
 async function loginEmailPassword(email, password) {
@@ -55,8 +56,9 @@ async function loginEmailPassword(email, password) {
 		console.log("ummm");
 	}
   }
-  
 }
+
+
 
 //This is a test function
   async function okyeahnow() {
@@ -81,6 +83,13 @@ async function letsdothisnow() {
 	console.log("Done the math");
 	console.log(sure);
 }
+/*Key things to remember here is to always first:
+	Do Realm.App.getApp to get the current app
+	Then do app.currentUser and send that to a 
+	variable to get the current user
+	Then you're set to use that as the actual current
+	user =)*/
+
 
 function idekknowanymore() {
 	// Get an object with all Users, where the keys are the User IDs
