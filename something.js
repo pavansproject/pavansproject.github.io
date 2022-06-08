@@ -74,8 +74,9 @@ async function letsdothisnow() {
 	const app = Realm.App.getApp("application-1-ukdhb"); // replace this with your App ID
 	const userhi = app.allUsers;
 	//console.log(user.id);
+	console.log(userhi);
 	console.log("Beginning calculations");
-	const sure = await userhi.functions.summed(2, 2);
+	const sure = await Realm.app.user.functions.summed(2, 2);
 	console.log("Done the math");
 	console.log(sure);
 }
