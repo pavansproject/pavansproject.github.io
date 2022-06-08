@@ -79,7 +79,8 @@ async function letsdothisnow() {
 	console.log(sure);
 }
 
-// Get an object with all Users, where the keys are the User IDs
+function idekknowanymore() {
+	// Get an object with all Users, where the keys are the User IDs
 for (const userId in app.allUsers) {
 	const user = app.allUsers[userId];
 	console.log(
@@ -88,7 +89,8 @@ for (const userId in app.allUsers) {
 	  }`
 	);
   }
-  
+}
+
 
 
 
