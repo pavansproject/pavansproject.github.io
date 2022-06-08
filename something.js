@@ -72,12 +72,12 @@ async function loginEmailPassword(email, password) {
 async function letsdothisnow() {
 	//havehope();
 	const app = Realm.App.getApp("application-1-ukdhb"); // replace this with your App ID
-	const userhi = app.allUsers;
+	const userhi = app.currentUser;
 	//console.log(user.id);
 	console.log(userhi);
 	alert("Pause everything for a second");
 	console.log("Beginning calculations");
-	const sure = await app[0].functions.summed(2, 2);
+	const sure = await userhi.functions.summed(2, 2);
 	console.log("Done the math");
 	console.log(sure);
 }
