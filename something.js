@@ -10,18 +10,18 @@ const config = {
 };
 //const app = new Realm.App(config);
 const app = Realm.App.getApp("application-1-ukdhb");
-let user;
+let sam;
 let functionstuff;
 async function keepgoing() {
 	const bob = await loginEmailPassword(
 		email = document.getElementById("userthing").value,
 		password = document.getElementById("passthing").value);
-	user = bob;
-	console.log("This should be a promise: " + user);
+	 sam = bob;
+	/*console.log("This should be a promise: " + user);
 	console.log(user.id);
 	//alert("lets slow it down now");
 	let userinfo = localStorage.setItem("promise", user);
-	let functioninfo = localStorage.setItem("functionstuff", user.functions)
+	let functioninfo = localStorage.setItem("functionstuff", user.functions) */
 }
 
 async function please() {
@@ -62,7 +62,9 @@ async function loginEmailPassword(email, password) {
 
 //This is a test function
   async function okyeahnow() {
-	havehope();
+	//havehope();
+	const app = Realm.App.getApp("application-1-ukdhb"); // replace this with your App ID
+	const user = app.currentUser;
 	console.log("have hope");
 	console.log("Calculating 1 + 1")
 	const result = await user.functions.summed(1, 1);
