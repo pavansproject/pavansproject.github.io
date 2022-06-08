@@ -71,7 +71,7 @@ async function loginEmailPassword(email, password) {
 //Page 2 Test function
 async function letsdothisnow() {
 	//havehope();
-	//const app = Realm.App.getApp("application-1-ukdhb"); // replace this with your App ID
+	const app = Realm.App.getApp("application-1-ukdhb"); // replace this with your App ID
 	console.log(hello.id);
 	console.log("Beginning calculations");
 	const sure = await hello.functions.summed(2, 2);
