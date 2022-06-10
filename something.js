@@ -12,6 +12,12 @@ const config = {
 const app = Realm.App.getApp("application-1-ukdhb");
 let sam;
 let functionstuff;
+
+document.querySelector("#sure").addEventListener("submit", function(event) {
+	event.preventDefault();
+	keepgoing();
+}, false);
+
 async function keepgoing(Event) {
 	Event.preventDefault();
 	const bob = await loginEmailPassword(
