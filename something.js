@@ -33,13 +33,18 @@ async function please() {
 	console.log("You have signed up!");
 }
 
+//Note: Probably a better idea to combine setupdbstuff() and insertathing() for each
+//of the CRUD values
+
+let mongo;
+let collection;
 async function setupdbstuff() {
-	const mongo = app.currentUser.mongoClient("mongodb-atlas");
-	const collection = mongo.db("hellopeople").collection("letgowiththis");
+	mongo = app.currentUser.mongoClient("mongodb-atlas");
+	collection = mongo.db("hellopeople").collection("letgowiththis");
 }
 
 async function insertathing() {
-	const result = await letgowiththis.insertOne({
+	const result = await collection.insertOne({
 		"note name": "Greetings",
 		"note information": "yayayyay"
 	});
