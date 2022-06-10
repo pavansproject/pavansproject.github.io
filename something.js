@@ -44,7 +44,7 @@ async function setupdbstuff() {
 }
 
 async function insertathing() {
-	const result = await collection.insertOne({
+	const result = await letgowiththis.insertOne({
 		notename: "Greetings",
 		noteinformation: "yayayyay"
 	});
