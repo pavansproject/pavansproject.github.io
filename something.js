@@ -12,7 +12,8 @@ const config = {
 const app = Realm.App.getApp("application-1-ukdhb");
 let sam;
 let functionstuff;
-async function keepgoing() {
+async function keepgoing(e) {
+	e.preventdefault();
 	const bob = await loginEmailPassword(
 		email = document.getElementById("userthing").value,
 		password = document.getElementById("passthing").value);
