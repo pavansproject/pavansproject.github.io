@@ -36,8 +36,7 @@ async function please() {
 //Note: Probably a better idea to combine setupdbstuff() and insertathing() for each
 //of the CRUD values
 
-let mongo;
-let collection;
+
 async function setupdbstuff() {
 	mongo = app.currentUser.mongoClient("mongodb-atlas");
 	collection = mongo.db("hellopeople").collection("letgowiththis");
@@ -45,6 +44,8 @@ async function setupdbstuff() {
 }
 
 async function insertathing() {
+	let mongo = app.currentUser.mongoClient("mongodb-atlas");
+	let collection = mongo.db("hellopeople").collection("letgowiththis");
 	const result = await collection.insertOne({
 		"notename": "Greetings",
 		"noteinformation": "yayayyay"
