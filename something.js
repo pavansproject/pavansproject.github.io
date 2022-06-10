@@ -46,8 +46,8 @@ async function setupdbstuff() {
 
 async function insertathing() {
 	const result = await collection.insertOne({
-		notename: "Greetings",
-		noteinformation: "yayayyay"
+		"notename": "Greetings",
+		"noteinformation": "yayayyay"
 	});
 	console.log(result);
 }
