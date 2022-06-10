@@ -10,6 +10,14 @@ const config = {
 };
 //const app = new Realm.App(config);
 const app = Realm.App.getApp("application-1-ukdhb");
+
+const {
+	BSON: {ObjectID},
+} = Realm;
+
+
+
+
 let sam;
 let functionstuff;
 async function keepgoing() {
@@ -24,6 +32,20 @@ async function please() {
 	await app.emailPasswordAuth.registerUser({email : document.getElementById("usersignupthing").value, password : document.getElementById("passsignupthing").value});
 	console.log("You have signed up!");
 }
+
+async function setupdbstuff() {
+	const mongo = app.currentUser.mongoClient("mongodb-atlas");
+	const collection = mongo.db("hellopeople").collection("letgowiththis");
+}
+
+async function insertathing() {
+	const result = await letgowiththis.insertOne({
+		"note name": "Greetings",
+		"note information": "yayayyay"
+	});
+	console.log(result);
+}
+
 
 
 
