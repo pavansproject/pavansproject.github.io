@@ -12,41 +12,20 @@ const config = {
 const app = Realm.App.getApp("application-1-ukdhb");
 let sam;
 let functionstuff;
-async function sighhh() {
-	document.querySelector("#sure").addEventListener("submit", function(event) {
-		event.preventDefault();
-		keepgoing();
-	}, false);
-}
-
-
 async function keepgoing(Event) {
 	Event.preventDefault();
 	const bob = await loginEmailPassword(
 		email = document.getElementById("userthing").value,
 		password = document.getElementById("passthing").value);
 	 sam = bob;
-	/*console.log("This should be a promise: " + user);
-	console.log(user.id);
-	//alert("lets slow it down now");
-	let userinfo = localStorage.setItem("promise", user);
-	let functioninfo = localStorage.setItem("functionstuff", user.functions) */
+	
 }
 
 async function please() {
 	await app.emailPasswordAuth.registerUser({email : document.getElementById("usersignupthing").value, password : document.getElementById("passsignupthing").value});
 	console.log("You have signed up!");
 }
-//let user2;
-//Don't need this anymore! =)
-/*  function havehope() {
-	if (user == null) {
-		user = localStorage.getItem("promise");
-		functionstuff = localStorage.getItem("functionstuff");
-		console.log(user);
-		console.log(functionstuff);
-	}
-}*/
+
 
 
 async function loginEmailPassword(email, password) {
