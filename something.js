@@ -41,10 +41,11 @@ let collection;
 async function setupdbstuff() {
 	mongo = app.currentUser.mongoClient("mongodb-atlas");
 	collection = mongo.db("hellopeople").collection("letgowiththis");
+	console.log("DB connection is set up");
 }
 
 async function insertathing() {
-	const result = await letgowiththis.insertOne({
+	const result = await collection.insertOne({
 		notename: "Greetings",
 		noteinformation: "yayayyay"
 	});
