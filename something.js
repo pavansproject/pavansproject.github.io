@@ -39,13 +39,13 @@ async function please() {
 
 async function setupdbstuff() {
 	mongo = app.currentUser.mongoClient("mongodb-atlas");
-	collection = mongo.db("hellopeople").collection("letgowiththis");
+	collection = mongo.db("hellopeople").collection("secondtry");
 	console.log("DB connection is set up");
 }
 
 async function insertathing() {
 	let mongo = app.currentUser.mongoClient("mongodb-atlas");
-	let collection = mongo.db("hellopeople").collection("letgowiththis");
+	let collection = mongo.db("hellopeople").collection("secondtry");
 	const result = await collection.insertOne({
 		"notename": "Greetings",
 		"noteinformation": "yayayyay"
