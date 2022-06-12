@@ -48,12 +48,15 @@ async function insertathing() {
 	let collection = mongo.db("hellopeople").collection("secondtry");
 	const notename = document.getElementById("notenme").value;
 	const noteinfo = document.getElementById("noteinfo").value;
-	console.log(`Stuff is this:${notename} , and ${noteinfo}`);
+	const user = app.currentUser;
+	console.log(`Stuff is this: ${notename} , and ${noteinfo}`);
 	const result = await collection.insertOne({
+		//"_id": user.id,
 		"note name": notename,
 		"note information": noteinfo
 	});
 	console.log(result);
+	console.log(`"Oh and by the way, ${user.id}"`)
 }
 
 
