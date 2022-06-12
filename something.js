@@ -60,6 +60,16 @@ async function insertathing() {
 }
 
 
+async function findthenote() {
+	let mongo = app.currentUser.mongoClient("mongodb-atlas");
+	let collection = mongo.db("hellopeople").collection("secondtry");
+	const noteinfo = document.getElementById("notefinder").value;
+	console.log(`"Finding a note with name of ${noteinfo}"`);
+	const found = await collection.findOne({name: noteinfo});
+	console.log(`"Found the note: ${found}`);
+	document.getElementById("notedisplayer").innerText = found;
+}
+
 
 
 async function loginEmailPassword(email, password) {
