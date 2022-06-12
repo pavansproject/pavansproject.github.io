@@ -66,12 +66,9 @@ async function findthenote() {
 	const noteinfo = document.getElementById("notefinder").value;
 	console.log(`"Finding a note with name of ${noteinfo}"`);
 	const found = await collection.findOne({ name: "note 3" });
-	console.log(`"Found the note: ${found}`);
-	const huh = found.toString();
-	document.getElementById("notedisplayer").innerText = found;
-	document.getElementById("note2displayer").innerText = huh;
-	console.log(huh);
-	alert("Pause");
+	console.log(`"Found the note: ${found.name}, and has ${found.noteinformation} in it"`);
+	document.getElementById("notedisplayer").innerText = found.name;
+	document.getElementById("note2displayer").innerText = found.noteinformation;
 }
 
 
