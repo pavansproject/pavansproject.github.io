@@ -65,7 +65,7 @@ async function findthenote() {
 	let collection = mongo.db("hellopeople").collection("secondtry");
 	const noteinfo = document.getElementById("notefinder").value;
 	console.log(`"Finding a note with name of ${noteinfo}"`);
-	const found = await collection.findOne({ name: "note 3" });
+	const found = await collection.findOne({ name: noteinfo });
 	console.log(`"Found the note: ${found.name}, and has ${found.noteinformation} in it"`);
 	document.getElementById("notedisplayer").innerText = found.name;
 	document.getElementById("note2displayer").innerText = found.noteinformation;
