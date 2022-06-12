@@ -46,9 +46,12 @@ async function setupdbstuff() {
 async function insertathing() {
 	let mongo = app.currentUser.mongoClient("mongodb-atlas");
 	let collection = mongo.db("hellopeople").collection("secondtry");
+	const notename = document.getElementById("notenme");
+	const noteinfo = document.getElementById("noteinfo");
+	console.log(`Stuff is this:${notename} , and ${noteinfo}`);
 	const result = await collection.insertOne({
-		"notename": "Greetings",
-		"noteinformation": "yayayyay"
+		"note name": notename,
+		"note information": noteinfo
 	});
 	console.log(result);
 }
