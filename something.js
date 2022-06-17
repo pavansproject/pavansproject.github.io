@@ -90,6 +90,16 @@ async function updatetheone() {
 		{name: findquery},
 		{$set: {noteinformation: changething}}
 	);
+	console.log(updatesingle);
+}
+
+async function deletetheone() {
+	let mongo = app.currentUser.mongoClient("mongodb-atlas");
+	let collection = mongo.db("hellopeople").collection("secondtry");
+	const whattodelete = document.getElementById("singledelete").value;
+	console.log(`"Deleting ${whattodelete}"`);
+	const deletedsingle = await collection.deleteOne({name: whattodelete});
+	console.log(deletedsingle);
 }
 
 
