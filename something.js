@@ -51,9 +51,9 @@ async function insertathing() {
 	const user = app.currentUser;
 	console.log(`Stuff is this: ${notename} , and ${noteinfo}`);
 	const result = await collection.insertOne({
-		//"_id": user.id,
-		"note name": notename,
-		"note information": noteinfo
+		
+		name: notename,
+		noteinformation: noteinfo
 	});
 	console.log(result);
 	console.log(`"Oh and by the way, ${user.id}"`)
