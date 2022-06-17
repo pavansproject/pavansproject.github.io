@@ -51,7 +51,6 @@ async function insertathing() {
 	const user = app.currentUser;
 	console.log(`Stuff is this: ${notename} , and ${noteinfo}`);
 	const result = await collection.insertOne({
-		
 		name: notename,
 		noteinformation: noteinfo
 	});
