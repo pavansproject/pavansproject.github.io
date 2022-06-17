@@ -71,6 +71,15 @@ async function findthenote() {
 	document.getElementById("note2displayer").innerText = found.noteinformation;
 }
 
+async function findthemall() {
+	let mongo = app.currentUser.mongoClient("mongodb-atlas");
+	let collection = mongo.db("hellopeople").collection("secondtry");
+	const findinfo = document.getElementById("manyfinder").value;
+	console.log(`"Finding notes with type: ${findinfo}"`);
+	const foundthem = await collection.find({ type: findinfo});
+	console.log(`"Found them: ${foundthem}`);
+}
+
 
 
 async function loginEmailPassword(email, password) {
