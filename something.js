@@ -80,6 +80,19 @@ async function findthemall() {
 	console.log(`"Found them: ${foundthem}`);
 }
 
+async function updatetheone() {
+	let mongo = app.currentUser.mongoClient("mongodb-atlas");
+	let collection = mongo.db("hellopeople").collection("secondtry");
+	const findquery = document.getElementById("findthingtoupdate").value;
+	const changething = document.getElementById("stufftochange").value;
+	console.log(`"Going to find ${findquery} and change its information to ${changething}"`);
+	const updatesingle = await collection.updateOne(
+		{name: findquery},
+		{$set: {noteinformation: changething}}
+	);
+}
+
+
 
 
 async function loginEmailPassword(email, password) {
