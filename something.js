@@ -74,7 +74,7 @@ async function massiveinserter() {
 		price: price,
 		grid: grid
 	});
-	//console.log(inserting);
+	console.log(inserting);
 }
 
 
