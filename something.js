@@ -124,9 +124,37 @@ async function massiveinserter() {
 async function dataretriever() {
 	let mongo = app.currentUser.mongoClient("mongodb-atlas");
 	let collection = mongo.db("hellopeople").collection("griddataholder");
-	//const findinfo = "a";
 	const foundthem = await collection.find({grid: "a"});
 	console.log(foundthem);
+	document.getElementById("item1title").innerText = foundthem[0].name;
+	document.getElementById("item1para").innerText = foundthem[0].info;
+	document.getElementById("item1price").innerText = foundthem[0].price;
+
+	document.getElementById("item2title").innerText = foundthem[1].name;
+	document.getElementById("item2para").innerText = foundthem[1].info;
+	document.getElementById("item2price").innerText = foundthem[1].price;
+
+	document.getElementById("item3title").innerText = foundthem[2].name;
+	document.getElementById("item3para").innerText = foundthem[2].info;
+	document.getElementById("item3price").innerText = foundthem[2].price;
+
+	document.getElementById("item4title").innerText = foundthem[3].name;
+	document.getElementById("item4para").innerText = foundthem[3].info;
+	document.getElementById("item4price").innerText = foundthem[3].price;
+
+	document.getElementById("item5title").innerText = foundthem[4].name;
+	document.getElementById("item5para").innerText = foundthem[4].info;
+	document.getElementById("item5price").innerText = foundthem[4].price;
+
+	document.getElementById("item6title").innerText = foundthem[5].name;
+	document.getElementById("item6para").innerText = foundthem[5].info;
+	document.getElementById("item6price").innerText = foundthem[5].price;
+
+	document.getElementById("item7title").innerText = foundthem[7].name;
+	document.getElementById("item7para").innerText = foundthem[7].info;
+	document.getElementById("item7price").innerText = foundthem[7].price;
+	
+	console.log("Complete");
 }
 
 
