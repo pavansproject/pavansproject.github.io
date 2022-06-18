@@ -75,7 +75,7 @@ async function findthemall() {
 	let collection = mongo.db("hellopeople").collection("secondtry");
 	const findinfo = document.getElementById("manyfinder").value;
 	console.log(`"Finding notes with type: ${findinfo}"`);
-	const foundthem = await collection.find({ type: findinfo});
+	const foundthem = await collection.find({type: findinfo});
 	console.log(`"Found them: ${foundthem}`);
 }
 
