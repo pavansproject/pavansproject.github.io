@@ -2,7 +2,7 @@ if ("serviceWorker" in navigator) {
 	navigator.serviceWorker.register("https://pavansproject.github.io/sw.js");
 	console.log("Service worker is registered");
 }
-
+import * as Realm from "realm-web";
 
 const id = "application-1-ukdhb"; 
 const config = {
