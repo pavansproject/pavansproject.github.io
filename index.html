@@ -19,14 +19,20 @@
 		<br />
 		<p>Login thing</p>
 		<form target="_blank" onsubmit="return keepgoing()">
+			<label for="email">Username/Email:</label>
 			<input type="text" name="email" id="userthing" />
 			<br />
+			<br />
+			<label for="password">Password:</label>
 			<input type="text" name="password" id="passthing" />
-			<input type="submit" name="sbmitbutton" id="submit" />
+			<!-- <input type="submit" name="sbmitbutton" id="submit" /> -->
 		</form>
+		<button onclick="keepgoing()">Log in</button>
 		<br />
 		<br />
-
+		<button onclick="dontgiveup()">Login anonymously</button>
+		<br />
+		<br />
 		<p>Sign up thing</p>
 		<form target="_blank" onsubmit="please()">
 			<input type="text" name="emailsign" id="usersignupthing" />
