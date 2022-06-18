@@ -60,46 +60,6 @@ async function insertathing() {
 
 
 
-async function massiveinserter() {
-	let mongo = app.currentUser.mongoClient("mongodb-atlas");
-	let collection = mongo.db("hellopeople").collection("griddataholder");
-	const title = document.getElementById("massiveinsert1").value;
-	const info = document.getElementById("massiveinsert2").value;
-	const price = document.getElementById("massiveinsert3").value;
-	const grid = document.getElementById("massiveinsert4").value;
-	console.log(`"Here is the info: ${title}, ${info}, ${price}, and ${grid}"`);
-	const inserting = await collection.insertOne({
-		name: title,
-		info: info,
-		price: price,
-		grid: grid
-	});
-	console.log(inserting);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 async function findthenote() {
 	let mongo = app.currentUser.mongoClient("mongodb-atlas");
 	let collection = mongo.db("hellopeople").collection("secondtry");
@@ -144,8 +104,30 @@ async function deletetheone() {
 
 
 
+async function massiveinserter() {
+	let mongo = app.currentUser.mongoClient("mongodb-atlas");
+	let collection = mongo.db("hellopeople").collection("griddataholder");
+	const title = document.getElementById("massiveinsert1").value;
+	const info = document.getElementById("massiveinsert2").value;
+	const price = document.getElementById("massiveinsert3").value;
+	const grid = document.getElementById("massiveinsert4").value;
+	console.log(`"Here is the info: ${title}, ${info}, ${price}, and ${grid}"`);
+	const inserting = await collection.insertOne({
+		name: title,
+		info: info,
+		price: price,
+		grid: grid
+	});
+	console.log(inserting);
+}
 
-
+async function dataretriever() {
+	let mongo = app.currentUser.mongoClient("mongodb-atlas");
+	let collection = mongo.db("hellopeople").collection("griddataholder");
+	//const findinfo = "a";
+	const foundthem = await collection.find({grid: "a"});
+	console.log(foundthem);
+}
 
 
 
