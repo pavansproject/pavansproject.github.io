@@ -67,6 +67,7 @@ async function massiveinserter() {
 	const info = document.getElementById("massiveinsert2").value;
 	const price = document.getElementById("massiveinsert3").value;
 	const grid = document.getElementById("massiveinsert4").value;
+	console.log(`"Here is the info: ${title}, ${info}, ${price}, and ${grid}"`);
 	const inserting = await collection.insertOne({
 		name: title,
 		info: info,
