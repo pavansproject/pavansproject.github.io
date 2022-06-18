@@ -49,14 +49,54 @@ async function insertathing() {
 	const notename = document.getElementById("notenme").value;
 	const noteinfo = document.getElementById("noteinfo").value;
 	const user = app.currentUser;
-	console.log(`Stuff is this: ${notename} , and ${noteinfo}`);
+	console.log(`"Stuff is this: ${notename} , and ${noteinfo}"`);
 	const result = await collection.insertOne({
 		name: notename,
 		noteinformation: noteinfo
 	});
 	console.log(result);
-	console.log(`"Oh and by the way, ${user.id}"`)
+	console.log(`"Oh and by the way, ${user.id}"`);
 }
+
+
+
+async function massiveinserter() {
+	let mongo = app.currentUser.mongoClient("mongodb-atlas");
+	let collection = mongo.db("hellopeople").collection("griddataholder");
+	const title = document.getElementById("massiveinsert1").value;
+	const info = document.getElementById("massiveinsert2").value;
+	const price = document.getElementById("massiveinsert3").value;
+	const grid = document.getElementById("massiveinsert4").value;
+	const inserting = await collection.insertOne({
+		name: title,
+		info: info,
+		price: price,
+		grid: grid
+	});
+	console.log(inserting);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 async function findthenote() {
@@ -102,21 +142,7 @@ async function deletetheone() {
 }
 
 
-async function massiveinserter() {
-	let mongo = app.currentUser.mongoClient("mongodb-atlas");
-	let collection = mongo.db("hellopeople").collection("griddataholder");
-	const title = document.getElementById("massiveinsert1").value;
-	const info = document.getElementById("massiveinsert2").value;
-	const price = document.getElementById("massiveinsert3").value;
-	const grid = "a";
-	const inserting = await collection.insertOne({
-		name: title,
-		info: info,
-		price: price,
-		grid: grid
-	});
-	console.log(inserting);
-}
+
 
 
 
@@ -137,7 +163,7 @@ async function loginEmailPassword(email, password) {
     return user;
   } catch (err) {
     console.error("Failed to log in", err);
-	if(err.status = "401"){
+	if(err.status == "401"){
 		console.log("ummm");
 	}
   }
@@ -151,11 +177,11 @@ async function loginEmailPassword(email, password) {
 	const app = Realm.App.getApp("application-1-ukdhb"); // replace this with your App ID
 	const user = app.currentUser;
 	console.log("have hope");
-	console.log("Calculating 1 + 1")
+	console.log("Calculating 1 + 1");
 	const result = await user.functions.summed(1, 1);
 	console.log("breakpoint 1, this means its done the math");
 	console.log(result);
-};
+}
 
 //Page 2 Test function
 async function letsdothisnow() {
