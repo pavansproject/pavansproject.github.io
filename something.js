@@ -102,6 +102,27 @@ async function deletetheone() {
 }
 
 
+async function massiveinserter() {
+	let mongo = app.currentUser.mongoClient("mongodb-atlas");
+	let collection = mongo.db("hellopeople").collection("griddataholder");
+	const title = document.getElementById("massiveinsert1").value;
+	const info = document.getElementById("massiveinsert2").value;
+	const price = document.getElementById("massiveinsert3").value;
+	const grid = "a";
+	const inserting = await collection.insertOne({
+		name: title,
+		info: info,
+		price: price,
+		grid: grid
+	});
+	console.log(inserting);
+}
+
+
+
+
+
+
 
 
 async function loginEmailPassword(email, password) {
