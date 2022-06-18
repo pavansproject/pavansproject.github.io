@@ -38,8 +38,12 @@ async function please() {
 	console.log("You have signed up!");
 }
 
-//Note: Probably a better idea to combine setupdbstuff() and insertathing() for each
-//of the CRUD values
+window.onload = (event) => {
+	console.log("Page is loaded");
+	dontgiveup();
+	dataretriever();
+	console.log("Pavan you are a genius");
+}
 
 
 async function setupdbstuff() {
