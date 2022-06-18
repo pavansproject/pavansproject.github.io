@@ -150,9 +150,9 @@ async function dataretriever() {
 	document.getElementById("item6para").innerText = foundthem[5].info;
 	document.getElementById("item6price").innerText = foundthem[5].price;
 
-	document.getElementById("item7title").innerText = foundthem[7].name;
-	document.getElementById("item7para").innerText = foundthem[7].info;
-	document.getElementById("item7price").innerText = foundthem[7].price;
+	document.getElementById("item7title").innerText = foundthem[6].name;
+	document.getElementById("item7para").innerText = foundthem[6].info;
+	document.getElementById("item7price").innerText = foundthem[6].price;
 	
 	console.log("Complete");
 }
