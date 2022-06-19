@@ -1,4 +1,3 @@
-import * as Realm from "realm-web";
 if ("serviceWorker" in navigator) {
 	navigator.serviceWorker.register("https://pavansproject.github.io/sw.js");
 	console.log("Service worker is registered");
