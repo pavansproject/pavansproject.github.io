@@ -40,8 +40,10 @@ async function please() {
 
 window.onload = (event) => {
 	console.log("Page is loaded");
-	console.log("Trial 1")
-	setTimeout(console.log("Trial 2", 1000));
+	console.log("Trial 1");
+	setTimeout(() => {
+		console.log("Trial 2");
+	}, 1000);
 	//setTimeout(dontgiveup(), 1000);
 	//dontgiveup();
 	//dataretriever();
