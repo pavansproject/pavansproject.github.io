@@ -39,15 +39,24 @@ async function please() {
 }
 
 window.onload = async (event) => {
-	console.log("Page is loaded");
+	console.log("Page is loaded, beginning the timer");
 	setTimeout(() => {
-		//let mypromise = new Promise()
-		dontgiveup().then(dataretriever(), console.log(console.error()));
+		let mypromise = new Promise((resolve, reject) => {
+			dontgiveup();
+		});
+		let hi = mypromise
+			.then(dataretriever(), console.log("It first went badly"))
+			.then(console.log("Ok I think I got it"), console.log("it went badly"))
+			// .then(value => {return value + 1;})
+			// .then(value => {return value + 1;})
+			// .then(value => {return value + 1;})
+			// .then(value => {return value + 1;})
+			// .then(value => {return value + 1;}, console.log("Uh I did it?"))
+		//dontgiveup().then(dataretriever(), console.log(console.error()));
 		//dataretriever();
 		console.log("Alright this part works now I think");
+		console.log(hi);
 	}, 10000);
-	//setTimeout(dontgiveup(), 1000);
-	//dontgiveup();
 }
 
 
