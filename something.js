@@ -42,8 +42,9 @@ async function please() {
 	// console.log("Beginning the timer");
 	// setTimeout(() => {
 		let mypromise = new Promise((resolve, reject) => {
-			dontgiveup();
-		}, console.log("oh no"));
+			resolve(dontgiveup());
+			reject(console.log("Oh no"));
+		});
 		let hi = mypromise
 			.then(dataretriever(), console.log("It first went badly"))
 			.then(console.log("Ok I think I got it"), console.log("it went badly"))
