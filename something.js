@@ -38,8 +38,8 @@ async function please() {
 	console.log("You have signed up!");
 }
 
-window.onload = async (event) => {
-	console.log("Page is loaded, beginning the timer");
+async () => {
+	console.log("Beginning the timer");
 	setTimeout(() => {
 		let mypromise = new Promise((resolve, reject) => {
 			dontgiveup();
