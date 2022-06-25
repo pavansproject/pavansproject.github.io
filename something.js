@@ -44,7 +44,7 @@ window.onload = (event) => {
 		dontgiveup();
 		dataretriever();
 		console.log("Alright this part works now");
-	}, 1000);
+	}, 10000);
 	//setTimeout(dontgiveup(), 1000);
 	//dontgiveup();
 }
