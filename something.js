@@ -38,15 +38,16 @@ async function please() {
 	console.log("You have signed up!");
 }
 
-async () => {
-	console.log("Beginning the timer");
-	setTimeout(() => {
+
+	// console.log("Beginning the timer");
+	// setTimeout(() => {
 		let mypromise = new Promise((resolve, reject) => {
 			dontgiveup();
-		});
+		}, console.log("oh no"));
 		let hi = mypromise
 			.then(dataretriever(), console.log("It first went badly"))
 			.then(console.log("Ok I think I got it"), console.log("it went badly"))
+			.then(console.log(hi));
 			// .then(value => {return value + 1;})
 			// .then(value => {return value + 1;})
 			// .then(value => {return value + 1;})
@@ -54,10 +55,10 @@ async () => {
 			// .then(value => {return value + 1;}, console.log("Uh I did it?"))
 		//dontgiveup().then(dataretriever(), console.log(console.error()));
 		//dataretriever();
-		console.log("Alright this part works now I think");
-		console.log(hi);
-	}, 10000);
-}
+		// console.log("Alright this part works now I think");
+		// console.log(hi);
+	// }, 10000);
+
 
 
 async function setupdbstuff() {
