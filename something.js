@@ -41,9 +41,10 @@ async function please() {
 window.onload = (event) => {
 	console.log("Page is loaded");
 	setTimeout(() => {
-		dontgiveup();
-		dataretriever();
-		console.log("Alright this part works now");
+		//let mypromise = new Promise()
+		dontgiveup().then(dataretriever(), console.log(console.error()));
+		//dataretriever();
+		console.log("Alright this part works now I think");
 	}, 10000);
 	//setTimeout(dontgiveup(), 1000);
 	//dontgiveup();
