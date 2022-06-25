@@ -38,7 +38,7 @@ async function please() {
 	console.log("You have signed up!");
 }
 
-window.onload = (event) => {
+window.onload = async (event) => {
 	console.log("Page is loaded");
 	setTimeout(() => {
 		//let mypromise = new Promise()
