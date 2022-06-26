@@ -60,7 +60,15 @@ async function please() {
 		// console.log("Alright this part works now I think");
 		// console.log(hi);
 	// }, 10000);
-
+window.onload = (event) => {
+	console.log("Page is loaded");
+	fetch("https://unpkg.com/realm-web/dist/bundle.iife.js")
+		.then(response => response.json())
+		.then(data => console.log(data))
+		.then(dontgiveup())
+		.then(dataretriever())
+		.then(console.log("If this actually works"));
+}
 
 
 async function setupdbstuff() {
