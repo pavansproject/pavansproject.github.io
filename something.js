@@ -82,14 +82,17 @@ window.onload = (event) => {
 }
 async function hi() {
 	const app = Realm.App.getApp("application-1-ukdhb");
-	const user = app.currentUser
-	if(user.id != null) {
-		dataretriever();
-	}else{
-		setTimeout(() => {
-			dataretriever();
-		}, 1500)
-	}
+	app.then(dataretriever());
+
+
+	// const user = app.currentUser
+	// if(user.id != null) {
+	// 	dataretriever();
+	// }else{
+	// 	setTimeout(() => {
+	// 		dataretriever();
+	// 	}, 1500)
+	// }
 }
 
 async function setupdbstuff() {
