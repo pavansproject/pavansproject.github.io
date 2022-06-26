@@ -62,12 +62,19 @@ async function please() {
 	// }, 10000);
 window.onload = (event) => {
 	console.log("Page is loaded");
-	fetch("https://unpkg.com/realm-web/dist/bundle.iife.js")
+	/*fetch("https://unpkg.com/realm-web/dist/bundle.iife.js")
 		.then(response => response.json())
 		.then(data => console.log(data))
 		.then(dontgiveup())
 		.then(dataretriever())
-		.then(console.log("If this actually works"));
+		.then(console.log("If this actually works"));*/
+
+	let bestpromise = new Promise((resolve, reject) => {
+		resolve(dontgiveup());
+		reject(console.log("Sigh"));
+	})
+		.then(dataretriever())
+		.then(console.log("I got it"));
 }
 
 
@@ -156,6 +163,8 @@ async function massiveinserter() {
 }
 
 async function dataretriever() {
+	//Note: I add this first line separately
+	const app = Realm.App.getApp("application-1-ukdhb");
 	let mongo = app.currentUser.mongoClient("mongodb-atlas");
 	let collection = mongo.db("hellopeople").collection("griddataholder");
 	const foundthem = await collection.find({grid: "a"});
@@ -253,6 +262,8 @@ async function loginEmailPassword(email, password) {
 async function loginAnonymous() {
 	// Create an anonymous credential
 	const credentials = Realm.Credentials.anonymous();
+	//Note: I add this following line separately
+	const app = Realm.App.getApp("application-1-ukdhb");
 	try {
 	  // Authenticate the user
 	  const user = await app.logIn(credentials);
