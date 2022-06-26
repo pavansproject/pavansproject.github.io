@@ -70,11 +70,11 @@ window.onload = (event) => {
 		.then(console.log("If this actually works"));*/
 
 	let bestpromise = new Promise((resolve, reject) => {
-		resolve(dontgiveup());
-		resolve(dataretriever());
+		resolve(loginAnonymous());
+		// resolve(dataretriever());
 		//reject(console.error());
 	})
-		//.then(dataretriever())
+		.then(dataretriever())
 		.then(console.log("I got it"));
 }
 
