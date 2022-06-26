@@ -60,25 +60,29 @@ async function please() {
 		// console.log("Alright this part works now I think");
 		// console.log(hi);
 	// }, 10000);
-window.onload = (event) => {
+/*window.onload = (event) => {
 	console.log("Page is loaded");
-	/*fetch("https://unpkg.com/realm-web/dist/bundle.iife.js")
-		.then(response => response.json())
-		.then(data => console.log(data))
-		.then(dontgiveup())
-		.then(dataretriever())
-		.then(console.log("If this actually works"));*/
+	// fetch("https://unpkg.com/realm-web/dist/bundle.iife.js")
+	// 	.then(response => response.json())
+	// 	.then(data => console.log(data))
+	// 	.then(dontgiveup())
+	// 	.then(dataretriever())
+	// 	.then(console.log("If this actually works"));
 
 	let bestpromise = new Promise((resolve, reject) => {
 		resolve(loginAnonymous());
 		resolve(hi())
-		/*setTimeout(() => {
-			resolve(dataretriever());
-		}, 1500);*/
+		// setTimeout(() => {
+		// 	resolve(dataretriever());
+		// }, 1500);
 		//reject(console.error());
 	})
 		//.then(dataretriever())
 		.then(console.log("I got it"));
+}*/
+
+window.onload = (event) => {
+	sanitysaver();
 }
 async function hi() {
 	const app = Realm.App.getApp("application-1-ukdhb");
@@ -238,7 +242,29 @@ async function dataretriever() {
 }
 
 async function sanitysaver() {
-	let mongo = mypromise.app.currentUser.mongoClient("mongodb-atlas");
+
+	// Create an anonymous credential
+	const credentials = Realm.Credentials.anonymous();
+	//Note: I add this following line separately
+	const app = Realm.App.getApp("application-1-ukdhb");
+	try {
+	// Authenticate the user
+	const user = await app.logIn(credentials);
+	// `App.currentUser` updates to match the logged in user
+	console.assert(user.id === app.currentUser.id);
+	return user;
+	} catch (err) {
+	console.error("Failed to log in", err);
+}
+
+
+
+
+
+
+	//Note: I add this first line separately
+	//const app = Realm.App.getApp("application-1-ukdhb");
+	let mongo = app.currentUser.mongoClient("mongodb-atlas");
 	let collection = mongo.db("hellopeople").collection("griddataholder");
 	const foundthem = await collection.find({grid: "a"});
 	console.log(foundthem);
