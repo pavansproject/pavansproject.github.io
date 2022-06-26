@@ -82,17 +82,37 @@ window.onload = (event) => {
 }
 async function hi() {
 	const app = Realm.App.getApp("application-1-ukdhb");
-	app.then(dataretriever());
-
-
-	// const user = app.currentUser
-	// if(user.id != null) {
-	// 	dataretriever();
-	// }else{
-	// 	setTimeout(() => {
-	// 		dataretriever();
-	// 	}, 1500)
-	// }
+	const user = app.currentUser
+	if(app != null){
+		setTimeout(() => {
+			const user = app.currentUser;
+			if(user.id != null) {
+				setTimeout(() => {
+					dataretriever();
+				}, 1500);
+			}else{
+				dataretriever();
+			}
+		}, 1500);
+	} else{
+		const user = app.currentUser;
+		if(user.id != null) {
+			setTimeout(() => {
+				dataretriever();
+			}, 1500);
+		} else{
+			dataretriever();
+		}
+	}
+	
+	
+	if(user.id != null) {
+		dataretriever();
+	}else{
+		setTimeout(() => {
+			dataretriever();
+		}, 1500)
+	}
 }
 
 async function setupdbstuff() {
