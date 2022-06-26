@@ -60,7 +60,7 @@ async function please() {
 		// console.log("Alright this part works now I think");
 		// console.log(hi);
 	// }, 10000);
-/*window.onload = (event) => {
+window.onload = (event) => {
 	console.log("Page is loaded");
 	// fetch("https://unpkg.com/realm-web/dist/bundle.iife.js")
 	// 	.then(response => response.json())
@@ -79,13 +79,13 @@ async function please() {
 	})
 		//.then(dataretriever())
 		.then(console.log("I got it"));
-}*/
+}
 
-window.onload = (event) => {
+/*window.onload = (event) => {
 	console.log("Page is loaded");
 	sanitysaver();
 	console.log("Uhh done?");
-}
+}*/
 async function hi() {
 	const app = Realm.App.getApp("application-1-ukdhb");
 	const user = app.currentUser
@@ -262,7 +262,8 @@ async function sanitysaver() {
 
 
 
-try{
+
+
 	//Note: I add this first line separately
 	//const app = Realm.App.getApp("application-1-ukdhb");
 	let mongo = app.currentUser.mongoClient("mongodb-atlas");
@@ -298,12 +299,6 @@ try{
 	document.getElementById("item7price").innerText = foundthem[6].price;
 	
 	console.log("Complete");
-}
-catch{
-	console.error("Things have gone wrong", err);
-}
-
-	
 }
 
 
