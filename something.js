@@ -71,13 +71,25 @@ window.onload = (event) => {
 
 	let bestpromise = new Promise((resolve, reject) => {
 		resolve(loginAnonymous());
-		resolve(dataretriever());
+		resolve(hi())
+		/*setTimeout(() => {
+			resolve(dataretriever());
+		}, 1500);*/
 		//reject(console.error());
 	})
 		//.then(dataretriever())
 		.then(console.log("I got it"));
 }
-
+async function hi() {
+	const user = app.allUsers[userId];
+	if(user.id != null) {
+		dataretriever();
+	}else{
+		setTimeout(() => {
+			dataretriever();
+		}, 1500)
+	}
+}
 
 async function setupdbstuff() {
 	mongo = app.currentUser.mongoClient("mongodb-atlas");
