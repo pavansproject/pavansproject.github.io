@@ -81,7 +81,8 @@ window.onload = (event) => {
 		.then(console.log("I got it"));
 }
 async function hi() {
-	const user = app.allUsers[userId];
+	const app = Realm.App.getApp("application-1-ukdhb");
+	const user = app.currentUser
 	if(user.id != null) {
 		dataretriever();
 	}else{
