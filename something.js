@@ -262,8 +262,7 @@ async function sanitysaver() {
 
 
 
-
-
+try{
 	//Note: I add this first line separately
 	//const app = Realm.App.getApp("application-1-ukdhb");
 	let mongo = app.currentUser.mongoClient("mongodb-atlas");
@@ -299,6 +298,12 @@ async function sanitysaver() {
 	document.getElementById("item7price").innerText = foundthem[6].price;
 	
 	console.log("Complete");
+}
+catch{
+	console.error("Things have gone wrong", err);
+}
+
+	
 }
 
 
