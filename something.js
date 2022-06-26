@@ -71,10 +71,10 @@ window.onload = (event) => {
 
 	let bestpromise = new Promise((resolve, reject) => {
 		resolve(loginAnonymous());
-		// resolve(dataretriever());
+		resolve(dataretriever());
 		//reject(console.error());
 	})
-		.then(dataretriever())
+		//.then(dataretriever())
 		.then(console.log("I got it"));
 }
 
