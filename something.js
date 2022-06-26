@@ -82,7 +82,9 @@ async function please() {
 }*/
 
 window.onload = (event) => {
+	console.log("Page is loaded");
 	sanitysaver();
+	console.log("Uhh done?");
 }
 async function hi() {
 	const app = Realm.App.getApp("application-1-ukdhb");
