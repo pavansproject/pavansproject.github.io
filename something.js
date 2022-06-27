@@ -38,7 +38,22 @@ async function please() {
 	await app.emailPasswordAuth.registerUser({email : document.getElementById("usersignupthing").value, password : document.getElementById("passsignupthing").value});
 	console.log("You have signed up!");
 }
+//Sighhhh
+//What happened here:
+/*Ok so when you learn how promises in JS work, then run the loginAnonymous
+function and once that returns its promise then run the dataretriever function, 
+which, uniquely enough, does not NEED the output from the loginanonymous function,
+and CAN run without it, just need the logging in to be completely done first, and the stuff
+where it does a "new Promise(stuff stuff) => {
+	resolve and stuff} and then a mypromise.then(dataretriever)"": THAT DOESN'T WORK =(
+so once you get that figured out then do it.
+Also fetch is unnecessary as weirdly enough it DOES get the external script, and its nice to
+see that its persistent on getting the script lol, HTTP 200 request, but yeah.*/
 
+
+
+//You know that a lot of hours were spent trying to fix a bug when there is this much
+//commented stuff lol
 
 	// console.log("Beginning the timer");
 	// setTimeout(() => {
