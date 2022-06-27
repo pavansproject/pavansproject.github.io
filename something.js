@@ -50,7 +50,11 @@ so once you get that figured out then do it.
 Also fetch is unnecessary as weirdly enough it DOES get the external script, and its nice to
 see that its persistent on getting the script lol, HTTP 200 request, but yeah.*/
 
-
+//Ok so how I did it was I had to follow the example of how to use the .this statement
+//as shown on this page: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
+//You see, you have to pass a parameter to an asynchronous function that will then
+//execute whatever code you want, as opposed to directly executing the desired code from the .this statement
+//yayyyyy =)
 
 //You know that a lot of hours were spent trying to fix a bug when there is this much
 //commented stuff lol
@@ -362,6 +366,16 @@ async function loginAnonymous() {
   }
   
   
+//Ok careful here, time to delete a user
+let hello;
+async function loginDelete() {
+	const app = Realm.App.getApp("application-1-ukdhb");
+	hello = await app.deleteUser(app.currentUser);
+	console.log(hello);
+}
+
+
+
 
 
 
