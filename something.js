@@ -86,13 +86,17 @@ window.onload = (event) => {
 
 	let bestpromise = new Promise((resolve, reject) => {
 		resolve(loginAnonymous());
-		resolve(hi())
+		/*Out of persistence, I will comment this line out
+		resolve(hi())*/
 		// setTimeout(() => {
 		// 	resolve(dataretriever());
 		// }, 1500);
 		//reject(console.error());
 	})
 		//.then(dataretriever())
+		.then((value) => {
+			dataretriever();
+		})
 		.then(console.log("I got it"));
 }
 
