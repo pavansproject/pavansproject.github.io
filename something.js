@@ -271,6 +271,34 @@ async function dataretriever() {
 	console.log("Complete");
 }
 
+async function makecustomdata() {
+	const app = Realm.App.getApp("application-1-ukdhb");
+	const user = app.currentUser;
+	const mongo = app.currentUser.mongoClient("mongodb-atlas");
+	const collection = mongo.db("hellopeople").collection("letgowiththis");
+	const age = "3";
+	const nickname = "bob";
+	const userid = user.id;
+	const yes = collection.insertOne({
+		age: age,
+		nickname: nickname,
+		userid: userid
+	});
+	console.log(yes);
+}
+
+
+
+
+async function getcustomdata() {
+	const app = Realm.App.getApp("application-1-ukdhb");
+	const customdata = app.currentUser.customData;
+	console.log(customdata);
+}
+
+
+
+
 
 
 
