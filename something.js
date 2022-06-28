@@ -18,22 +18,19 @@ const {
 
 
 
-let sam;
-let functionstuff;
+
 async function keepgoing() {
 	const bob = await loginEmailPassword(
 		email = document.getElementById("userthing").value,
 		password = document.getElementById("passthing").value);
-	 sam = bob;
-	
 }
 
-let man;
-async function dontgiveup() {
+//Huh I guess I really don't need this function now do I? This was just so I
+//could global scope my variables, which REALLY is not a good idea
+/*async function dontgiveup() {
 	const bob = await loginAnonymous();
-	man = bob;
-	//return man;
-}
+	let man = bob;
+}*/
 async function please() {
 	await app.emailPasswordAuth.registerUser({email : document.getElementById("usersignupthing").value, password : document.getElementById("passsignupthing").value});
 	console.log("You have signed up!");
@@ -111,7 +108,11 @@ window.onload = (event) => {
 	sanitysaver();
 	console.log("Uhh done?");
 }*/
-async function hi() {
+
+//Let it be said that if and else statements are my
+//last resort in dire emergencies
+
+/*async function hi() {
 	const app = Realm.App.getApp("application-1-ukdhb");
 	const user = app.currentUser
 	if(app != null){
@@ -144,7 +145,7 @@ async function hi() {
 			dataretriever();
 		}, 1500)
 	}
-}
+}*/
 
 async function setupdbstuff() {
 	mongo = app.currentUser.mongoClient("mongodb-atlas");
@@ -166,8 +167,6 @@ async function insertathing() {
 	console.log(result);
 	console.log(`"Oh and by the way, ${user.id}"`);
 }
-
-
 
 async function findthenote() {
 	let mongo = app.currentUser.mongoClient("mongodb-atlas");
@@ -232,6 +231,7 @@ async function massiveinserter() {
 
 async function dataretriever() {
 	//Note: I add this first line separately
+	//Later note: Its really fine, this line does no harm at all, sooo yeah
 	const app = Realm.App.getApp("application-1-ukdhb");
 	let mongo = app.currentUser.mongoClient("mongodb-atlas");
 	let collection = mongo.db("hellopeople").collection("griddataholder");
@@ -267,65 +267,6 @@ async function dataretriever() {
 	
 	console.log("Complete");
 }
-
-async function sanitysaver() {
-
-	// Create an anonymous credential
-	const credentials = Realm.Credentials.anonymous();
-	//Note: I add this following line separately
-	const app = Realm.App.getApp("application-1-ukdhb");
-	try {
-	// Authenticate the user
-	const user = await app.logIn(credentials);
-	// `App.currentUser` updates to match the logged in user
-	console.assert(user.id === app.currentUser.id);
-	return user;
-	} catch (err) {
-	console.error("Failed to log in", err);
-}
-
-
-
-
-
-
-	//Note: I add this first line separately
-	//const app = Realm.App.getApp("application-1-ukdhb");
-	let mongo = app.currentUser.mongoClient("mongodb-atlas");
-	let collection = mongo.db("hellopeople").collection("griddataholder");
-	const foundthem = await collection.find({grid: "a"});
-	console.log(foundthem);
-	document.getElementById("item1title").innerText = foundthem[0].name;
-	document.getElementById("item1para").innerText = foundthem[0].info;
-	document.getElementById("item1price").innerText = foundthem[0].price;
-
-	document.getElementById("item2title").innerText = foundthem[1].name;
-	document.getElementById("item2para").innerText = foundthem[1].info;
-	document.getElementById("item2price").innerText = foundthem[1].price;
-
-	document.getElementById("item3title").innerText = foundthem[2].name;
-	document.getElementById("item3para").innerText = foundthem[2].info;
-	document.getElementById("item3price").innerText = foundthem[2].price;
-
-	document.getElementById("item4title").innerText = foundthem[3].name;
-	document.getElementById("item4para").innerText = foundthem[3].info;
-	document.getElementById("item4price").innerText = foundthem[3].price;
-
-	document.getElementById("item5title").innerText = foundthem[4].name;
-	document.getElementById("item5para").innerText = foundthem[4].info;
-	document.getElementById("item5price").innerText = foundthem[4].price;
-
-	document.getElementById("item6title").innerText = foundthem[5].name;
-	document.getElementById("item6para").innerText = foundthem[5].info;
-	document.getElementById("item6price").innerText = foundthem[5].price;
-
-	document.getElementById("item7title").innerText = foundthem[6].name;
-	document.getElementById("item7para").innerText = foundthem[6].info;
-	document.getElementById("item7price").innerText = foundthem[6].price;
-	
-	console.log("Complete");
-}
-
 
 
 
@@ -365,26 +306,30 @@ async function loginAnonymous() {
 	}
   }
   
+  async function logoutfunc() {
+	const app = Realm.App.getApp("application-1-ukdhb");
+	let please = await app.currentuser.logOut();
+	console.log(please);
+  }
+
+
+
+
+
   
 //Ok careful here, time to delete a user
-let hello;
 async function loginDelete() {
 	const app = Realm.App.getApp("application-1-ukdhb");
-	hello = await app.deleteUser(app.currentUser);
+	const user = app.currentUser;
+	let hello = await app.deleteUser(user);
 	console.log(hello);
 }
 
 
 
-
-
-
-
-
 //This is a test function
   async function okyeahnow() {
-	//havehope();
-	const app = Realm.App.getApp("application-1-ukdhb"); // replace this with your App ID
+	const app = Realm.App.getApp("application-1-ukdhb"); 
 	const user = app.currentUser;
 	console.log("have hope");
 	console.log("Calculating 1 + 1");
@@ -395,15 +340,10 @@ async function loginDelete() {
 
 //Page 2 Test function
 async function letsdothisnow() {
-	//havehope();
-	const app = Realm.App.getApp("application-1-ukdhb"); // replace this with your App ID
+	const app = Realm.App.getApp("application-1-ukdhb"); 
 	const userhi = app.currentUser;
-	//console.log(user.id);
 	console.log(userhi);
-	//alert("Pause everything for a second");
-	console.log("Beginning calculations");
 	const sure = await userhi.functions.summed(2, 2);
-	console.log("Done the math");
 	console.log(sure);
 }
 /*Key things to remember here is to always first:
