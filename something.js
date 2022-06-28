@@ -99,7 +99,7 @@ window.onload = (event) => {
 			dataretriever();
 		})
 		.then((value) => {
-			logoutfunc();
+			loginDelete();
 		})
 		.then((value) => {
 			console.log("LETS GO I GOT IT I AM THE PROGRAMMER YES YES YESSSSSSSS IT WORKS IT AC TUALLY WAORKS!!!")
