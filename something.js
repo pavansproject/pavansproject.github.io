@@ -99,6 +99,9 @@ window.onload = (event) => {
 			dataretriever();
 		})
 		.then((value) => {
+			logoutfunc();
+		})
+		.then((value) => {
 			console.log("LETS GO I GOT IT I AM THE PROGRAMMER YES YES YESSSSSSSS IT WORKS IT AC TUALLY WAORKS!!!")
 		});
 }
@@ -354,7 +357,10 @@ async function letsdothisnow() {
 	user =)*/
 
 
-function idekknowanymore() {
+
+
+function saywhologgedin() {
+	const app = Realm.App.getApp("application-1-ukdhb"); 
 	// Get an object with all Users, where the keys are the User IDs
 for (const userId in app.allUsers) {
 	const user = app.allUsers[userId];
