@@ -7,7 +7,10 @@ self.addEventListener("install", function (e) {
 				"https://pavansproject.github.io/favicon.ico",
 				"https://pavansproject.github.io/mainstyles.css",
 				"https://pavansproject.github.io/page2.html",
-				"https://pavansproject.github.io/pavansproject.webmanifest"
+				"https://pavansproject.github.io/pavansproject.webmanifest",
+				"https://pavansproject.github.io/sw.js",
+				"https://pavansproject.github.io/computer 128x128.png",
+				"https://pavansproject.github.io/computer 512x512.png"
 			]);
 		}),
 	);
