@@ -1,6 +1,11 @@
 if ("serviceWorker" in navigator) {
-	navigator.serviceWorker.register("https://pavansproject.github.io/sw.js");
-	console.log("Service worker is registered");
+	//If this alteration does not work first try then it will be INCREDIBLY
+	//sad
+	//ALSO OOOOOH this returns a promise now that is cool
+	navigator.serviceWorker.register("sw.js")
+	.then(() => console.log("Service worker is registered"));
+	//Also this is the part of the tutorial that I used:
+	//https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage#offline_asset_storage
 }
 
 
