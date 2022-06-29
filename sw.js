@@ -43,12 +43,22 @@ const addResourcesToCache = async (resources) => {
 
 
   const cacheFirst = async (request) => {
-	const responseFromCache = await caches.match(request);
-	if (responseFromCache) {
-	console.log("This item has been found:" + responseFromCache);
-	  return responseFromCache;
+	
+
+	try{
+		const responseFromCache = await caches.match(request);
+		if (responseFromCache) {
+		console.log("This item has been found:" + responseFromCache);
+		  return responseFromCache;
+		}
+		return fetch(request);
+	}catch (error){
+		console.error("Error:" + error.name);
 	}
-	return fetch(request);
+
+
+
+
   };
   
   self.addEventListener('fetch', (event) => {

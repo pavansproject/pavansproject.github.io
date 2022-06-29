@@ -275,6 +275,9 @@ async function dataretriever() {
 	//Later note: Its really fine, this line does no harm at all, sooo yeah
 	const app = Realm.App.getApp("application-1-ukdhb");
 	let mongo = app.currentUser.mongoClient("mongodb-atlas");
+	if(mongo === null){
+		console.log("There is a problem connecting to MongoDB, please check your internet");
+	}
 	let collection = mongo.db("hellopeople").collection("griddataholder");
 	const foundthem = await collection.find({grid: "a"});
 	console.log(foundthem);
@@ -353,8 +356,8 @@ async function loginEmailPassword(email, password) {
     return user;
   } catch (err) {
     console.error("Failed to log in", err);
-	if(err.status == "401"){
-		console.log("ummm");
+	if(err.name === "401"){
+		console.log("There has been a problem logging in");
 	}
   }
 }
@@ -370,11 +373,17 @@ async function loginAnonymous() {
 	  // `App.currentUser` updates to match the logged in user
 	  console.assert(user.id === app.currentUser.id);
 	  return user;
-	} catch (err) {
-	  console.error("Failed to log in", err);
+	} catch (error) {
+	  console.error("Failed to log in anonymously");
+	if(error.name === "TypeError"){
+		console.log("The error is a typerror")
+	}else{
+		console.log("App has an error, but the catching code didn't work");
+	}
 	}
   }
   
+
   async function logoutfunc() {
 	const app = Realm.App.getApp("application-1-ukdhb");
 	let please = await app.currentUser.logOut();
