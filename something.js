@@ -1,12 +1,34 @@
-if ("serviceWorker" in navigator) {
-	//If this alteration does not work first try then it will be INCREDIBLY
-	//sad
-	//ALSO OOOOOH this returns a promise now that is cool
+/*if ("serviceWorker" in navigator) {
 	navigator.serviceWorker.register("sw.js")
 	.then(() => console.log("Service worker is registered"));
-	//Also this is the part of the tutorial that I used:
-	//https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage#offline_asset_storage
-}
+}*/
+
+
+const registerServiceWorker = async () => {
+	if ('serviceWorker' in navigator) {
+	  try {
+		const registration = await navigator.serviceWorker.register(
+		  'https://pavansproject.github.io/sw.js'
+		  );
+		if (registration.installing) {
+		  console.log('Service worker installing');
+		} else if (registration.waiting) {
+		  console.log('Service worker installed');
+		} else if (registration.active) {
+		  console.log('Service worker active');
+		}
+	  } catch (error) {
+		console.error(`Registration failed with ${error}`);
+	  }
+	}
+  };
+//https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage#offline_asset_storage
+//https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers
+  registerServiceWorker();
+  
+
+
+
 
 
 const id = "application-1-ukdhb"; 
