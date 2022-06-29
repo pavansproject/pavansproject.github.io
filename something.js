@@ -339,6 +339,10 @@ async function loginAnonymous() {
   
   async function logoutfunc() {
 	const app = Realm.App.getApp("application-1-ukdhb");
+	const customdata = app.currentUser.customData;
+	console.log(customdata);
+	const user = app.currentUser.id
+	console.log(user);
 	let please = await app.currentuser.logOut();
 	console.log(please);
   }
