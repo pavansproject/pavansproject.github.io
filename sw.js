@@ -2,12 +2,12 @@ self.addEventListener("install", function (e) {
 	e.waitUntil(
 		caches.open("supremecacher").then(function(cache) {
 			return cache.addAll([
-				"./index.html",
-				"./something.js",
-				"./favicon.ico",
-				"./mainstyles.css",
-				"./page2.html",
-				"./pavansproject.webmanifest"
+				"https://pavansproject.github.io/index.html",
+				"https://pavansproject.github.io/something.js",
+				"https://pavansproject.github.io/favicon.ico",
+				"https://pavansproject.github.io/mainstyles.css",
+				"https://pavansproject.github.io/page2.html",
+				"https://pavansproject.github.io/pavansproject.webmanifest"
 			]);
 		}),
 	);
