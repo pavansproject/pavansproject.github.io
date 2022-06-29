@@ -47,7 +47,13 @@ const addResourcesToCache = async (resources) => {
 	console.log("This item has been found:" + responseFromCache);
 	  return responseFromCache;
 	}
-	return fetch(request);
+	try{
+		return fetch(request);
+	}catch (error){
+		console.error("Uh oh:" + error);
+		return({type: text/plain} + "hello?")
+	}
+	
   };
   
   self.addEventListener('fetch', (event) => {
