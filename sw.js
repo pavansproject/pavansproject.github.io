@@ -38,19 +38,26 @@ const addResourcesToCache = async (resources) => {
   });
   
 
+  
 
 
-
-self.addEventListener("fetch", (e) => {
+  const cacheFirst = async (request) => {
+	const responseFromCache = await caches.match(request);
+	if (responseFromCache) {
+	console.log("This item has been found:" + responseFromCache);
+	  return responseFromCache;
+	}
+	return fetch(request);
+  };
+  
+  self.addEventListener('fetch', (event) => {
+	event.respondWith(cacheFirst(event.request));
+  });
+  
+/*self.addEventListener("fetch", (e) => {
 		console.log(e.request.url);
-		try{
 		e.respondWith(
 			caches.match(e.request).then((response) => response || fetch(e.request))
 		);
-		} catch (error){
-			console.error("Uh oh" + error);
-			caches.match("./fallbackpg.html");
-		}
-
 	});
-console.log("Cache is made?");
+console.log("Cache is made?");*/
