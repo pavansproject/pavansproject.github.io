@@ -51,7 +51,7 @@ const addResourcesToCache = async (resources) => {
 		return fetch(request);
 	}catch (error){
 		console.error("Uh oh:" + error);
-		return({type: text/plain} + "hello?")
+		return(`<html><body><h1>Greetings planet lol hi</h1></body></html>`);
 	}
 	
   };
