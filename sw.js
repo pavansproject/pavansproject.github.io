@@ -21,4 +21,4 @@ self.addEventListener("fetch", (e) => {
 			caches.match(e.request).then((response) => response || fetch(e.request))
 		);
 	});
-console.log("Cache is made and service worker installed");
+console.log("Cache is made?");
