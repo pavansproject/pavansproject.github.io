@@ -32,7 +32,8 @@ const addResourcesToCache = async (resources) => {
 		"https://pavansproject.github.io/pavansproject.webmanifest",
 		"https://pavansproject.github.io/sw.js",
 		"https://pavansproject.github.io/computer 128x128.png",
-		"https://pavansproject.github.io/computer 512x512.png"
+		"https://pavansproject.github.io/computer 512x512.png",
+		"https://pavansproject.github.io"
 	  ])
 	);
   });
@@ -47,14 +48,7 @@ const addResourcesToCache = async (resources) => {
 	console.log("This item has been found:" + responseFromCache);
 	  return responseFromCache;
 	}
-	let hi;
-	try{
-		hi = fetch(request);
-	}catch (error){
-		console.error("Uh oh:" + error);
-		return(`<html><body><h1>Greetings planet lol hi</h1></body></html>`);
-	}
-	return hi;
+	return fetch(request);
   };
   
   self.addEventListener('fetch', (event) => {
