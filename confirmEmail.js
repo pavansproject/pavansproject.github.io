@@ -12,6 +12,7 @@ const app = Realm.App.getApp("application-1-ukdhb");
 
 
 async function hi() {
+    const app = Realm.App.getApp("application-1-ukdhb");
     const string = document.location.search;
     const urlstuff = new URLSearchParams(string);
 
@@ -21,4 +22,6 @@ async function hi() {
 
     const hello = await confirmUser(token, ID)
 }
-hi();
+window.onload = (event) => {
+    hi();
+}
