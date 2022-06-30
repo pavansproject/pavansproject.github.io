@@ -40,12 +40,7 @@ const config = {
 try{
 	const app = Realm.App.getApp("application-1-ukdhb");
 }catch (error){
-	console.error("There is an error" + error);
-	if(error.name === "TypeError"){
-		console.log("The error is a typerror")
-	}else{
-		console.log("App has an error, but the catching code didn't work");
-	}
+	console.error("P-modified: Error accessing Realm" + error);
 }
 
 const {
