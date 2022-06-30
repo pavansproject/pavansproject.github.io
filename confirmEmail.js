@@ -1,13 +1,3 @@
-// const id = "application-1-ukdhb"; 
-// const config = {
-// 	id,
-// };
-// const app = Realm.App.getApp("application-1-ukdhb");
-
-
-
-
-
 const id = "application-1-ukdhb"; 
 const config = {
 	id,
@@ -21,14 +11,14 @@ const app = Realm.App.getApp("application-1-ukdhb");
 
 
 
-
-
-
-
-
-const string = window.location.search;
-const urlstuff = new URLSearchParams(string);
-
 async function hi() {
-    const hello = await confirmUser()
+    const string = document.location.search;
+    const urlstuff = new URLSearchParams(string);
+
+    const params = new URLSearchParams(document.location.search);
+    const token = params.get("token");
+    const ID = params.get("tokenID");
+
+    const hello = await confirmUser(token, ID)
 }
+hi();
