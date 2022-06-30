@@ -4,5 +4,7 @@ const config = {
 };
 const app = Realm.App.getApp("application-1-ukdhb");
 
+const string = window.location.search;
+const urlstuff = new URLSearchParams(string);
 
 
