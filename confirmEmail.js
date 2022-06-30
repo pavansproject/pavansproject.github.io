@@ -12,12 +12,13 @@ const id = "application-1-ukdhb";
 const config = {
 	id,
 };
-
-const app = Realm.App.getApp("application-1-ukdhb");
-
 const {
 	BSON: {ObjectID},
 } = Realm;
+
+const app = Realm.App.getApp("application-1-ukdhb");
+
+
 
 
 
