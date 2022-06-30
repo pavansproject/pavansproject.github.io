@@ -37,11 +37,19 @@ const config = {
 };
 //const app = new Realm.App(config);
 //const app = Realm.App.getApp("application-1-ukdhb");
-try{
-	const app = Realm.App.getApp("application-1-ukdhb");
-}catch (error){
-	console.error("P-modified: Error accessing Realm" + error);
-}
+
+//Yeah this code was supposed to help me control what happens because of errors, but meh
+// try{
+// 	const app = Realm.App.getApp("application-1-ukdhb");
+// }catch (error){
+// 	console.error("There is an error" + error);
+// 	if(error.name === "TypeError"){
+// 		console.log("The error is a typerror")
+// 	}
+// }
+
+
+const app = Realm.App.getApp("application-1-ukdhb");
 
 const {
 	BSON: {ObjectID},
