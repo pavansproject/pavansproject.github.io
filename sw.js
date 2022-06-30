@@ -48,11 +48,12 @@ const addResourcesToCache = async (resources) => {
 	console.log("This item has been found:" + responseFromCache);
 	  return responseFromCache;
 	}
-	let hi =  fetch(request);
-	if(hi === undefined) {
-		return console.error("Fetch request failed");
+	
+	try{
+		return fetch(request);
+	}catch (error){
+		console.error("P-modified: Fetch request failed:" + error);
 	}
-	return fetch(request);
   };
   
   self.addEventListener('fetch', (event) => {

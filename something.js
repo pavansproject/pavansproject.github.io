@@ -277,43 +277,44 @@ async function massiveinserter() {
 async function dataretriever() {
 	//Note: I add this first line separately
 	//Later note: Its really fine, this line does no harm at all, sooo yeah
-	const app = Realm.App.getApp("application-1-ukdhb");
-	let mongo = app.currentUser.mongoClient("mongodb-atlas");
-	if(mongo === null){
-		console.log("There is a problem connecting to MongoDB, please check your internet");
+	try{
+		const app = Realm.App.getApp("application-1-ukdhb");
+		let mongo = app.currentUser.mongoClient("mongodb-atlas");
+		let collection = mongo.db("hellopeople").collection("griddataholder");
+		const foundthem = await collection.find({grid: "a"});
+		console.log(foundthem);
+		document.getElementById("item1title").innerText = foundthem[0].name;
+		document.getElementById("item1para").innerText = foundthem[0].info;
+		document.getElementById("item1price").innerText = foundthem[0].price;
+
+		document.getElementById("item2title").innerText = foundthem[1].name;
+		document.getElementById("item2para").innerText = foundthem[1].info;
+		document.getElementById("item2price").innerText = foundthem[1].price;
+
+		document.getElementById("item3title").innerText = foundthem[2].name;
+		document.getElementById("item3para").innerText = foundthem[2].info;
+		document.getElementById("item3price").innerText = foundthem[2].price;
+
+		document.getElementById("item4title").innerText = foundthem[3].name;
+		document.getElementById("item4para").innerText = foundthem[3].info;
+		document.getElementById("item4price").innerText = foundthem[3].price;
+
+		document.getElementById("item5title").innerText = foundthem[4].name;
+		document.getElementById("item5para").innerText = foundthem[4].info;
+		document.getElementById("item5price").innerText = foundthem[4].price;
+
+		document.getElementById("item6title").innerText = foundthem[5].name;
+		document.getElementById("item6para").innerText = foundthem[5].info;
+		document.getElementById("item6price").innerText = foundthem[5].price;
+
+		document.getElementById("item7title").innerText = foundthem[6].name;
+		document.getElementById("item7para").innerText = foundthem[6].info;
+		document.getElementById("item7price").innerText = foundthem[6].price;
+		
+		console.log("Complete");
+	}catch (error){
+		console.error("P-modified: Failed to retrieve data:" + error)
 	}
-	let collection = mongo.db("hellopeople").collection("griddataholder");
-	const foundthem = await collection.find({grid: "a"});
-	console.log(foundthem);
-	document.getElementById("item1title").innerText = foundthem[0].name;
-	document.getElementById("item1para").innerText = foundthem[0].info;
-	document.getElementById("item1price").innerText = foundthem[0].price;
-
-	document.getElementById("item2title").innerText = foundthem[1].name;
-	document.getElementById("item2para").innerText = foundthem[1].info;
-	document.getElementById("item2price").innerText = foundthem[1].price;
-
-	document.getElementById("item3title").innerText = foundthem[2].name;
-	document.getElementById("item3para").innerText = foundthem[2].info;
-	document.getElementById("item3price").innerText = foundthem[2].price;
-
-	document.getElementById("item4title").innerText = foundthem[3].name;
-	document.getElementById("item4para").innerText = foundthem[3].info;
-	document.getElementById("item4price").innerText = foundthem[3].price;
-
-	document.getElementById("item5title").innerText = foundthem[4].name;
-	document.getElementById("item5para").innerText = foundthem[4].info;
-	document.getElementById("item5price").innerText = foundthem[4].price;
-
-	document.getElementById("item6title").innerText = foundthem[5].name;
-	document.getElementById("item6para").innerText = foundthem[5].info;
-	document.getElementById("item6price").innerText = foundthem[5].price;
-
-	document.getElementById("item7title").innerText = foundthem[6].name;
-	document.getElementById("item7para").innerText = foundthem[6].info;
-	document.getElementById("item7price").innerText = foundthem[6].price;
-	
-	console.log("Complete");
 }
 
 async function makecustomdata() {
@@ -378,12 +379,7 @@ async function loginAnonymous() {
 	  console.assert(user.id === app.currentUser.id);
 	  return user;
 	} catch (error) {
-	  console.error("Failed to log in anonymously");
-	if(error.name === "TypeError"){
-		console.log("The error is a typerror")
-	}else{
-		console.log("App has an error, but the catching code didn't work");
-	}
+	  console.error("P-modified: Failed to log in anonymously:" + error);
 	}
   }
   
@@ -401,10 +397,14 @@ async function loginAnonymous() {
   
 //Ok careful here, time to delete a user
 async function loginDelete() {
+	try{
 	const app = Realm.App.getApp("application-1-ukdhb");
 	const user = app.currentUser;
 	let hello = await app.deleteUser(user);
 	console.log(hello);
+	}catch (error){
+		console.error("P-modified: Failed to delete anonymous account:" + error);
+	}
 }
 
 
