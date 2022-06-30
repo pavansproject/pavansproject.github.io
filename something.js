@@ -125,6 +125,7 @@ window.onload = (event) => {
 
 	let bestpromise = new Promise((resolve, reject) => {
 		resolve(loginAnonymous());
+		reject("Failed to login from the promised land");
 		/*Out of persistence, I will comment this line out
 		resolve(hi())*/
 		// setTimeout(() => {
@@ -135,15 +136,18 @@ window.onload = (event) => {
 		//.then(dataretriever())
 		.then((value) => {
 			dataretriever();
+		}, reason => {
+			console.log("Failed to reach data from the promised land (this should not show");
 		})
 		.then((value) => {
 			loginDelete();
+		}, reason => {
+			console.log("Failed to delete anonymous login account from the promised land(also should not show)")
 		})
 		.then((value) => {
 			console.log("LETS GO I GOT IT I AM THE PROGRAMMER YES YES YESSSSSSSS IT WORKS IT AC TUALLY WAORKS!!!")
 		});
 }
-
 /*window.onload = (event) => {
 	console.log("Page is loaded");
 	sanitysaver();
