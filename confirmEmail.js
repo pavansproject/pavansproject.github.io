@@ -22,12 +22,4 @@ async function hi() {
 window.onload = (event) => {
     hi();
 };
-async function confirmUser(...args) {
-    const { argsObject: tokenDetails } = handleDeprecatedPositionalArgs(args, "confirmUser", ["token", "tokenId"]);
-    const appRoute = this.fetcher.appRoute;
-    await this.fetcher.fetchJSON({
-        method: "POST",
-        path: appRoute.emailPasswordAuth(this.providerName).confirm().path,
-        body: tokenDetails,
-    });
-}
+
