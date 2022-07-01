@@ -42,7 +42,7 @@ const addResourcesToCache = async (resources) => {
   
 
 
-  const cacheFirst = async (request) => {
+  /*const cacheFirst = async (request) => {
 	const responseFromCache = await caches.match(request);
 	if (responseFromCache) {
 	console.log("This item has been found:" + responseFromCache);
@@ -53,8 +53,40 @@ const addResourcesToCache = async (resources) => {
   
   self.addEventListener('fetch', (event) => {
 	event.respondWith(cacheFirst(event.request));
+  });*/
+  
+
+
+
+
+
+
+//Very cool js
+  const putInCache = async (request, response) => {
+	const cache = await caches.open("thenewcache");
+	await cache.put(request, response);
+  }
+  
+  const cacheFirst = async (request) => {
+	const responseFromCache = await caches.match(request);
+	if (responseFromCache) {
+	  return responseFromCache;
+	}
+	const responseFromNetwork = await fetch(request);
+	putInCache(request, responseFromNetwork.clone())
+	return responseFromNetwork;
+  };
+
+  self.addEventListener('fetch', (event) => {
+	event.respondWith(cacheFirst(event.request));
   });
   
+
+
+
+
+
+
 /*self.addEventListener("fetch", (e) => {
 		console.log(e.request.url);
 		e.respondWith(
