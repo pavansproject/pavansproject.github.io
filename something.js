@@ -326,8 +326,8 @@ async function dataretriever() {
 		const app = Realm.App.getApp("application-1-ukdhb");
 		let mongo = app.currentUser.mongoClient("mongodb-atlas");
 		let collection = mongo.db("hellopeople").collection("griddataholder");
-		const foundthem = await collection.find({grid: "a"})
-		.then(() => {
+		const foundthem = await collection.find({grid: "a"});
+		
 			console.log(foundthem);
 			document.getElementById("item1title").innerText = foundthem[0].name;
 			document.getElementById("item1para").innerText = foundthem[0].info;
@@ -358,7 +358,7 @@ async function dataretriever() {
 			document.getElementById("item7price").innerText = foundthem[6].price;
 			
 			console.log("Complete");
-		});
+		
 	}catch (error){
 		console.error("P-modified: Failed to retrieve data: " + error)
 	}
@@ -455,10 +455,10 @@ async function loginDelete() {
 	try{
 	const app = Realm.App.getApp("application-1-ukdhb");
 	const user = app.currentUser;
-	let hello = await app.deleteUser(user)
-	.then(() => {
+	let hello = await app.deleteUser(user);
+	
 		console.log(hello);
-	});
+	
 	}catch (error){
 		console.error("P-modified: Failed to delete anonymous account:" + error);
 	}
