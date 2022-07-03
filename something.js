@@ -32,9 +32,7 @@ const registerServiceWorker = async () => {
 
 
 const id = "application-1-ukdhb"; 
-const config = {
-	id,
-};
+
 //const app = new Realm.App(config);
 //const app = Realm.App.getApp("application-1-ukdhb");
 
@@ -51,9 +49,7 @@ const config = {
 
 const app = Realm.App.getApp("application-1-ukdhb");
 
-const {
-	BSON: {ObjectID},
-} = Realm;
+
 
 
 
@@ -221,13 +217,12 @@ window.onload = (event) => {
 	}
 }*/
 
-async function setupdbstuff() {
-	mongo = app.currentUser.mongoClient("mongodb-atlas");
-	collection = mongo.db("hellopeople").collection("secondtry")
-	.then(() => {
-		console.log("DB connection is set up");
-	});
-}
+//Huh funny, this function is not being used
+// async function setupdbstuff() {
+// 	mongo = app.currentUser.mongoClient("mongodb-atlas");
+// 	collection = mongo.db("hellopeople").collection("secondtry")
+// 	console.log("DB connection is set up");
+// }
 
 async function insertathing() {
 	let mongo = app.currentUser.mongoClient("mongodb-atlas");
@@ -240,9 +235,7 @@ async function insertathing() {
 		name: notename,
 		noteinformation: noteinfo
 	})
-	.then(() => {
-		console.log(result);
-	});
+	console.log(result);
 }
 
 async function findthenote() {
@@ -253,12 +246,9 @@ async function findthenote() {
 	const noteinfo = document.getElementById("notefinder").value;
 	console.log(`"Finding a note with name of ${noteinfo}"`);
 	const found = await collection.findOne({ name: noteinfo })
-	.then(() => {
-		console.log(`"Found the note: ${found.name}, and has ${found.noteinformation} in it"`);
-		notename.innerText = found.name;
-		notestuff.innerText = found.noteinformation;
-	})
-	
+	console.log(`"Found the note: ${found.name}, and has ${found.noteinformation} in it"`);
+	notename.innerText = found.name;
+	notestuff.innerText = found.noteinformation;	
 }
 
 async function findthemall() {
@@ -267,9 +257,7 @@ async function findthemall() {
 	const findinfo = document.getElementById("manyfinder").value;
 	console.log(`"Finding notes with type: ${findinfo}"`);
 	const foundthem = await collection.find({type: findinfo})
-	.then(() => {
-		console.log(`"Found them: ${foundthem}`);
-	});
+	console.log(`"Found them: ${foundthem}`);
 }
 
 async function updatetheone() {
@@ -282,9 +270,7 @@ async function updatetheone() {
 		{name: findquery},
 		{$set: {noteinformation: changething}}
 	)
-	.then(() => {
-		console.log(updatesingle);
-	});
+	console.log(updatesingle);
 }
 
 async function deletetheone() {
@@ -293,9 +279,7 @@ async function deletetheone() {
 	const whattodelete = document.getElementById("singledelete").value;
 	console.log(`"Deleting ${whattodelete}"`);
 	const deletedsingle = await collection.deleteOne({name: whattodelete})
-	.then(() => {
-		console.log(deletedsingle);
-	});
+	console.log(deletedsingle);
 }
 
 
@@ -314,9 +298,7 @@ async function massiveinserter() {
 		price: price,
 		grid: grid
 	})
-	.then(() => {
-		console.log(inserting);
-	})
+	console.log(inserting);
 }
 
 async function dataretriever() {
@@ -328,37 +310,36 @@ async function dataretriever() {
 		let collection = mongo.db("hellopeople").collection("griddataholder");
 		const foundthem = await collection.find({grid: "a"});
 		
-			console.log(foundthem);
-			document.getElementById("item1title").innerText = foundthem[0].name;
-			document.getElementById("item1para").innerText = foundthem[0].info;
-			document.getElementById("item1price").innerText = foundthem[0].price;
+		console.log(foundthem);
+		document.getElementById("item1title").innerText = foundthem[0].name;
+		document.getElementById("item1para").innerText = foundthem[0].info;
+		document.getElementById("item1price").innerText = foundthem[0].price;
 
-			document.getElementById("item2title").innerText = foundthem[1].name;
-			document.getElementById("item2para").innerText = foundthem[1].info;
-			document.getElementById("item2price").innerText = foundthem[1].price;
+		document.getElementById("item2title").innerText = foundthem[1].name;
+		document.getElementById("item2para").innerText = foundthem[1].info;
+		document.getElementById("item2price").innerText = foundthem[1].price;
 
-			document.getElementById("item3title").innerText = foundthem[2].name;
-			document.getElementById("item3para").innerText = foundthem[2].info;
-			document.getElementById("item3price").innerText = foundthem[2].price;
+		document.getElementById("item3title").innerText = foundthem[2].name;
+		document.getElementById("item3para").innerText = foundthem[2].info;
+		document.getElementById("item3price").innerText = foundthem[2].price;
 
-			document.getElementById("item4title").innerText = foundthem[3].name;
-			document.getElementById("item4para").innerText = foundthem[3].info;
-			document.getElementById("item4price").innerText = foundthem[3].price;
+		document.getElementById("item4title").innerText = foundthem[3].name;
+		document.getElementById("item4para").innerText = foundthem[3].info;
+		document.getElementById("item4price").innerText = foundthem[3].price;
 
-			document.getElementById("item5title").innerText = foundthem[4].name;
-			document.getElementById("item5para").innerText = foundthem[4].info;
-			document.getElementById("item5price").innerText = foundthem[4].price;
+		document.getElementById("item5title").innerText = foundthem[4].name;
+		document.getElementById("item5para").innerText = foundthem[4].info;
+		document.getElementById("item5price").innerText = foundthem[4].price;
 
-			document.getElementById("item6title").innerText = foundthem[5].name;
-			document.getElementById("item6para").innerText = foundthem[5].info;
-			document.getElementById("item6price").innerText = foundthem[5].price;
+		document.getElementById("item6title").innerText = foundthem[5].name;
+		document.getElementById("item6para").innerText = foundthem[5].info;
+		document.getElementById("item6price").innerText = foundthem[5].price;
 
-			document.getElementById("item7title").innerText = foundthem[6].name;
-			document.getElementById("item7para").innerText = foundthem[6].info;
-			document.getElementById("item7price").innerText = foundthem[6].price;
-			
-			console.log("Complete");
+		document.getElementById("item7title").innerText = foundthem[6].name;
+		document.getElementById("item7para").innerText = foundthem[6].info;
+		document.getElementById("item7price").innerText = foundthem[6].price;
 		
+		console.log("Complete");
 	}catch (error){
 		console.error("P-modified: Failed to retrieve data: " + error)
 	}
@@ -377,9 +358,7 @@ async function makecustomdata() {
 		nickname: nickname,
 		userid: userid
 	})
-	.then(() => {
-		console.log(yes);
-	})
+	console.log(yes);
 }
 
 
@@ -388,9 +367,7 @@ async function makecustomdata() {
 async function getcustomdata() {
 	const app = Realm.App.getApp("application-1-ukdhb");
 	const customdata = app.currentUser.customData
-	.then(() => {
 		console.log(customdata);
-	})
 }
 
 
@@ -438,9 +415,7 @@ async function loginAnonymous() {
   async function logoutfunc() {
 	const app = Realm.App.getApp("application-1-ukdhb");
 	let please = await app.currentUser.logOut()
-	.then(() => {
-		console.log(please);
-	});
+	console.log(please);
   }
 
 
@@ -456,9 +431,7 @@ async function loginDelete() {
 	const app = Realm.App.getApp("application-1-ukdhb");
 	const user = app.currentUser;
 	let hello = await app.deleteUser(user);
-	
-		console.log(hello);
-	
+	console.log(hello);
 	}catch (error){
 		console.error("P-modified: Failed to delete anonymous account:" + error);
 	}
@@ -472,11 +445,9 @@ async function loginDelete() {
 	const user = app.currentUser;
 	console.log("have hope");
 	console.log("Calculating 1 + 1");
-	const result = await user.functions.summed(1, 1)
-	.then(() => {
-		console.log("breakpoint 1, this means its done the math");
+	const result = await user.functions.summed(1, 1);
+	console.log("breakpoint 1, this means its done the math");
 	console.log(result);
-	});
 }
 
 //Page 2 Test function
@@ -484,10 +455,8 @@ async function letsdothisnow() {
 	const app = Realm.App.getApp("application-1-ukdhb"); 
 	const userhi = app.currentUser;
 	console.log(userhi);
-	const sure = await userhi.functions.summed(2, 2)
-	.then(() => {
-		console.log(sure);
-	});
+	const sure = await userhi.functions.summed(2, 2);
+	console.log(sure);
 }
 /*Key things to remember here is to always first:
 	Do Realm.App.getApp to get the current app
