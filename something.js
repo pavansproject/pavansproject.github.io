@@ -64,6 +64,7 @@ async function keepgoing() {
 	const bob = await loginEmailPassword(
 		email = document.getElementById("userthing").value,
 		password = document.getElementById("passthing").value);
+	console.log("Successfully logged in!");
 }
 
 //Huh I guess I really don't need this function now do I? This was just so I
@@ -84,6 +85,8 @@ async function pleaseparttwo() {
 	await app.emailPasswordAuth.resendConfirmationEmail(email);
 	console.log("Resent the email?")
 }
+
+
 
 
 
