@@ -5,7 +5,7 @@ const app = new Realm.App({ id: "application-1-ukdhb"});
 
 const params = new URLSearchParams(document.location.search);
 const token = params.get("token");
-const ID = params.get("tokenID");
+const ID = params.get("tokenId");
 
 app.emailPasswordAuth
     .confirmUser(token, ID)
