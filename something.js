@@ -89,7 +89,7 @@ async function pleaseparttwo() {
 
 async function resetpassemail() {
 	const email = document.getElementById("resetpassemail").value;
-	await app.emailpasswordAuth.sendResetPasswordEmail(email);
+	await app.emailPasswordAuth.sendResetPasswordEmail(email);
 	console.log("Send the reset password email?");
 }
 
