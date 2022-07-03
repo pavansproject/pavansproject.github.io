@@ -1,25 +1,35 @@
 const id = "application-1-ukdhb"; 
-const config = {
-	id,
-};
-const {
-	BSON: {ObjectID},
-} = Realm;
-
-const app = Realm.App.getApp("application-1-ukdhb");
+const app = new Realm.App({ id: application-1-ukdhb});
 
 
 
+const params = new URLSearchParams(document.location.search);
+const token = params.get("token");
+const ID = params.get("tokenID");
 
-async function hi() {
-    const app = Realm.App.getApp("application-1-ukdhb");
-    const params = new URLSearchParams(document.location.search);
-    const token = params.get("token");
-    const ID = params.get("tokenID");
-
-    const hello = await confirmUser(token, ID)
+app.emailPasswordAuth
+    .confirmUser(token, ID)
+    .then(() => displayResult("success"))
+    .catch(error => displayResult("error", error));
+function displayResult(result, error) {
+    const message = document.getElementById("message");
+    if(result === "success") {
+        message.innerText = "You have completed email password verification! Please sign in =)";
+    } else if(result === "error") {
+        message.innerText = "Failed to complete email password verification. This is likely because you took longer than 30 minutes after you signed up to verify your email. Please try again =)" + error;
+    }
 }
-window.onload = (event) => {
-    hi();
-};
+
+
+// async function hi() {
+//     const app = new Realm.App({ id: application-1-ukdhb});
+//     const params = new URLSearchParams(document.location.search);
+//     const token = params.get("token");
+//     const ID = params.get("tokenID");
+
+//     const hello = await confirmUser(token, ID)
+// }
+// window.onload = (event) => {
+//     hi();
+// };
 
