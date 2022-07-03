@@ -10,7 +10,10 @@ async function setthenewpass() {
     
     
     app.emailPasswordAuth
-        .resetPassword(newpass, token, ID)
+        //And apparently the format for resetPassword is NOT .resetPassword(newpass, token, ID) like
+        //the docs SAID right here: https://www.mongodb.com/docs/realm-sdks/js/latest/Realm.Auth.EmailPasswordAuth.html
+        //when you scroll down
+        .resetPassword(token, ID, newpass)
         .then(() => displayResult("success"))
         .catch(error => displayResult("error", error));
     function displayResult(result, error) {
