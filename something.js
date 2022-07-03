@@ -74,8 +74,19 @@ async function keepgoing() {
 }*/
 async function please() {
 	await app.emailPasswordAuth.registerUser({email : document.getElementById("usersignupthing").value, password : document.getElementById("passsignupthing").value});
-	console.log("You have signed up!");
+	console.log("You have signed up! Please verify your email now!");
 }
+
+
+
+async function pleaseparttwo() {
+	const email = document.getElementById("resendemail").value;
+	await app.emailPasswordAuth.resendConfirmationEmail(email);
+	console.log("Resent the email?")
+}
+
+
+
 //Sighhhh
 //What happened here:
 /*Ok so when you learn how promises in JS work, then run the loginAnonymous
@@ -392,6 +403,8 @@ async function loginAnonymous() {
 	let please = await app.currentUser.logOut();
 	console.log(please);
   }
+
+
 
 
 
