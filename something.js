@@ -76,23 +76,29 @@ async function keepgoing() {
 	let man = bob;
 }*/
 async function please() {
-	await app.emailPasswordAuth.registerUser({email : document.getElementById("usersignupthing").value, password : document.getElementById("passsignupthing").value});
-	console.log("You have signed up! Please verify your email now!");
+	await app.emailPasswordAuth.registerUser({email : document.getElementById("usersignupthing").value, password : document.getElementById("passsignupthing").value})
+	.then(() => {
+		console.log("You have signed up! Please verify your email now!");
+	});
 }
 
 
 
 async function pleaseparttwo() {
 	const email = document.getElementById("resendemail").value;
-	await app.emailPasswordAuth.resendConfirmationEmail(email);
-	console.log("Resent the email?")
+	await app.emailPasswordAuth.resendConfirmationEmail(email)
+	.then(() => {
+		console.log("Resent the email?")
+	});
 }
 
 
 async function resetpassemail() {
 	const email = document.getElementById("resetpassemail").value;
-	await app.emailPasswordAuth.sendResetPasswordEmail(email);
-	console.log("Sent the reset password email?");
+	await app.emailPasswordAuth.sendResetPasswordEmail(email)
+	.then(() => {
+		console.log("Sent the reset password email?");
+	});
 }
 
 
@@ -217,8 +223,10 @@ window.onload = (event) => {
 
 async function setupdbstuff() {
 	mongo = app.currentUser.mongoClient("mongodb-atlas");
-	collection = mongo.db("hellopeople").collection("secondtry");
-	console.log("DB connection is set up");
+	collection = mongo.db("hellopeople").collection("secondtry")
+	.then(() => {
+		console.log("DB connection is set up");
+	});
 }
 
 async function insertathing() {
@@ -231,20 +239,26 @@ async function insertathing() {
 	const result = await collection.insertOne({
 		name: notename,
 		noteinformation: noteinfo
+	})
+	.then(() => {
+		console.log(result);
 	});
-	console.log(result);
-	console.log(`"Oh and by the way, ${user.id}"`);
 }
 
 async function findthenote() {
 	let mongo = app.currentUser.mongoClient("mongodb-atlas");
 	let collection = mongo.db("hellopeople").collection("secondtry");
+	const notename = document.getElementById("notedisplayer");
+	const notestuff = document.getElementById("note2displayer")
 	const noteinfo = document.getElementById("notefinder").value;
 	console.log(`"Finding a note with name of ${noteinfo}"`);
-	const found = await collection.findOne({ name: noteinfo });
-	console.log(`"Found the note: ${found.name}, and has ${found.noteinformation} in it"`);
-	document.getElementById("notedisplayer").innerText = found.name;
-	document.getElementById("note2displayer").innerText = found.noteinformation;
+	const found = await collection.findOne({ name: noteinfo })
+	.then(() => {
+		console.log(`"Found the note: ${found.name}, and has ${found.noteinformation} in it"`);
+		notename.innerText = found.name;
+		notestuff.innerText = found.noteinformation;
+	})
+	
 }
 
 async function findthemall() {
@@ -252,8 +266,10 @@ async function findthemall() {
 	let collection = mongo.db("hellopeople").collection("secondtry");
 	const findinfo = document.getElementById("manyfinder").value;
 	console.log(`"Finding notes with type: ${findinfo}"`);
-	const foundthem = await collection.find({type: findinfo});
-	console.log(`"Found them: ${foundthem}`);
+	const foundthem = await collection.find({type: findinfo})
+	.then(() => {
+		console.log(`"Found them: ${foundthem}`);
+	});
 }
 
 async function updatetheone() {
@@ -265,8 +281,10 @@ async function updatetheone() {
 	const updatesingle = await collection.updateOne(
 		{name: findquery},
 		{$set: {noteinformation: changething}}
-	);
-	console.log(updatesingle);
+	)
+	.then(() => {
+		console.log(updatesingle);
+	});
 }
 
 async function deletetheone() {
@@ -274,8 +292,10 @@ async function deletetheone() {
 	let collection = mongo.db("hellopeople").collection("secondtry");
 	const whattodelete = document.getElementById("singledelete").value;
 	console.log(`"Deleting ${whattodelete}"`);
-	const deletedsingle = await collection.deleteOne({name: whattodelete});
-	console.log(deletedsingle);
+	const deletedsingle = await collection.deleteOne({name: whattodelete})
+	.then(() => {
+		console.log(deletedsingle);
+	});
 }
 
 
@@ -293,8 +313,10 @@ async function massiveinserter() {
 		info: info,
 		price: price,
 		grid: grid
-	});
-	console.log(inserting);
+	})
+	.then(() => {
+		console.log(inserting);
+	})
 }
 
 async function dataretriever() {
@@ -304,37 +326,39 @@ async function dataretriever() {
 		const app = Realm.App.getApp("application-1-ukdhb");
 		let mongo = app.currentUser.mongoClient("mongodb-atlas");
 		let collection = mongo.db("hellopeople").collection("griddataholder");
-		const foundthem = await collection.find({grid: "a"});
-		console.log(foundthem);
-		document.getElementById("item1title").innerText = foundthem[0].name;
-		document.getElementById("item1para").innerText = foundthem[0].info;
-		document.getElementById("item1price").innerText = foundthem[0].price;
+		const foundthem = await collection.find({grid: "a"})
+		.then(() => {
+			console.log(foundthem);
+			document.getElementById("item1title").innerText = foundthem[0].name;
+			document.getElementById("item1para").innerText = foundthem[0].info;
+			document.getElementById("item1price").innerText = foundthem[0].price;
 
-		document.getElementById("item2title").innerText = foundthem[1].name;
-		document.getElementById("item2para").innerText = foundthem[1].info;
-		document.getElementById("item2price").innerText = foundthem[1].price;
+			document.getElementById("item2title").innerText = foundthem[1].name;
+			document.getElementById("item2para").innerText = foundthem[1].info;
+			document.getElementById("item2price").innerText = foundthem[1].price;
 
-		document.getElementById("item3title").innerText = foundthem[2].name;
-		document.getElementById("item3para").innerText = foundthem[2].info;
-		document.getElementById("item3price").innerText = foundthem[2].price;
+			document.getElementById("item3title").innerText = foundthem[2].name;
+			document.getElementById("item3para").innerText = foundthem[2].info;
+			document.getElementById("item3price").innerText = foundthem[2].price;
 
-		document.getElementById("item4title").innerText = foundthem[3].name;
-		document.getElementById("item4para").innerText = foundthem[3].info;
-		document.getElementById("item4price").innerText = foundthem[3].price;
+			document.getElementById("item4title").innerText = foundthem[3].name;
+			document.getElementById("item4para").innerText = foundthem[3].info;
+			document.getElementById("item4price").innerText = foundthem[3].price;
 
-		document.getElementById("item5title").innerText = foundthem[4].name;
-		document.getElementById("item5para").innerText = foundthem[4].info;
-		document.getElementById("item5price").innerText = foundthem[4].price;
+			document.getElementById("item5title").innerText = foundthem[4].name;
+			document.getElementById("item5para").innerText = foundthem[4].info;
+			document.getElementById("item5price").innerText = foundthem[4].price;
 
-		document.getElementById("item6title").innerText = foundthem[5].name;
-		document.getElementById("item6para").innerText = foundthem[5].info;
-		document.getElementById("item6price").innerText = foundthem[5].price;
+			document.getElementById("item6title").innerText = foundthem[5].name;
+			document.getElementById("item6para").innerText = foundthem[5].info;
+			document.getElementById("item6price").innerText = foundthem[5].price;
 
-		document.getElementById("item7title").innerText = foundthem[6].name;
-		document.getElementById("item7para").innerText = foundthem[6].info;
-		document.getElementById("item7price").innerText = foundthem[6].price;
-		
-		console.log("Complete");
+			document.getElementById("item7title").innerText = foundthem[6].name;
+			document.getElementById("item7para").innerText = foundthem[6].info;
+			document.getElementById("item7price").innerText = foundthem[6].price;
+			
+			console.log("Complete");
+		});
 	}catch (error){
 		console.error("P-modified: Failed to retrieve data: " + error)
 	}
@@ -352,8 +376,10 @@ async function makecustomdata() {
 		age: age,
 		nickname: nickname,
 		userid: userid
-	});
-	console.log(yes);
+	})
+	.then(() => {
+		console.log(yes);
+	})
 }
 
 
@@ -361,8 +387,10 @@ async function makecustomdata() {
 
 async function getcustomdata() {
 	const app = Realm.App.getApp("application-1-ukdhb");
-	const customdata = app.currentUser.customData;
-	console.log(customdata);
+	const customdata = app.currentUser.customData
+	.then(() => {
+		console.log(customdata);
+	})
 }
 
 
@@ -409,8 +437,10 @@ async function loginAnonymous() {
 
   async function logoutfunc() {
 	const app = Realm.App.getApp("application-1-ukdhb");
-	let please = await app.currentUser.logOut();
-	console.log(please);
+	let please = await app.currentUser.logOut()
+	.then(() => {
+		console.log(please);
+	});
   }
 
 
@@ -425,8 +455,10 @@ async function loginDelete() {
 	try{
 	const app = Realm.App.getApp("application-1-ukdhb");
 	const user = app.currentUser;
-	let hello = await app.deleteUser(user);
-	console.log(hello);
+	let hello = await app.deleteUser(user)
+	.then(() => {
+		console.log(hello);
+	});
 	}catch (error){
 		console.error("P-modified: Failed to delete anonymous account:" + error);
 	}
@@ -440,9 +472,11 @@ async function loginDelete() {
 	const user = app.currentUser;
 	console.log("have hope");
 	console.log("Calculating 1 + 1");
-	const result = await user.functions.summed(1, 1);
-	console.log("breakpoint 1, this means its done the math");
+	const result = await user.functions.summed(1, 1)
+	.then(() => {
+		console.log("breakpoint 1, this means its done the math");
 	console.log(result);
+	});
 }
 
 //Page 2 Test function
@@ -450,8 +484,10 @@ async function letsdothisnow() {
 	const app = Realm.App.getApp("application-1-ukdhb"); 
 	const userhi = app.currentUser;
 	console.log(userhi);
-	const sure = await userhi.functions.summed(2, 2);
-	console.log(sure);
+	const sure = await userhi.functions.summed(2, 2)
+	.then(() => {
+		console.log(sure);
+	});
 }
 /*Key things to remember here is to always first:
 	Do Realm.App.getApp to get the current app
