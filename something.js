@@ -61,10 +61,19 @@ async function keepgoing() {
 		email = document.getElementById("userthing").value,
 		password = document.getElementById("passthing").value)
 		.then(() => {
-			console.log("Successfully logged in!");
-		});
+			yes("success");
+		})
+		.catch(error => yes("error", error));
 }
 
+function yes(result, error) {
+	const notifier = document.getElementById("loginnotifier");
+	if(result === "success") {
+		notifier.innerText = "You have successfully logged in!";
+	} else if(result === "error") {
+		notifier.innerText = "There was a problem logging in. Here is the error:" + error;
+	}
+}
 //Huh I guess I really don't need this function now do I? This was just so I
 //could global scope my variables, which REALLY is not a good idea
 /*async function dontgiveup() {
@@ -74,9 +83,23 @@ async function keepgoing() {
 async function please() {
 	await app.emailPasswordAuth.registerUser({email : document.getElementById("usersignupthing").value, password : document.getElementById("passsignupthing").value})
 	.then(() => {
-		console.log("You have signed up! Please verify your email now!");
-	});
+		yes2("success");
+	})
+	.catch(error => yes2("error", error));
 }
+
+
+function yes2(result, error) {
+	const notifier = document.getElementById("signupnotifier");
+	if(result === "success") {
+		notifier.innerText = "You have successfully signed up! Now please go to your email and verify your account to use it.";
+	} else if(result === "error") {
+		notifier.innerText = "There was a problem signing up. Here is the error:" + error;
+	}
+}
+
+
+
 
 
 
@@ -84,19 +107,42 @@ async function pleaseparttwo() {
 	const email = document.getElementById("resendemail").value;
 	await app.emailPasswordAuth.resendConfirmationEmail(email)
 	.then(() => {
-		console.log("Resent the email?")
-	});
+		yes3("success");
+	})
+	.catch(error => yes3("error", error));
 }
+
+
+function yes3(result, error) {
+	const notifier = document.getElementById("resendconfirmemail");
+	if(result === "success") {
+		notifier.innerText = "Verification email resent";
+	} else if(result === "error") {
+		notifier.innerText = "There was a problem sending the verification email. Here is the error:" + error;
+	}
+}
+
 
 
 async function resetpassemail() {
 	const email = document.getElementById("resetpassemail").value;
 	await app.emailPasswordAuth.sendResetPasswordEmail(email)
 	.then(() => {
-		console.log("Sent the reset password email?");
-	});
+		yes4("success");
+	})
+	.catch(error => yes4("error", error));
+
 }
 
+
+function yes4(result, error) {
+	const notifier = document.getElementById("resetpassemailnotifier");
+	if(result === "success") {
+		notifier.innerText = "Password reset email sent";
+	} else if(result === "error") {
+		notifier.innerText = "There was a problem sending the password reset email. Here is the error:" + error;
+	}
+}
 
 //Sighhhh
 //What happened here:

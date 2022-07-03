@@ -33,6 +33,11 @@
 		<button onclick="loginAnonymous()">Login anonymously</button>
 		<br />
 		<br />
+		<br />
+		<p id="loginnotifier"></p>
+		<br />
+		<br />
+		<br />
 		<p>Sign up thing</p>
 		<form>
 			<label for="emailsign">Username/Email:</label>
@@ -45,12 +50,20 @@
 		<button onclick="please()">Sign up</button>
 		<br />
 		<br />
+		<br />
+		<p id="signupnotifier"></p>
+		<br />
+		<br />
+		<br />
 		<p>Resend the confirmation email</p>
 		<form>
 			<label for="resendemail">Email address: </label>
 			<input type="text" name="resendemail" id="resendemail" />
 		</form>
 		<button onclick="pleaseparttwo()">Send email</button>
+		<br />
+		<br />
+		<p id="resendconfirmemail"></p>
 		<br />
 		<br />
 		<p>Send a reset password email</p>
@@ -60,6 +73,10 @@
 			<input type="text" name="resetpassemail" id="resetpassemail" />
 		</form>
 		<button onclick="resetpassemail()">Reset password</button>
+		<br />
+		<br />
+		<br />
+		<p id="resetpassemailnotifier"></p>
 		<br />
 		<br />
 		<br />
@@ -83,7 +100,7 @@
 			<input type="text" name="note name" id="notenme" />
 			<input type="text" name="note info" id="noteinfo" />
 		</form>
-		<button onclick="insertathing()">Insert soe stuff, Create!</button>
+		<button onclick="insertathing()">Insert some stuff, Create!</button>
 		<br />
 		<br />
 		<br />
@@ -101,6 +118,7 @@
 		<form>
 			<input type="text" name="manyfinder" id="manyfinder" />
 		</form>
+		<p>(put the letter a in lowercase)</p>
 		<button onclick="findthemall()">Find all with Type A</button>
 		<br />
 		<br />
@@ -126,6 +144,14 @@
 		<br />
 		<br />
 		<br />
+		<p>
+			Note: This is to be on the admin side of things, so admins can create and add stuff when needed. That's why there are
+			only 7 entries, so even if you add more entries, they won't load until I write some JS to specifically load it. <br />
+			Other note: Use custom user data to hold admin permissions field.<br />
+			Other other note: Create client side function to check if number of products is overflowing to stop them ahead of time,
+			ORRR just create JS for way more than necessary specific ones. ORRR use the for function in JS and make use of the i
+			and get it to spontaneously do that now that sounds cool doesn't it
+		</p>
 		<form>
 			<label for="massiveinsert1">Title:</label>
 			<input type="text" name="massiveinsert1" id="massiveinsert1" />
