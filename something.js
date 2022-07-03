@@ -63,8 +63,10 @@ const {
 async function keepgoing() {
 	const bob = await loginEmailPassword(
 		email = document.getElementById("userthing").value,
-		password = document.getElementById("passthing").value);
-	console.log("Successfully logged in!");
+		password = document.getElementById("passthing").value)
+		.then(() => {
+			console.log("Successfully logged in!");
+		});
 }
 
 //Huh I guess I really don't need this function now do I? This was just so I
@@ -90,7 +92,7 @@ async function pleaseparttwo() {
 async function resetpassemail() {
 	const email = document.getElementById("resetpassemail").value;
 	await app.emailPasswordAuth.sendResetPasswordEmail(email);
-	console.log("Send the reset password email?");
+	console.log("Sent the reset password email?");
 }
 
 
