@@ -507,6 +507,11 @@ async function loginAnonymous() {
 		if (!loginemail.validity.valid) {
 			// If it isn't, we display an appropriate error message
 			showEmailError();
+			//Check if password is filled
+			if (!loginpassword.validity.valid) {
+				showPasswordError();
+				return event.preventDefault();
+			}
 			// Then we prevent the form from being sent by canceling the event
 			return event.preventDefault();
 		}
