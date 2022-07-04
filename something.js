@@ -508,12 +508,12 @@ async function loginAnonymous() {
 			// If it isn't, we display an appropriate error message
 			showEmailError();
 			// Then we prevent the form from being sent by canceling the event
-			event.preventDefault();
+			return event.preventDefault();
 		}
 
 		if (!loginpassword.validity.valid) {
 			showPasswordError();
-			event.preventDefault();
+			return event.preventDefault();
 		}
 
 		keepgoing();
