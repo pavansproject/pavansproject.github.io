@@ -3,3 +3,26 @@
 	grid-template-columns: 250px 250px 250px 250px;
 	grid-template-rows: auto;
 }
+
+/*Login field validation*/
+/* This is our style for the invalid fields */
+input:invalid {
+	border-color: rgb(0, 0, 0);
+	background-color: rgb(255, 255, 255);
+}
+
+input:focus:invalid {
+	outline: none;
+}
+
+/* This is the style of our error messages */
+.error {
+	color: white;
+	background-color: rgb(255, 0, 0);
+	border-radius: 0 0 5px 5px;
+	box-sizing: border-box;
+}
+
+.error.active {
+	padding: 0.3em;
+}

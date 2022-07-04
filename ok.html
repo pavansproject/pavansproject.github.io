@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Detailed custom validation</title>
+		<style>
+			/* This is our style for the invalid fields */
+			input:invalid {
+				border-color: rgb(0, 0, 0);
+				background-color: rgb(255, 255, 255);
+			}
+
+			input:focus:invalid {
+				outline: none;
+			}
+
+			/* This is the style of our error messages */
+			.error {
+				color: white;
+				background-color: rgb(255, 0, 0);
+				border-radius: 0 0 5px 5px;
+				box-sizing: border-box;
+			}
+
+			.error.active {
+				padding: 0.3em;
+			}
+		</style>
+	</head>
+
+	<body>
+		<form id="loginform" novalidate>
+			<p>
+				<label for="mail">
+					<span>Username/Email: </span>
+					<input type="email" id="loginemail" name="mail" required minlength="8" />
+					<span class="error" id="loginemailnotif" aria-live="polite"></span>
+				</label>
+			</p>
+
+			<p>
+				<label for="password">
+					<span>Password: </span>
+					<input type="password" id="loginpassword" name="password" required minlength="8" />
+					<span class="error" id="loginpasswordnotif" aria-live="polite"></span>
+				</label>
+			</p>
+			<button>Submit</button>
+		</form>
+
+		<script>
+			// There are many ways to pick a DOM node; here we get the form itself and the email
+			// input box, as well as the span element into which we will place the error message.
+			const loginform = document.getElementById("loginform");
+
+			const loginemail = document.getElementById("loginemail");
+			const loginEmailError = document.getElementById("loginemailnotif");
+
+			const loginpassword = document.getElementById("loginpassword");
+			const loginPasswordError = document.getElementById("loginpasswordnotif");
+
+			loginemail.addEventListener("input", function (event) {
+				// Each time the user types something, we check if the
+				// form fields are valid.
+
+				if (loginemail.validity.valid) {
+					// In case there is an error message visible, if the field
+					// is valid, we remove the error message.
+					loginEmailError.innerHTML = ""; // Reset the content of the message
+					loginEmailError.className = "error"; // Reset the visual state of the message
+				} else {
+					// If there is still an error, show the correct error
+					showEmailError();
+				}
+			});
+
+			loginpassword.addEventListener("input", function (event) {
+				// Each time the user types something, we check if the
+				// form fields are valid.
+
+				if (loginpassword.validity.valid) {
+					// In case there is an error message visible, if the field
+					// is valid, we remove the error message.
+					loginPasswordError.innerHTML = ""; // Reset the content of the message
+					loginPasswordError.className = "error"; // Reset the visual state of the message
+				} else {
+					// If there is still an error, show the correct error
+					showPasswordError();
+				}
+			});
+
+			loginform.addEventListener("submit", function (event) {
+				// if the form contains valid data, we let it submit
+
+				if (!loginemail.validity.valid) {
+					// If it isn't, we display an appropriate error message
+					showEmailError();
+					// Then we prevent the form from being sent by canceling the event
+					event.preventDefault();
+				}
+
+				if (!loginpassword.validity.valid) {
+					showPasswordError();
+					event.preventDefault();
+				}
+			});
+
+			function showEmailError() {
+				if (loginemail.validity.valueMissing) {
+					// If the field is empty
+					// display the following error message.
+					loginEmailError.textContent = "You need to enter an e-mail address.";
+				} else if (loginemail.validity.typeMismatch) {
+					// If the field doesn't contain an loginemail address
+					// display the following error message.
+					loginEmailError.textContent = "Entered value needs to be an e-mail address.";
+				} else if (loginemail.validity.tooShort) {
+					// If the data is too short
+					// display the following error message.
+					loginEmailError.textContent = `Email should be at least ${loginemail.minLength} characters; you entered ${loginemail.value.length}.`;
+				}
+				// Set the styling appropriately
+				loginEmailError.className = "error active";
+			}
+
+			function showPasswordError() {
+				if (loginpassword.validity.valueMissing) {
+					// If the field is empty
+					// display the following error message.
+					loginPasswordError.textContent = "You need to enter an password";
+				} else if (loginpassword.validity.typeMismatch) {
+					// If the field doesn't contain an loginpassword address
+					// display the following error message.
+					loginPasswordError.textContent = "Entered value needs to be a password";
+				} else if (loginpassword.validity.tooShort) {
+					// If the data is too short
+					// display the following error message.
+					loginPasswordError.textContent = `Password should be at least ${loginpassword.minLength} characters; you entered ${loginpassword.value.length}.`;
+				}
+				// Set the styling appropriately
+				loginPasswordError.className = "error active";
+			}
+		</script>
+	</body>
+</html>

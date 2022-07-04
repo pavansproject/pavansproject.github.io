@@ -30,6 +30,30 @@
 		<button onclick="keepgoing()">Log in</button>
 		<br />
 		<br />
+		<br />
+		<br />
+		<form id="loginform" novalidate>
+			<p>
+				<label for="mail">
+					<span>Username/Email: </span>
+					<input type="email" id="loginemail" name="mail" required minlength="8" />
+					<span class="error" id="loginemailnotif" aria-live="polite"></span>
+				</label>
+			</p>
+
+			<p>
+				<label for="password">
+					<span>Password: </span>
+					<input type="password" id="loginpassword" name="password" required minlength="8" />
+					<span class="error" id="loginpasswordnotif" aria-live="polite"></span>
+				</label>
+			</p>
+			<button>Submit</button>
+		</form>
+		<br />
+		<br />
+		<br />
+		<br />
 		<button onclick="loginAnonymous()">Login anonymously</button>
 		<br />
 		<br />
