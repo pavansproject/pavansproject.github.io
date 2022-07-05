@@ -519,7 +519,7 @@ async function loginAnonymous() {
 			return event.preventDefault();
 		}
 
-		recaptchachecker();
+		// recaptchachecker();
 
 		keepgoing();
 	});
