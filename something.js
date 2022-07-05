@@ -573,7 +573,8 @@ async function recaptchachecker() {
 		method: "POST",
 		mode: "no-cors",
 		origin: "https://pavansproject.github.io",
-		credentials: "omit"
+		credentials: "omit",
+		body: parameter
 	});
 	sure.json;
 	console.log(sure);
