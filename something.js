@@ -55,11 +55,11 @@ const app = Realm.App.getApp("application-1-ukdhb");
 
 
 
-let sigh = () => {
-	grecaptcha.render("loginrecaptcha", {
-		"sitekey": "6LdZXMMgAAAAAMNdi7mLQz82Jnh1KI2RQfCsw1_c"
-	});
-}
+// let sigh = () => {
+// 	grecaptcha.render("loginrecaptcha", {
+// 		"sitekey": "6LdZXMMgAAAAAMNdi7mLQz82Jnh1KI2RQfCsw1_c"
+// 	});
+// }
 
 
 
