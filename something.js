@@ -56,8 +56,8 @@ const app = Realm.App.getApp("application-1-ukdhb");
 
 async function keepgoing() {
 	const bob = await loginEmailPassword(
-		email = document.getElementById("userthing").value,
-		password = document.getElementById("passthing").value)
+		email = document.getElementById("loginemail").value,
+		password = document.getElementById("loginpassword").value)
 		.then(() => {
 			yes("success");
 		})
