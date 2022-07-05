@@ -461,7 +461,7 @@ async function loginAnonymous() {
 //Validation for Login begins here:
 // There are many ways to pick a DOM node; here we get the form itself and the email
 	// input box, as well as the span element into which we will place the error message.
-	const loginform = document.getElementById("loginform");
+	const loginbutton = document.getElementById("loginbutton");
 
 	const loginemail = document.getElementById("loginemail");
 	const loginEmailError = document.getElementById("loginemailnotif");
@@ -499,7 +499,7 @@ async function loginAnonymous() {
 		}
 	});
 
-	loginform.addEventListener("submit", function (event) {
+	loginbutton.addEventListener("click", function (event) {
 		// if the form contains valid data, we let it submit
 
 		if (!loginemail.validity.valid) {
