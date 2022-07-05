@@ -568,7 +568,7 @@ async function loginAnonymous() {
 async function recaptchachecker() {
 	let response = grecaptcha.getResponse();
 	let yougotthis = new Headers();
-	headers.set("Access-Control-Allow-Origin", "https://pavansproject.github.io")
+	yougotthis.set("Access-Control-Allow-Origin", "https://pavansproject.github.io")
 	let sure = fetch(`https://www.google.com/recaptcha/api/siteverify?secret=6LdZXMMgAAAAAMbbVBKb6qYZdfyBE4n_m6OAlS2g&response=${response}`, {
 		method: "POST",
 		mode: "cors",
