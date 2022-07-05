@@ -571,7 +571,10 @@ async function recaptchachecker() {
 		method: "POST",
 		mode: "cors",
 		origin: "https://pavansproject.github.io",
-		credentials: "omit"
+		credentials: "omit",
+		headers: {
+			"Access-Control-Allow-Origin": "https://pavansproject.github.io"
+		}
 	});
 	console.log(sure);
 }
