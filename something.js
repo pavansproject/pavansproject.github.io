@@ -567,14 +567,14 @@ async function loginAnonymous() {
 
 async function recaptchachecker() {
 	let response = grecaptcha.getResponse();
+	let yougotthis = new Headers();
+	headers.set("Access-Control-Allow-Origin", "https://pavansproject.github.io")
 	let sure = fetch(`https://www.google.com/recaptcha/api/siteverify?secret=6LdZXMMgAAAAAMbbVBKb6qYZdfyBE4n_m6OAlS2g&response=${response}`, {
 		method: "POST",
 		mode: "cors",
 		origin: "https://pavansproject.github.io",
 		credentials: "omit",
-		headers: {
-			"Access-Control-Allow-Origin": "https://pavansproject.github.io"
-		}
+		headers: yougotthis
 	});
 	console.log(sure);
 }
