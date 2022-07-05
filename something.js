@@ -570,9 +570,8 @@ async function recaptchachecker() {
 	let sure = fetch(`https://www.google.com/recaptcha/api/siteverify?secret=6LdZXMMgAAAAAMbbVBKb6qYZdfyBE4n_m6OAlS2g&response=${response}`, {
 		method: "POST",
 		mode: "cors",
-		headers: {
-			"Access-Control-Allow-Origin": "*"
-		}
+		origin: "https://pavansproject.github.io",
+		credentials: "omit"
 	});
 	console.log(sure);
 }
