@@ -569,12 +569,14 @@ async function recaptchachecker() {
 	let response = grecaptcha.getResponse();
 	let yougotthis = new Headers();
 	yougotthis.set("Access-Control-Allow-Origin", "https://pavansproject.github.io")
-	let sure = fetch(`https://www.google.com/recaptcha/api/siteverify?secret=6LdZXMMgAAAAAMbbVBKb6qYZdfyBE4n_m6OAlS2g&response=${response}`, {
+	const sure = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=6LdZXMMgAAAAAMbbVBKb6qYZdfyBE4n_m6OAlS2g&response=${response}`, {
 		method: "POST",
 		mode: "no-cors",
 		origin: "https://pavansproject.github.io",
 		credentials: "omit",
+		body: JSON.stringify(data)
 	});
+	sure.json;
 	console.log(sure);
 }
 
