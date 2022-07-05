@@ -576,11 +576,14 @@ async function recaptchachecker() {
 		origin: "https://pavansproject.github.io",
 		credentials: "omit",
 		body: idk
-	});
+	})
+	.then(response => response.json())
+	.then(data => {
+		console.log(data);
+	})
 	sure.json;
 	console.log(idk);
 	console.log(sure);
-	idk.json;
 	console.log(idk);
 }
 //		body: JSON.stringify(data)
