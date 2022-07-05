@@ -519,7 +519,7 @@ async function loginAnonymous() {
 			return event.preventDefault();
 		}
 
-		// recaptchachecker();
+		recaptchachecker();
 
 		keepgoing();
 	});
@@ -567,10 +567,11 @@ async function loginAnonymous() {
 
 async function recaptchachecker() {
 	let response = grecaptcha.getResponse();
-	fetch(`https://www.google.com/recaptcha/api/siteverify?secret=6LdZXMMgAAAAAMbbVBKb6qYZdfyBE4n_m6OAlS2g&response=${response}`, {
+	let sure = fetch(`https://www.google.com/recaptcha/api/siteverify?secret=6LdZXMMgAAAAAMbbVBKb6qYZdfyBE4n_m6OAlS2g&response=${response}`, {
 		method: "POST",
 		mode: "cors"
-	})
+	});
+	console.log(sure);
 }
 
 
