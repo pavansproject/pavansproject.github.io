@@ -573,12 +573,12 @@ async function recaptchachecker() {
 		method: "POST",
 		mode: "no-cors",
 		origin: "https://pavansproject.github.io",
-		credentials: "omit",
-		body: JSON.stringify(data)
+		credentials: "omit"
 	});
 	sure.json;
 	console.log(sure);
 }
+//		body: JSON.stringify(data)
 
 
 

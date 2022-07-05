@@ -20,7 +20,8 @@ function displayResult(result, error) {
     }
 }
 
-
+//Why thank you Sebastian_Gadzinski:
+//https://www.mongodb.com/community/forums/t/email-confirmation-script-for-user-authentication-via-email-address/13905/8
 // async function hi() {
 //     const app = new Realm.App({ id: application-1-ukdhb});
 //     const params = new URLSearchParams(document.location.search);
