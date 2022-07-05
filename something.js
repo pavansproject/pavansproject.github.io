@@ -54,23 +54,6 @@ const app = Realm.App.getApp("application-1-ukdhb");
 
 
 
-
-// let sigh = () => {
-// 	grecaptcha.render("loginrecaptcha", {
-// 		"sitekey": "6LdZXMMgAAAAAMNdi7mLQz82Jnh1KI2RQfCsw1_c"
-// 	});
-// }
-
-
-
-
-
-
-
-
-
-
-
 async function keepgoing() {
 	const bob = await loginEmailPassword(
 		email = document.getElementById("userthing").value,
@@ -536,6 +519,8 @@ async function loginAnonymous() {
 			return event.preventDefault();
 		}
 
+		recaptchachecker();
+
 		keepgoing();
 	});
 
@@ -574,6 +559,26 @@ async function loginAnonymous() {
 		// Set the styling appropriately
 		loginPasswordError.className = "error active";
 	}
+
+
+
+
+
+
+async function recaptchachecker() {
+	let response = grecaptcha.getResponse();
+	fetch("https://www.google.com/recaptcha/api/siteverify", {
+		method: "POST",
+		headers: {
+			secret: "6LdZXMMgAAAAAMbbVBKb6qYZdfyBE4n_m6OAlS2g",
+			response: response
+			
+		}
+	})
+}
+
+
+
 
 
 
