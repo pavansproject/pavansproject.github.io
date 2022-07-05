@@ -61,12 +61,6 @@ let sigh = () => {
 	});
 }
 
-function sigh() {
-	grecaptcha.render("loginrecaptcha", {
-		"sitekey": "6LdZXMMgAAAAAMNdi7mLQz82Jnh1KI2RQfCsw1_c"
-	});
-	console.log("ha google");
-}
 
 
 
