@@ -591,6 +591,22 @@ async function recaptchachecker() {
 
 
 
+// let response10 = grecaptcha.getResponse();
+
+// 	yougotthis.set("Access-Control-Allow-Origin", "https://pavansproject.github.io")
+// 	const sure10 = await fetch(new Request(`https://www.google.com/recaptcha/api/siteverify?secret=6LdZXMMgAAAAAMbbVBKb6qYZdfyBE4n_m6OAlS2g&response=${response10}`, {
+// 		method: "POST",
+// 		mode: "no-cors",
+// 		origin: "https://pavansproject.github.io",
+// 		credentials: "omit",
+
+// 	}))
+//   	.then(response => response.text())
+//   .then(data => {
+//     console.log(data)
+//   })
+	
+//   console.log(sure10)
 
 
 
