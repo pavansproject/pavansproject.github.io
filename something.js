@@ -567,13 +567,8 @@ async function loginAnonymous() {
 
 async function recaptchachecker() {
 	let response = grecaptcha.getResponse();
-	fetch("https://www.google.com/recaptcha/api/siteverify", {
-		method: "POST",
-		headers: {
-			secret: "6LdZXMMgAAAAAMbbVBKb6qYZdfyBE4n_m6OAlS2g",
-			response: response
-			
-		}
+	fetch(`https://www.google.com/recaptcha/api/siteverify?secret=6LdZXMMgAAAAAMbbVBKb6qYZdfyBE4n_m6OAlS2g&response=${response}`, {
+		method: "POST"
 	})
 }
 
