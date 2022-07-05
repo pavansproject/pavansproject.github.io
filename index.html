@@ -3,6 +3,7 @@
 	<head>
 		<title>Experiment 17</title>
 		<script src="https://unpkg.com/realm-web/dist/bundle.iife.js" fetchpriority="high"></script>
+		<script src="https://www.google.com/recaptcha/api.js?onload=sigh&render=explicit" async defer></script>
 		<!-- <script src="yes.js"></script> -->
 		<script src="something.js" defer></script>
 		<link rel="manifest" href="pavansproject.webmanifest" />
@@ -48,8 +49,18 @@
 					<span class="error" id="loginpasswordnotif" aria-live="polite"></span>
 				</label>
 			</p>
+
+			<br />
+			<br />
+			<div id="loginrecaptcha"></div>
+
 			<button>Submit</button>
 		</form>
+		<br />
+		<br />
+		<br />
+		<br />
+
 		<br />
 		<br />
 		<br />
@@ -174,7 +185,11 @@
 			Other note: Use custom user data to hold admin permissions field.<br />
 			Other other note: Create client side function to check if number of products is overflowing to stop them ahead of time,
 			ORRR just create JS for way more than necessary specific ones. ORRR use the for function in JS and make use of the i
-			and get it to spontaneously do that now that sounds cool doesn't it
+			and get it to spontaneously do that now that sounds cool doesn't it.<br />
+			Note from next day (July 4 2022): Probably should cache the array that is retrieved from the server and use that from
+			localStorage to stop people from spam reloading and wasting server resources, and that also means checking localStorage
+			for the array if it is there, and then if not THEN going to get it. That is probably only necessary to do that when
+			needed, sooo got time, not gonna put it on my list but I'm gonna keep it in the open here so maybe I'll remember =)
 		</p>
 		<form>
 			<label for="massiveinsert1">Title:</label>
