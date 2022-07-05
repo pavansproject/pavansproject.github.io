@@ -3,7 +3,7 @@
 	<head>
 		<title>Experiment 17</title>
 		<script src="https://unpkg.com/realm-web/dist/bundle.iife.js" fetchpriority="high"></script>
-		<script src="https://www.google.com/recaptcha/api.js?onload=sigh&render=explicit" async defer></script>
+		<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
 		<!-- <script src="yes.js"></script> -->
 		<script src="something.js" defer></script>
 		<link rel="manifest" href="pavansproject.webmanifest" />
@@ -11,7 +11,7 @@
 	</head>
 	<body>
 		<script>
-			let sigh = () => {
+			let onloadCallback = function () {
 				grecaptcha.render("loginrecaptcha", {
 					"sitekey": "6LdZXMMgAAAAAMNdi7mLQz82Jnh1KI2RQfCsw1_c",
 				});
