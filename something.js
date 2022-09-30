@@ -533,7 +533,7 @@ async function loginAnonymous() {
 	function loginvaliditychecks() {
 		// if the form contains valid data, we let it submit
 
-		if (!loginemail.validity.valid) {
+		/*if (!loginemail.validity.valid) {
 			// If it isn't, we display an appropriate error message
 			showEmailError();
 			//Check if password is filled
@@ -548,8 +548,8 @@ async function loginAnonymous() {
 		if (!loginpassword.validity.valid) {
 			showPasswordError();
 			return event.preventDefault();
-		}
-
+		}*/
+		console.log("skip the JS side for now, make it all regex later");
 	}
 
 	function showEmailError() {
@@ -624,14 +624,7 @@ async function recaptchachecker() {
 	})
 	.then((value) => {
 		//realm function here to send stuff to google
-		async function mongotogooglebridge() {
-		
-		const user = app.currentUser;
-		const output = await user.functions.captchaauth(response);
-		console.log(output);
-		console.log("make me a breakpoint");
-		
-		}
+		mongotogooglebridge(value);
 	}, reason1 => {
 		console.log("Google problems");
 	})
@@ -641,6 +634,18 @@ async function recaptchachecker() {
 		console.log("Realm has failed to delete the account.");
 	});
 }
+
+async function mongotogooglebridge(response) {
+		
+	const user = app.currentUser;
+	const output = await user.functions.captchaauth(response);
+	console.log(output);
+	console.log("make me a breakpoint");
+
+	}
+
+
+
 //		body: JSON.stringify(data)
 
 
