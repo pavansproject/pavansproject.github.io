@@ -624,10 +624,14 @@ async function recaptchachecker() {
 	})
 	.then((value) => {
 		//realm function here to send stuff to google
+		async function mongotogooglebridge() {
+		
 		const user = app.currentUser;
 		const output = await user.functions.captchaauth(response);
 		console.log(output);
 		console.log("make me a breakpoint");
+		
+		}
 	}, reason1 => {
 		console.log("Google problems");
 	})
