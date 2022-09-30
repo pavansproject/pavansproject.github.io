@@ -469,7 +469,7 @@ async function loginAnonymous() {
 	const loginpassword = document.getElementById("loginpassword");
 	const loginPasswordError = document.getElementById("loginpasswordnotif");
 
-	loginemail.addEventListener("input", function (event) {
+	/*loginemail.addEventListener("input", function (event) {
 		// Each time the user types something, we check if the
 		// form fields are valid.
 
@@ -482,9 +482,9 @@ async function loginAnonymous() {
 			// If there is still an error, show the correct error
 			showEmailError();
 		}
-	});
+	});*/
 
-	loginpassword.addEventListener("input", function (event) {
+	/*loginpassword.addEventListener("input", function (event) {
 		// Each time the user types something, we check if the
 		// form fields are valid.
 
@@ -497,7 +497,7 @@ async function loginAnonymous() {
 			// If there is still an error, show the correct error
 			showPasswordError();
 		}
-	});
+	});*/
 
 	loginbutton.addEventListener("click", function (event) {
 		
