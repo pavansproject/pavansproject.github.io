@@ -500,6 +500,37 @@ async function loginAnonymous() {
 	});
 
 	loginbutton.addEventListener("click", function (event) {
+		
+		let loginpromise = new Promise((resolve, reject) => {
+			resolve(loginvaliditychecks());
+			reject("Login checks have failed");
+		})
+		.then((value) => {
+			recaptchachecker();
+		}, reason => {
+			console.log("Recaptcha checker has failed, sad");
+		})
+		.then((value) => {
+			keepgoing();
+		}, reason => {
+			console.log("Realm has failed to log in");
+		});
+
+		/*let loginpromise = new Promise((resolve, reject) => {
+			resolve(recaptchachecker());
+			reject("Recaptcha checker has failed, sad");
+		})
+		.then((value) => {
+			keepgoing();
+		}, reason => {
+			console.log("Realm has failed to log in");
+		});*/
+
+		//recaptchachecker();
+		//keepgoing();
+	});
+
+	function loginvaliditychecks() {
 		// if the form contains valid data, we let it submit
 
 		if (!loginemail.validity.valid) {
@@ -519,19 +550,7 @@ async function loginAnonymous() {
 			return event.preventDefault();
 		}
 
-		let loginpromise = new Promise((resolve, reject) => {
-			resolve(recaptchachecker());
-			reject("Recaptcha checker has failed, sad");
-		})
-		.then((value) => {
-			keepgoing();
-		}, reason => {
-			console.log("Realm has failed to log in");
-		});
-
-		//recaptchachecker();
-		//keepgoing();
-	});
+	}
 
 	function showEmailError() {
 		if (loginemail.validity.valueMissing) {
@@ -607,6 +626,8 @@ async function recaptchachecker() {
 		//realm function here to send stuff to google
 		const user = app.currentUser;
 		const output = await user.functions.captchaauth(response);
+		console.log(output);
+		console.log("make me a breakpoint");
 	}, reason1 => {
 		console.log("Google problems");
 	})
