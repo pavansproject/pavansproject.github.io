@@ -519,9 +519,18 @@ async function loginAnonymous() {
 			return event.preventDefault();
 		}
 
-		recaptchachecker();
+		let loginpromise = new Promise((resolve, reject) => {
+			resolve(recaptchachecker());
+			reject("Recaptcha checker has failed, sad");
+		})
+		.then((value) => {
+			keepgoing();
+		}, reason => {
+			console.log("Realm has failed to log in");
+		});
 
-		keepgoing();
+		//recaptchachecker();
+		//keepgoing();
 	});
 
 	function showEmailError() {
@@ -565,7 +574,7 @@ async function loginAnonymous() {
 
 
 
-async function recaptchachecker() {
+/*async function recaptchachecker() {
 	let response = grecaptcha.getResponse();
 	let yougotthis = new Headers();
 	let idk;
@@ -585,6 +594,27 @@ async function recaptchachecker() {
 	console.log(idk);
 	console.log(sure);
 	console.log(idk);
+}*/
+async function recaptchachecker() {
+	let response = grecaptcha.getResponse();
+	console.log(`"Captcha token is :${response}"`);
+	//const app = Realm.App.getApp("application-1-ukdhb");
+	let captchapromise = new Promise((resolve, reject) => {
+		resolve(loginAnonymous());
+		reject("Realm doesn't want to work today");
+	})
+	.then((value) => {
+		//realm function here to send stuff to google
+		const user = app.currentUser;
+		const output = await user.functions.captchaauth(response);
+	}, reason1 => {
+		console.log("Google problems");
+	})
+	.then((value) => {
+		loginDelete();
+	}, reason => {
+		console.log("Realm has failed to delete the account.");
+	});
 }
 //		body: JSON.stringify(data)
 
