@@ -437,7 +437,7 @@ async function loginEmailPassword(email, password) {
 }
 
 async function loginAnonymous() {
-	console.log(`loginAnonymous still have the thing: ${help}`);
+	//console.log(`loginAnonymous still have the thing: ${help}`);
 	// Create an anonymous credential
 	const credentials = Realm.Credentials.anonymous();
 	//Note: I add this following line separately
