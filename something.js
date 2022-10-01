@@ -607,7 +607,15 @@ async function loginAnonymous() {
 
 
 
-
+	async function mongotogooglebridge(response) {
+		const user = app.currentUser;
+		console.log(`Inside mongotogooglebridge, response is: ${response}`);
+		output = await user.functions.captchaauth(response);
+		console.log(output);
+		console.log("make me a breakpoint");
+		return output;
+		//check here if the captcha was a success or not
+	}
 
 /*async function recaptchachecker() {
 	let response = grecaptcha.getResponse();
@@ -681,15 +689,7 @@ async function recaptchachecker() {
 
 
 
-async function mongotogooglebridge(response) {
-	const user = app.currentUser;
-	console.log(`Inside mongotogooglebridge, response is: ${response}`);
-	output = await user.functions.captchaauth(response);
-	console.log(output);
-	console.log("make me a breakpoint");
-	return output;
-	//check here if the captcha was a success or not
-}
+
 
 
 //		body: JSON.stringify(data)
