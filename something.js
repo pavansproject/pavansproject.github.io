@@ -526,7 +526,7 @@ async function loginAnonymous(help) {
 			})
 		}
 		
-		promisesarefun
+		promisesarefun()
 		.then((response) => loginAnonymous(response))
 		.then((res) => mongotogooglebridge(res))
 		.then((stuff) => loginDelete(stuff))
