@@ -520,17 +520,25 @@ async function loginAnonymous() {
 		});*/
 		let bob = new Promise((resolve, reject) => {
 				// loginvaliditychecks(response);
-				loginAnonymous();
+				resolve(loginAnonymous());
 				return response;
 			});
 		
 		
 		bob
 		//.then((response) => loginAnonymous(response))
-		.then((response) => mongotogooglebridge(response))
+		.then((response) => mongotogooglebridge(response), sad1())
+		.catch(() => {
+			console.error("Mongo to google has failed");
+		})
 		.then((stuff) => loginDelete(stuff))
-		.then((signintime) => keepgoing(signintime));
-
+		.catch(() => {
+			console.error("Deleting the Anon Account has failed");
+		})
+		.then((signintime) => keepgoing(signintime))
+		.catch(() => {
+			console.error("Logging in has failed");
+		})
 		/*.then(
 			//recaptchachecker()
 			
@@ -558,7 +566,9 @@ async function loginAnonymous() {
 		//recaptchachecker();
 		//keepgoing();
 	});
-
+	function sad1(){
+		console.log("Mongo to google has double failed");
+	}
 	function loginvaliditychecks(response) {
 		// if the form contains valid data, we let it submit
 
