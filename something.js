@@ -501,7 +501,7 @@ async function loginAnonymous() {
 
 	loginbutton.addEventListener("click", function (event) {
 		
-		let loginpromise = new Promise((resolve, reject) => {
+		/*let loginpromise = new Promise((resolve, reject) => {
 			resolve(loginvaliditychecks());
 			reject("Login checks have failed");
 		})
@@ -514,7 +514,23 @@ async function loginAnonymous() {
 			keepgoing();
 		}, reason => {
 			console.log("Realm has failed to log in");
-		});
+		});*/
+		let loginpromise = new Promise((resolve, reject) => {
+			loginvaliditychecks()
+			
+		})
+		.then(
+			recaptchachecker()
+		)
+		.then(
+			keepgoing()
+		);
+
+
+
+
+
+
 
 		/*let loginpromise = new Promise((resolve, reject) => {
 			resolve(recaptchachecker());
@@ -619,16 +635,17 @@ async function recaptchachecker() {
 	console.log(`Captcha token is :${response}`);
 	//const app = Realm.App.getApp("application-1-ukdhb");
 	let captchapromise = new Promise((resolve, reject) => {
-		resolve(loginAnonymous());
-		reject("Realm doesn't want to work today");
+		loginAnonymous()
+		//reject("Realm doesn't want to work today");
 	})
-	.then((value) => {
+	.then(
 		//realm function here to send stuff to google
 		/*let goodluck;
 		if(goodluck === null){
 			
 		}*/
-		function bob() {
+		moongotogooglebridge(response)
+		/*function bob() {
 			let output;
 			async function mongotogooglebridge() {
 				const user = app.currentUser;
@@ -647,25 +664,32 @@ async function recaptchachecker() {
 					console.log("ALERT ALERT SOMETHING HAS GONE BADLY WRONG");
 				}
 			}
-		}
+		}*/
 		
 
 
 		
 			
-	}, reason1 => {
-		console.log("Google problems");
-	})
-	.then((value) => {
-		console.log("Before loginDelete");
-		loginDelete();
-	}, reason2 => {
-		console.log("Realm has failed to delete the account.");
-	});
+	)
+	.then(
+		
+		loginDelete()
+	);
 }
 
 
 
+
+
+async function mongotogooglebridge(response) {
+	const user = app.currentUser;
+	console.log(`Inside mongotogooglebridge, response is: ${response}`);
+	output = await user.functions.captchaauth(response);
+	console.log(output);
+	console.log("make me a breakpoint");
+	return output;
+	//check here if the captcha was a success or not
+}
 
 
 //		body: JSON.stringify(data)
