@@ -652,7 +652,16 @@ async function recaptchachecker() {
 		if(goodluck === null){
 			
 		}*/
-		moongotogooglebridge(response)
+		
+		async function mongotogooglebridge(response) {
+			const user = app.currentUser;
+			console.log(`Inside mongotogooglebridge, response is: ${response}`);
+			output = await user.functions.captchaauth(response);
+			console.log(output);
+			console.log("make me a breakpoint");
+			return output;
+			//check here if the captcha was a success or not
+		}
 		/*function bob() {
 			let output;
 			async function mongotogooglebridge() {
