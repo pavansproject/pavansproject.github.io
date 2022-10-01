@@ -436,8 +436,8 @@ async function loginEmailPassword(email, password) {
   }
 }
 
-async function loginAnonymous() {
-	//console.log(`loginAnonymous still have the thing: ${help}`);
+async function loginAnonymous(response) {
+	console.log(`loginAnonymous still have the thing: ${response}`);
 	// Create an anonymous credential
 	const credentials = Realm.Credentials.anonymous();
 	//Note: I add this following line separately
@@ -451,6 +451,7 @@ async function loginAnonymous() {
 	} catch (error) {
 	  console.error("P-modified: Failed to log in anonymously:" + error);
 	}
+	return response;
   }
   
 
@@ -520,25 +521,16 @@ async function loginAnonymous() {
 		});*/
 		let bob = new Promise((resolve, reject) => {
 				// loginvaliditychecks(response);
-				resolve(loginAnonymous());
-				return response;
+				resolve(loginAnonymous(response));
+				
 			});
 		
 		
 		bob
 		//.then((response) => loginAnonymous(response))
 		.then((response) => mongotogooglebridge(response), sad1())
-		.catch(() => {
-			console.error("Mongo to google has failed");
-		})
-		.then((stuff) => loginDelete(stuff))
-		.catch(() => {
-			console.error("Deleting the Anon Account has failed");
-		})
-		.then((signintime) => keepgoing(signintime))
-		.catch(() => {
-			console.error("Logging in has failed");
-		})
+		.then((stuff) => loginDelete(stuff), sad2())
+		.then((signintime) => keepgoing(signintime), sad3());
 		/*.then(
 			//recaptchachecker()
 			
@@ -566,8 +558,14 @@ async function loginAnonymous() {
 		//recaptchachecker();
 		//keepgoing();
 	});
-	function sad1(){
+	function sad1() {
 		console.log("Mongo to google has double failed");
+	}
+	function sad2() {
+		console.error("Deleting the Anon Account has failed");
+	}
+	function sad3() {
+		console.error("Logging in has failed");
 	}
 	function loginvaliditychecks(response) {
 		// if the form contains valid data, we let it submit
