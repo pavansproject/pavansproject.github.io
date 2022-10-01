@@ -616,7 +616,7 @@ async function loginAnonymous() {
 }*/
 async function recaptchachecker() {
 	let response = grecaptcha.getResponse();
-	console.log(`"Captcha token is :${response}"`);
+	console.log(`Captcha token is :${response}`);
 	//const app = Realm.App.getApp("application-1-ukdhb");
 	let captchapromise = new Promise((resolve, reject) => {
 		resolve(loginAnonymous());
@@ -624,25 +624,26 @@ async function recaptchachecker() {
 	})
 	.then((value) => {
 		//realm function here to send stuff to google
-		mongotogooglebridge(response);
+		async function mongotogooglebridge() {
+		
+			const user = app.currentUser;
+			const output = await user.functions.captchaauth(response);
+			console.log(output);
+			console.log("make me a breakpoint");
+			//check here if the captcha was a success or not
+			}
 	}, reason1 => {
 		console.log("Google problems");
 	})
 	.then((value) => {
 		loginDelete();
+		console.log("Anon account deleted");
 	}, reason => {
 		console.log("Realm has failed to delete the account.");
 	});
 }
 
-async function mongotogooglebridge(response) {
-		
-	const user = app.currentUser;
-	const output = await user.functions.captchaauth(response);
-	console.log(output);
-	console.log("make me a breakpoint");
 
-	}
 
 
 
