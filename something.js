@@ -624,7 +624,7 @@ async function recaptchachecker() {
 	})
 	.then((value) => {
 		//realm function here to send stuff to google
-		async function mongotogooglebridge() {
+		function mongotogooglebridge() {
 		
 			const user = app.currentUser;
 			const output = await user.functions.captchaauth(response);
@@ -636,9 +636,10 @@ async function recaptchachecker() {
 		console.log("Google problems");
 	})
 	.then((value) => {
+		console.log("Before loginDelete");
 		loginDelete();
-		console.log("Anon account deleted");
-	}, reason => {
+		console.log("Anon account deleted (After loginDelete)");
+	}, reason2 => {
 		console.log("Realm has failed to delete the account.");
 	});
 }
