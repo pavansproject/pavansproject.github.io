@@ -503,7 +503,7 @@ async function loginAnonymous(help) {
 
 	loginbutton.addEventListener("click", function (event) {
 		//let yay;
-		let response = grecaptcha.getResponse();
+		
 		/*let loginpromise = new Promise((resolve, reject) => {
 			resolve(loginvaliditychecks());
 			reject("Login checks have failed");
@@ -518,12 +518,16 @@ async function loginAnonymous(help) {
 		}, reason => {
 			console.log("Realm has failed to log in");
 		});*/
-		let loginpromise = new Promise((resolve, reject) => {
-			loginvaliditychecks(response);
-			
-			
-		})
-		.then((help) => loginAnonymous(help))
+		async function promisesarefun() {
+			return new Promise((resolve, reject) => {
+				// loginvaliditychecks(response);
+				let response = grecaptcha.getResponse();
+				console.log(`Got the response: ${response}`)
+			})
+		}
+		
+		promisesarefun
+		.then((response) => loginAnonymous(response))
 		.then((res) => mongotogooglebridge(res))
 		.then((stuff) => loginDelete(stuff))
 		.then((signintime) => keepgoing(signintime));
