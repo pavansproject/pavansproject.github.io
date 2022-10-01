@@ -502,7 +502,7 @@ async function loginAnonymous(help) {
 	});*/
 
 	loginbutton.addEventListener("click", function (event) {
-		
+		let yay;
 		/*let loginpromise = new Promise((resolve, reject) => {
 			resolve(loginvaliditychecks());
 			reject("Login checks have failed");
@@ -518,7 +518,7 @@ async function loginAnonymous(help) {
 			console.log("Realm has failed to log in");
 		});*/
 		let loginpromise = new Promise((resolve, reject) => {
-			loginvaliditychecks()
+			loginvaliditychecks(yay)
 			
 		})
 		.then((help) => loginAnonymous(help))
@@ -554,7 +554,7 @@ async function loginAnonymous(help) {
 		//keepgoing();
 	});
 
-	function loginvaliditychecks() {
+	function loginvaliditychecks(yay) {
 		// if the form contains valid data, we let it submit
 
 		/*if (!loginemail.validity.valid) {
@@ -574,7 +574,9 @@ async function loginAnonymous(help) {
 			return event.preventDefault();
 		}*/
 		let response = grecaptcha.getResponse();
+		yay = response
 		console.log("skip the JS side for now, make it all regex later");
+		return(yay);
 	}
 
 	function showEmailError() {
