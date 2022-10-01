@@ -624,7 +624,7 @@ async function recaptchachecker() {
 	})
 	.then((value) => {
 		//realm function here to send stuff to google
-		function mongotogooglebridge() {
+		let hello = async function mongotogooglebridge() {
 		
 			const user = app.currentUser;
 			const output = await user.functions.captchaauth(response);
@@ -632,6 +632,14 @@ async function recaptchachecker() {
 			console.log("make me a breakpoint");
 			//check here if the captcha was a success or not
 			}
+		if(hello === null){
+			for(let i; i==0; i++) {
+				if(hello===null) {
+					i++;
+				}
+			}
+		}
+			
 	}, reason1 => {
 		console.log("Google problems");
 	})
