@@ -575,7 +575,7 @@ async function loginAnonymous(help) {
 			showPasswordError();
 			return event.preventDefault();
 		}*/
-		let response = grecaptcha.getResponse();
+		response = grecaptcha.getResponse();
 		
 		console.log("skip the JS side for now, make it all regex later");
 		
