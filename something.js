@@ -54,7 +54,8 @@ const app = Realm.App.getApp("application-1-ukdhb");
 
 
 
-async function keepgoing() {
+async function keepgoing(signintime) {
+	console.log(`keepgoing has the stuff: ${signintime}`);
 	const bob = await loginEmailPassword(
 		email = document.getElementById("loginemail").value,
 		password = document.getElementById("loginpassword").value)
@@ -435,7 +436,8 @@ async function loginEmailPassword(email, password) {
   }
 }
 
-async function loginAnonymous() {
+async function loginAnonymous(help) {
+	console.log(`loginAnonymous still have the thing: ${help}`);
 	// Create an anonymous credential
 	const credentials = Realm.Credentials.anonymous();
 	//Note: I add this following line separately
@@ -519,12 +521,18 @@ async function loginAnonymous() {
 			loginvaliditychecks()
 			
 		})
-		.then(
-			recaptchachecker()
+		.then((help) => loginAnonymous(help))
+		.then((res) => mongotogooglebridge(res))
+		.then((stuff) => loginDelete(stuff))
+		.then((signintime) => keepgoing(signintime));
+
+		/*.then(
+			//recaptchachecker()
+			
 		)
 		.then(
 			keepgoing()
-		);
+		);*/
 
 
 
@@ -565,6 +573,7 @@ async function loginAnonymous() {
 			showPasswordError();
 			return event.preventDefault();
 		}*/
+		let response = grecaptcha.getResponse();
 		console.log("skip the JS side for now, make it all regex later");
 	}
 
@@ -735,15 +744,16 @@ async function recaptchachecker() {
 
   
 //Ok careful here, time to delete a user
-async function loginDelete() {
+async function loginDelete(stuff) {
 	try{
+	console.log(`LoginDelete has the stuff: ${stuff}`);
 	const app = Realm.App.getApp("application-1-ukdhb");
 	const user = app.currentUser;
 	let hello = await app.deleteUser(user);
 	console.log(hello);
 	console.log("Account deleted");
 	}catch (error){
-		console.error("P-modified: Failed to delete anonymous account:" + error);
+		console.error("P-modified: Failed to delete anonymous account: " + error);
 	}
 }
 
