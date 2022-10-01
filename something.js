@@ -624,14 +624,33 @@ async function recaptchachecker() {
 	})
 	.then((value) => {
 		//realm function here to send stuff to google
-		
-		
-			const user = app.currentUser;
-			const output = await user.functions.captchaauth(response);
-			console.log(output);
-			console.log("make me a breakpoint");
-			//check here if the captcha was a success or not
+		/*let goodluck;
+		if(goodluck === null){
 			
+		}*/
+		function bob() {
+			let output;
+			async function mongotogooglebridge() {
+				const user = app.currentUser;
+				console.log(`Inside mongotogooglebridge, response is: ${response}`);
+				output = await user.functions.captchaauth(response);
+				console.log(output);
+				console.log("make me a breakpoint");
+				return output;
+				//check here if the captcha was a success or not
+			}
+
+			if(output === null){
+				mongotogooglebridge();
+			}else{
+				if(output.success === "false"){
+					console.log("ALERT ALERT SOMETHING HAS GONE BADLY WRONG");
+				}
+			}
+		}
+		
+
+
 		
 			
 	}, reason1 => {
@@ -640,7 +659,6 @@ async function recaptchachecker() {
 	.then((value) => {
 		console.log("Before loginDelete");
 		loginDelete();
-		console.log("Anon account deleted (After loginDelete)");
 	}, reason2 => {
 		console.log("Realm has failed to delete the account.");
 	});
@@ -690,6 +708,7 @@ async function loginDelete() {
 	const user = app.currentUser;
 	let hello = await app.deleteUser(user);
 	console.log(hello);
+	console.log("Account deleted");
 	}catch (error){
 		console.error("P-modified: Failed to delete anonymous account:" + error);
 	}
