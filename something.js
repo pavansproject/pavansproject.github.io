@@ -436,7 +436,7 @@ async function loginEmailPassword(email, password) {
   }
 }
 
-async function loginAnonymous(help) {
+async function loginAnonymous() {
 	console.log(`loginAnonymous still have the thing: ${help}`);
 	// Create an anonymous credential
 	const credentials = Realm.Credentials.anonymous();
@@ -503,7 +503,7 @@ async function loginAnonymous(help) {
 
 	loginbutton.addEventListener("click", function (event) {
 		//let yay;
-		
+		let response = grecaptcha.getResponse();
 		/*let loginpromise = new Promise((resolve, reject) => {
 			resolve(loginvaliditychecks());
 			reject("Login checks have failed");
@@ -520,15 +520,14 @@ async function loginAnonymous(help) {
 		});*/
 		let bob = new Promise((resolve, reject) => {
 				// loginvaliditychecks(response);
-				let response = grecaptcha.getResponse();
-				console.log(`Got the response: ${response}`)
+				loginAnonymous();
 				return response;
 			});
 		
 		
 		bob
-		.then((response) => loginAnonymous(response))
-		.then((res) => mongotogooglebridge(res))
+		//.then((response) => loginAnonymous(response))
+		.then((response) => mongotogooglebridge(response))
 		.then((stuff) => loginDelete(stuff))
 		.then((signintime) => keepgoing(signintime));
 
@@ -540,7 +539,7 @@ async function loginAnonymous(help) {
 			keepgoing()
 		);*/
 
-
+			console.log("Make me a breakpoint");
 
 
 
