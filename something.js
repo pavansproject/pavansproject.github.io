@@ -54,8 +54,8 @@ const app = Realm.App.getApp("application-1-ukdhb");
 
 
 
-async function keepgoing(signintime) {
-	console.log(`keepgoing has the stuff: ${signintime}`);
+async function keepgoing() {
+	// console.log(`keepgoing has the stuff: ${signintime}`);
 	const bob = await loginEmailPassword(
 		email = document.getElementById("loginemail").value,
 		password = document.getElementById("loginpassword").value)
@@ -436,8 +436,8 @@ async function loginEmailPassword(email, password) {
   }
 }
 
-async function loginAnonymous(response) {
-	console.log(`loginAnonymous still have the thing: ${response}`);
+async function loginAnonymous() {
+	// console.log(`loginAnonymous still have the thing: ${response}`);
 	// Create an anonymous credential
 	const credentials = Realm.Credentials.anonymous();
 	//Note: I add this following line separately
@@ -504,7 +504,7 @@ async function loginAnonymous(response) {
 
 	loginbutton.addEventListener("click", function (event) {
 		//let yay;
-		let response = grecaptcha.getResponse();
+		// let response = grecaptcha.getResponse();
 		/*let loginpromise = new Promise((resolve, reject) => {
 			resolve(loginvaliditychecks());
 			reject("Login checks have failed");
@@ -519,18 +519,18 @@ async function loginAnonymous(response) {
 		}, reason => {
 			console.log("Realm has failed to log in");
 		});*/
-		let bob = new Promise((resolve, reject) => {
+		let bob = new Promise((resolve) => {
 				// loginvaliditychecks(response);
-				resolve(loginAnonymous(response));
+				resolve(loginAnonymous());
 				
 			});
 		
 		
 		bob
 		//.then((response) => loginAnonymous(response))
-		.then((response) => mongotogooglebridge(response), sad1())
-		.then((stuff) => loginDelete(stuff), sad2())
-		.then((signintime) => keepgoing(signintime), sad3());
+		.then(() => mongotogooglebridge()) //sad1()
+		.then(() => loginDelete()) //sad2()
+		.then(() => keepgoing()); //sad3()
 		/*.then(
 			//recaptchachecker()
 			
@@ -539,7 +539,7 @@ async function loginAnonymous(response) {
 			keepgoing()
 		);*/
 
-			console.log("Make me a breakpoint");
+			// console.log("Make me a breakpoint");
 
 
 
@@ -567,7 +567,18 @@ async function loginAnonymous(response) {
 	function sad3() {
 		console.error("Logging in has failed");
 	}
-	function loginvaliditychecks(response) {
+
+	async function mongotogooglebridge() {
+		let response = grecaptcha.getResponse();
+		const user = app.currentUser;
+		console.log(`Inside mongotogooglebridge, response is: ${response}`);
+		output = await user.functions.captchaauth(response);
+		console.log(output);
+		console.log("make me a breakpoint");
+		return output;
+		//check here if the captcha was a success or not
+	}
+	// function loginvaliditychecks(response) {
 		// if the form contains valid data, we let it submit
 
 		/*if (!loginemail.validity.valid) {
@@ -586,11 +597,11 @@ async function loginAnonymous(response) {
 			showPasswordError();
 			return event.preventDefault();
 		}*/
-		response = grecaptcha.getResponse();
+		// response = grecaptcha.getResponse();
 		
-		console.log("skip the JS side for now, make it all regex later");
+		// console.log("skip the JS side for now, make it all regex later");
 		
-	}
+	// }
 
 	function showEmailError() {
 		if (loginemail.validity.valueMissing) {
@@ -631,15 +642,7 @@ async function loginAnonymous(response) {
 
 
 
-	async function mongotogooglebridge(response) {
-		const user = app.currentUser;
-		console.log(`Inside mongotogooglebridge, response is: ${response}`);
-		output = await user.functions.captchaauth(response);
-		console.log(output);
-		console.log("make me a breakpoint");
-		return output;
-		//check here if the captcha was a success or not
-	}
+	
 
 /*async function recaptchachecker() {
 	let response = grecaptcha.getResponse();
@@ -662,61 +665,61 @@ async function loginAnonymous(response) {
 	console.log(sure);
 	console.log(idk);
 }*/
-async function recaptchachecker() {
-	let response = grecaptcha.getResponse();
-	console.log(`Captcha token is :${response}`);
-	//const app = Realm.App.getApp("application-1-ukdhb");
-	let captchapromise = new Promise((resolve, reject) => {
-		loginAnonymous()
-		//reject("Realm doesn't want to work today");
-	})
-	.then(
-		//realm function here to send stuff to google
-		/*let goodluck;
-		if(goodluck === null){
+// async function recaptchachecker() {
+// 	let response = grecaptcha.getResponse();
+// 	console.log(`Captcha token is :${response}`);
+// 	//const app = Realm.App.getApp("application-1-ukdhb");
+// 	let captchapromise = new Promise((resolve, reject) => {
+// 		loginAnonymous()
+// 		//reject("Realm doesn't want to work today");
+// 	})
+// 	.then(
+// 		//realm function here to send stuff to google
+// 		/*let goodluck;
+// 		if(goodluck === null){
 			
-		}*/
+// 		}*/
 		
-		async function mongotogooglebridge(response) {
-			const user = app.currentUser;
-			console.log(`Inside mongotogooglebridge, response is: ${response}`);
-			output = await user.functions.captchaauth(response);
-			console.log(output);
-			console.log("make me a breakpoint");
-			return output;
-			//check here if the captcha was a success or not
-		}
-		/*function bob() {
-			let output;
-			async function mongotogooglebridge() {
-				const user = app.currentUser;
-				console.log(`Inside mongotogooglebridge, response is: ${response}`);
-				output = await user.functions.captchaauth(response);
-				console.log(output);
-				console.log("make me a breakpoint");
-				return output;
-				//check here if the captcha was a success or not
-			}
+// 		async function mongotogooglebridge(response) {
+// 			const user = app.currentUser;
+// 			console.log(`Inside mongotogooglebridge, response is: ${response}`);
+// 			output = await user.functions.captchaauth(response);
+// 			console.log(output);
+// 			console.log("make me a breakpoint");
+// 			return output;
+// 			//check here if the captcha was a success or not
+// 		}
+// 		/*function bob() {
+// 			let output;
+// 			async function mongotogooglebridge() {
+// 				const user = app.currentUser;
+// 				console.log(`Inside mongotogooglebridge, response is: ${response}`);
+// 				output = await user.functions.captchaauth(response);
+// 				console.log(output);
+// 				console.log("make me a breakpoint");
+// 				return output;
+// 				//check here if the captcha was a success or not
+// 			}
 
-			if(output === null){
-				mongotogooglebridge();
-			}else{
-				if(output.success === "false"){
-					console.log("ALERT ALERT SOMETHING HAS GONE BADLY WRONG");
-				}
-			}
-		}*/
+// 			if(output === null){
+// 				mongotogooglebridge();
+// 			}else{
+// 				if(output.success === "false"){
+// 					console.log("ALERT ALERT SOMETHING HAS GONE BADLY WRONG");
+// 				}
+// 			}
+// 		}*/
 		
 
 
 		
 			
-	)
-	.then(
+// 	)
+// 	.then(
 		
-		loginDelete()
-	);
-}
+// 		loginDelete()
+// 	);
+// }
 
 
 
@@ -759,9 +762,9 @@ async function recaptchachecker() {
 
   
 //Ok careful here, time to delete a user
-async function loginDelete(stuff) {
+async function loginDelete() {
 	try{
-	console.log(`LoginDelete has the stuff: ${stuff}`);
+	// console.log(`LoginDelete has the stuff: ${stuff}`);
 	const app = Realm.App.getApp("application-1-ukdhb");
 	const user = app.currentUser;
 	let hello = await app.deleteUser(user);
