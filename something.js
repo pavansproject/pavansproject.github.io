@@ -501,7 +501,7 @@ async function loginAnonymous() {
 			showPasswordError();
 		}
 	});*/
-
+	let hi
 	loginbutton.addEventListener("click", function (event) {
 		let thechecker;
 		let bob = new Promise((resolve) => {
@@ -511,16 +511,22 @@ async function loginAnonymous() {
 			});
 		bob
 		.then(() => mongotogooglebridge())
-		.then(() => console.log(bob))
+		.then((value) => {
+			if(value == true) {
+				return true
+			} else{
+				throw new Error("Captcha has not been completed or has failed to connect. Sad =(")
+			}
+		})
 		.then(() => loginDelete()) //sad2()
 		.then(() => keepgoing()); //sad3()
 		
 	});
-	async function logician() {
-		if(mongotogooglebridge() == true) {
-			
-		}
-	}
+	// async function logician(thing) {
+	// 	if(thing == true) {
+
+	// 	}
+	// }
 	function sad1() {
 		console.log("Mongo to google has double failed");
 	}
@@ -539,8 +545,10 @@ async function loginAnonymous() {
 		console.log(output);
 		console.log("make me a breakpoint");
 		if(output == true) {
+			hi = true
 			return true
 		} else {
+			hi = false
 			return false
 		}
 
