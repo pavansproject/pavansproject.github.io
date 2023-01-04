@@ -503,61 +503,24 @@ async function loginAnonymous() {
 	});*/
 
 	loginbutton.addEventListener("click", function (event) {
-		//let yay;
-		// let response = grecaptcha.getResponse();
-		/*let loginpromise = new Promise((resolve, reject) => {
-			resolve(loginvaliditychecks());
-			reject("Login checks have failed");
-		})
-		.then((value) => {
-			recaptchachecker();
-		}, reason => {
-			console.log("Recaptcha checker has failed, sad");
-		})
-		.then((value) => {
-			keepgoing();
-		}, reason => {
-			console.log("Realm has failed to log in");
-		});*/
+		let thechecker;
 		let bob = new Promise((resolve) => {
 				// loginvaliditychecks(response);
 				resolve(loginAnonymous());
 				
 			});
-		
-		
 		bob
-		//.then((response) => loginAnonymous(response))
-		.then(() => mongotogooglebridge()) //sad1()
+		.then(() => mongotogooglebridge())
+		.then(() => console.log(bob))
 		.then(() => loginDelete()) //sad2()
 		.then(() => keepgoing()); //sad3()
-		/*.then(
-			//recaptchachecker()
-			
-		)
-		.then(
-			keepgoing()
-		);*/
-
-			// console.log("Make me a breakpoint");
-
-
-
-
-
-		/*let loginpromise = new Promise((resolve, reject) => {
-			resolve(recaptchachecker());
-			reject("Recaptcha checker has failed, sad");
-		})
-		.then((value) => {
-			keepgoing();
-		}, reason => {
-			console.log("Realm has failed to log in");
-		});*/
-
-		//recaptchachecker();
-		//keepgoing();
+		
 	});
+	async function logician() {
+		if(mongotogooglebridge() == true) {
+			
+		}
+	}
 	function sad1() {
 		console.log("Mongo to google has double failed");
 	}
@@ -575,7 +538,12 @@ async function loginAnonymous() {
 		output = await user.functions.captchaauth(response);
 		console.log(output);
 		console.log("make me a breakpoint");
-		return output;
+		if(output == true) {
+			return true
+		} else {
+			return false
+		}
+
 		//check here if the captcha was a success or not
 	}
 	// function loginvaliditychecks(response) {
