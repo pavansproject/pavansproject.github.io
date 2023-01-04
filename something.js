@@ -501,27 +501,35 @@ async function loginAnonymous() {
 			showPasswordError();
 		}
 	});*/
-	let hi
+	let errornumber
 	loginbutton.addEventListener("click", function (event) {
 		let thechecker;
 		let bob = new Promise((resolve) => {
-				// loginvaliditychecks(response);
 				resolve(loginAnonymous());
-				
 			});
 		bob
 		.then(() => mongotogooglebridge())
-		.then((value) => {
-			if(value == true) {
-				return true
-			} else{
-				throw new Error("Captcha has not been completed or has failed to connect. Sad =(")
-			}
+		.catch(value => {
+			console.log(value)
 		})
 		.then(() => loginDelete()) //sad2()
 		.then(() => keepgoing()); //sad3()
 		
 	});
+	//Sort other old code after
+	// .then((value) => {
+		// 	if(value == true) {
+		// 		return true;
+		// 	} 
+		// 	if(value == undefined){
+		// 		console.log(value);
+		// 		throw new Error("Uhhh problem, value is still undefined");
+		// 	}
+		// 	if(value == false) {
+		// 		throw new Error("Captcha has not been completed");
+		// 	}
+		// })
+	//Old code before
 	// async function logician(thing) {
 	// 	if(thing == true) {
 
@@ -541,15 +549,20 @@ async function loginAnonymous() {
 		let response = grecaptcha.getResponse();
 		const user = app.currentUser;
 		console.log(`Inside mongotogooglebridge, response is: ${response}`);
-		output = await user.functions.captchaauth(response);
+		let output = await user.functions.captchaauth(response);
 		console.log(output);
 		console.log("make me a breakpoint");
 		if(output == true) {
-			hi = true
-			return true
-		} else {
-			hi = false
-			return false
+			hi = true;
+			return true;
+		}
+		if(output == false) {
+			errornumber = 1;
+			throw new Error("The captcha has not been completed");
+		}
+		if(output == undefined) {
+			console.log(output)
+			throw new Error("Uhhh something has gone wrong...the output variable is undefined...")
 		}
 
 		//check here if the captcha was a success or not
