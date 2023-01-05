@@ -516,6 +516,10 @@ async function loginAnonymous() {
 		.then(() => keepgoing()); //sad3()
 		
 	});
+
+	//Try {} catch (e) {} is how you log an error from a catch
+	//THE PROBLEM LIES IN THE REALM
+	
 	//Sort other old code after
 	// .then((value) => {
 		// 	if(value == true) {
