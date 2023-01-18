@@ -46,14 +46,16 @@ const id = "application-1-ukdhb";
 // 	}
 // }
 
-
 const app = Realm.App.getApp("application-1-ukdhb");
 
 
-
-
-
-
+/*
+-----------------------
+---LOGIN AND SIGN UP---
+-----------------------
+*/ 
+/*-----PRIMARY LOGIN SYSTEM-----*/
+//Main Login Function, usernamepassword
 async function keepgoing() {
 	// console.log(`keepgoing has the stuff: ${signintime}`);
 	const bob = await loginEmailPassword(
@@ -64,7 +66,7 @@ async function keepgoing() {
 		})
 		.catch(error => yes("error", error));
 }
-
+//Login Notification pop up
 function yes(result, error) {
 	const notifier = document.getElementById("loginnotifier");
 	if(result === "success") {
@@ -73,12 +75,8 @@ function yes(result, error) {
 		notifier.innerText = "There was a problem logging in. Here is the error:" + error;
 	}
 }
-//Huh I guess I really don't need this function now do I? This was just so I
-//could global scope my variables, which REALLY is not a good idea
-/*async function dontgiveup() {
-	const bob = await loginAnonymous();
-	let man = bob;
-}*/
+
+/*-----USER SIGN UP-----*/
 async function please() {
 	await app.emailPasswordAuth.registerUser({email : document.getElementById("usersignupthing").value, password : document.getElementById("passsignupthing").value})
 	.then(() => {
@@ -86,8 +84,7 @@ async function please() {
 	})
 	.catch(error => yes2("error", error));
 }
-
-
+//Creates an HTML notification on screen
 function yes2(result, error) {
 	const notifier = document.getElementById("signupnotifier");
 	if(result === "success") {
@@ -96,12 +93,7 @@ function yes2(result, error) {
 		notifier.innerText = "There was a problem signing up. Here is the error:" + error;
 	}
 }
-
-
-
-
-
-
+/*-----RESENDING AUTHENTICATION EMAIL-----*/
 async function pleaseparttwo() {
 	const email = document.getElementById("resendemail").value;
 	await app.emailPasswordAuth.resendConfirmationEmail(email)
@@ -110,8 +102,7 @@ async function pleaseparttwo() {
 	})
 	.catch(error => yes3("error", error));
 }
-
-
+//Creates an HTML notification on screen
 function yes3(result, error) {
 	const notifier = document.getElementById("resendconfirmemail");
 	if(result === "success") {
@@ -125,7 +116,7 @@ function yes3(result, error) {
 
 async function resetpassemail() {
 	const email = document.getElementById("resetpassemail").value;
-	await app.emailPasswordAuth.sendResetPasswordEmail(email)
+	await app.emailPasswordAuth.sendResetPasswordEmail({email})
 	.then(() => {
 		yes4("success");
 	})
@@ -186,24 +177,13 @@ see that its persistent on getting the script lol, HTTP 200 request, but yeah.*/
 	// }, 10000);
 window.onload = (event) => {
 	console.log("Page is loaded");
-	// fetch("https://unpkg.com/realm-web/dist/bundle.iife.js")
-	// 	.then(response => response.json())
-	// 	.then(data => console.log(data))
-	// 	.then(dontgiveup())
-	// 	.then(dataretriever())
-	// 	.then(console.log("If this actually works"));
+	
 
 	let bestpromise = new Promise((resolve, reject) => {
 		resolve(loginAnonymous());
 		reject("Failed to login from the promised land");
-		/*Out of persistence, I will comment this line out
-		resolve(hi())*/
-		// setTimeout(() => {
-		// 	resolve(dataretriever());
-		// }, 1500);
-		//reject(console.error());
+		
 	})
-		//.then(dataretriever())
 		.then((value) => {
 			dataretriever();
 		}, reason => {
@@ -218,56 +198,7 @@ window.onload = (event) => {
 			console.log("LETS GO I GOT IT I AM THE PROGRAMMER YES YES YESSSSSSSS IT WORKS IT AC TUALLY WAORKS!!!")
 		});
 }
-/*window.onload = (event) => {
-	console.log("Page is loaded");
-	sanitysaver();
-	console.log("Uhh done?");
-}*/
 
-//Let it be said that if and else statements are my
-//last resort in dire emergencies
-
-/*async function hi() {
-	const app = Realm.App.getApp("application-1-ukdhb");
-	const user = app.currentUser
-	if(app != null){
-		setTimeout(() => {
-			const user = app.currentUser;
-			if(user.id != null) {
-				setTimeout(() => {
-					dataretriever();
-				}, 1500);
-			}else{
-				dataretriever();
-			}
-		}, 1500);
-	} else{
-		const user = app.currentUser;
-		if(user.id != null) {
-			setTimeout(() => {
-				dataretriever();
-			}, 1500);
-		} else{
-			dataretriever();
-		}
-	}
-	
-	
-	if(user.id != null) {
-		dataretriever();
-	}else{
-		setTimeout(() => {
-			dataretriever();
-		}, 1500)
-	}
-}*/
-
-//Huh funny, this function is not being used
-// async function setupdbstuff() {
-// 	mongo = app.currentUser.mongoClient("mongodb-atlas");
-// 	collection = mongo.db("hellopeople").collection("secondtry")
-// 	console.log("DB connection is set up");
-// }
 
 async function insertathing() {
 	let mongo = app.currentUser.mongoClient("mongodb-atlas");
@@ -472,35 +403,8 @@ async function loginAnonymous() {
 	const loginpassword = document.getElementById("loginpassword");
 	const loginPasswordError = document.getElementById("loginpasswordnotif");
 
-	/*loginemail.addEventListener("input", function (event) {
-		// Each time the user types something, we check if the
-		// form fields are valid.
 
-		if (loginemail.validity.valid) {
-			// In case there is an error message visible, if the field
-			// is valid, we remove the error message.
-			loginEmailError.innerHTML = ""; // Reset the content of the message
-			loginEmailError.className = "error"; // Reset the visual state of the message
-		} else {
-			// If there is still an error, show the correct error
-			showEmailError();
-		}
-	});*/
 
-	/*loginpassword.addEventListener("input", function (event) {
-		// Each time the user types something, we check if the
-		// form fields are valid.
-
-		if (loginpassword.validity.valid) {
-			// In case there is an error message visible, if the field
-			// is valid, we remove the error message.
-			loginPasswordError.innerHTML = ""; // Reset the content of the message
-			loginPasswordError.className = "error"; // Reset the visual state of the message
-		} else {
-			// If there is still an error, show the correct error
-			showPasswordError();
-		}
-	});*/
 	let errornumber
 	loginbutton.addEventListener("click", function (event) {
 		let thechecker;
@@ -520,25 +424,7 @@ async function loginAnonymous() {
 	//Try {} catch (e) {} is how you log an error from a catch
 	//THE PROBLEM LIES IN THE REALM
 	
-	//Sort other old code after
-	// .then((value) => {
-		// 	if(value == true) {
-		// 		return true;
-		// 	} 
-		// 	if(value == undefined){
-		// 		console.log(value);
-		// 		throw new Error("Uhhh problem, value is still undefined");
-		// 	}
-		// 	if(value == false) {
-		// 		throw new Error("Captcha has not been completed");
-		// 	}
-		// })
-	//Old code before
-	// async function logician(thing) {
-	// 	if(thing == true) {
-
-	// 	}
-	// }
+	
 	function sad1() {
 		console.log("Mongo to google has double failed");
 	}
@@ -571,30 +457,6 @@ async function loginAnonymous() {
 
 		//check here if the captcha was a success or not
 	}
-	// function loginvaliditychecks(response) {
-		// if the form contains valid data, we let it submit
-
-		/*if (!loginemail.validity.valid) {
-			// If it isn't, we display an appropriate error message
-			showEmailError();
-			//Check if password is filled
-			if (!loginpassword.validity.valid) {
-				showPasswordError();
-				return event.preventDefault();
-			}
-			// Then we prevent the form from being sent by canceling the event
-			return event.preventDefault();
-		}
-
-		if (!loginpassword.validity.valid) {
-			showPasswordError();
-			return event.preventDefault();
-		}*/
-		// response = grecaptcha.getResponse();
-		
-		// console.log("skip the JS side for now, make it all regex later");
-		
-	// }
 
 	function showEmailError() {
 		if (loginemail.validity.valueMissing) {
@@ -631,124 +493,6 @@ async function loginAnonymous() {
 		// Set the styling appropriately
 		loginPasswordError.className = "error active";
 	}
-
-
-
-
-	
-
-/*async function recaptchachecker() {
-	let response = grecaptcha.getResponse();
-	let yougotthis = new Headers();
-	let idk;
-	yougotthis.set("Access-Control-Allow-Origin", "https://pavansproject.github.io")
-	const sure = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=6LdZXMMgAAAAAMbbVBKb6qYZdfyBE4n_m6OAlS2g&response=${response}`, {
-		method: "POST",
-		mode: "no-cors",
-		origin: "https://pavansproject.github.io",
-		credentials: "omit",
-		body: idk
-	})
-	.then(response => response.json())
-	.then(data => {
-		console.log(data);
-	})
-	sure.json;
-	console.log(idk);
-	console.log(sure);
-	console.log(idk);
-}*/
-// async function recaptchachecker() {
-// 	let response = grecaptcha.getResponse();
-// 	console.log(`Captcha token is :${response}`);
-// 	//const app = Realm.App.getApp("application-1-ukdhb");
-// 	let captchapromise = new Promise((resolve, reject) => {
-// 		loginAnonymous()
-// 		//reject("Realm doesn't want to work today");
-// 	})
-// 	.then(
-// 		//realm function here to send stuff to google
-// 		/*let goodluck;
-// 		if(goodluck === null){
-			
-// 		}*/
-		
-// 		async function mongotogooglebridge(response) {
-// 			const user = app.currentUser;
-// 			console.log(`Inside mongotogooglebridge, response is: ${response}`);
-// 			output = await user.functions.captchaauth(response);
-// 			console.log(output);
-// 			console.log("make me a breakpoint");
-// 			return output;
-// 			//check here if the captcha was a success or not
-// 		}
-// 		/*function bob() {
-// 			let output;
-// 			async function mongotogooglebridge() {
-// 				const user = app.currentUser;
-// 				console.log(`Inside mongotogooglebridge, response is: ${response}`);
-// 				output = await user.functions.captchaauth(response);
-// 				console.log(output);
-// 				console.log("make me a breakpoint");
-// 				return output;
-// 				//check here if the captcha was a success or not
-// 			}
-
-// 			if(output === null){
-// 				mongotogooglebridge();
-// 			}else{
-// 				if(output.success === "false"){
-// 					console.log("ALERT ALERT SOMETHING HAS GONE BADLY WRONG");
-// 				}
-// 			}
-// 		}*/
-		
-
-
-		
-			
-// 	)
-// 	.then(
-		
-// 		loginDelete()
-// 	);
-// }
-
-
-
-
-
-
-
-
-//		body: JSON.stringify(data)
-
-
-
-
-// let response10 = grecaptcha.getResponse();
-
-// 	yougotthis.set("Access-Control-Allow-Origin", "https://pavansproject.github.io")
-// 	const sure10 = await fetch(new Request(`https://www.google.com/recaptcha/api/siteverify?secret=6LdZXMMgAAAAAMbbVBKb6qYZdfyBE4n_m6OAlS2g&response=${response10}`, {
-// 		method: "POST",
-// 		mode: "no-cors",
-// 		origin: "https://pavansproject.github.io",
-// 		credentials: "omit",
-
-// 	}))
-//   	.then(response => response.text())
-//   .then(data => {
-//     console.log(data)
-//   })
-	
-//   console.log(sure10)
-
-
-
-
-
-
-
 
 
 
@@ -813,12 +557,65 @@ for (const userId in app.allUsers) {
 }
 
 
+//This code is for loginvalidity checks to check the format of sending stuff as input
+//Supposed to go there under the place where it says "validation for login appears here"
 
 
+/*loginemail.addEventListener("input", function (event) {
+		// Each time the user types something, we check if the
+		// form fields are valid.
+
+		if (loginemail.validity.valid) {
+			// In case there is an error message visible, if the field
+			// is valid, we remove the error message.
+			loginEmailError.innerHTML = ""; // Reset the content of the message
+			loginEmailError.className = "error"; // Reset the visual state of the message
+		} else {
+			// If there is still an error, show the correct error
+			showEmailError();
+		}
+	});*/
+
+	/*loginpassword.addEventListener("input", function (event) {
+		// Each time the user types something, we check if the
+		// form fields are valid.
+
+		if (loginpassword.validity.valid) {
+			// In case there is an error message visible, if the field
+			// is valid, we remove the error message.
+			loginPasswordError.innerHTML = ""; // Reset the content of the message
+			loginPasswordError.className = "error"; // Reset the visual state of the message
+		} else {
+			// If there is still an error, show the correct error
+			showPasswordError();
+		}
+	});*/
 
 
-
-
+	// function loginvaliditychecks(response) {
+		// 	// if the form contains valid data, we let it submit
+	
+		// 	if (!loginemail.validity.valid) {
+		// 		// If it isn't, we display an appropriate error message
+		// 		showEmailError();
+		// 		//Check if password is filled
+		// 		if (!loginpassword.validity.valid) {
+		// 			showPasswordError();
+		// 			return event.preventDefault();
+		// 		}
+		// 		// Then we prevent the form from being sent by canceling the event
+		// 		return event.preventDefault();
+		// 	}
+	
+		// 	if (!loginpassword.validity.valid) {
+		// 		showPasswordError();
+		// 		return event.preventDefault();
+		// 	}
+		// 	response = grecaptcha.getResponse();
+			
+		// 	console.log("skip the JS side for now, make it all regex later");
+			
+		// }
 
 
 
