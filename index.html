@@ -139,22 +139,40 @@
 		<br />
 		<br />
 		<br />
-		<form>
-			<input type="text" name="note name" id="notenme" />
-			<input type="text" name="note info" id="noteinfo" />
-		</form>
-		<button onclick="insertathing()">Insert some stuff, Create!</button>
-		<br />
-		<br />
-		<br />
-		<form>
-			<input type="text" name="notefind" id="notefinder" />
-		</form>
-		<button onclick="findthenote()">Find the note</button>
-		<br />
-		<p id="notedisplayer"></p>
-		<br />
-		<p id="note2displayer"></p>
+		<div style="width: fit-content">
+			<hr />
+			<h2><strong>C</strong>reate</h2>
+			<form>
+				<label for="note name">Note Name: </label>
+				<input type="text" name="note name" id="notenme" />
+				<br />
+				<br />
+				<label for="note info">Note Content: </label>
+				<input type="text" name="note info" id="noteinfo" />
+			</form>
+			<br />
+			<button onclick="insertathing()">Insert some stuff, Create!</button>
+			<br />
+			<br />
+			<hr />
+		</div>
+
+		<div style="width: fit-content">
+			<hr />
+			<h2><strong>R</strong>ead</h2>
+			<form>
+				<label for="notefind">Find a note: </label>
+				<br />
+				<input type="text" name="notefind" id="notefinder" />
+			</form>
+			<br />
+			<button onclick="findthenote()">Find the note</button>
+			<br />
+			<p id="notedisplayer"></p>
+			<br />
+			<p id="note2displayer"></p>
+			<hr />
+		</div>
 		<br />
 		<br />
 		<br />

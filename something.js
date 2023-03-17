@@ -111,9 +111,7 @@ function yes3(result, error) {
 		notifier.innerText = "There was a problem sending the verification email. Here is the error:" + error;
 	}
 }
-
-
-
+/*-----SENDING PASSWORD RESET EMAIL-----*/
 async function resetpassemail() {
 	const email = document.getElementById("resetpassemail").value;
 	await app.emailPasswordAuth.sendResetPasswordEmail({email})
@@ -121,16 +119,14 @@ async function resetpassemail() {
 		yes4("success");
 	})
 	.catch(error => yes4("error", error));
-
 }
-
-
+//Creates an HTML notification on screen
 function yes4(result, error) {
 	const notifier = document.getElementById("resetpassemailnotifier");
 	if(result === "success") {
 		notifier.innerText = "Password reset email sent";
 	} else if(result === "error") {
-		notifier.innerText = "There was a problem sending the password reset email. Here is the error:" + error;
+		notifier.innerText = "There was a problem sending the password reset email. Here is the error: \n" + error;
 	}
 }
 
@@ -175,6 +171,7 @@ see that its persistent on getting the script lol, HTTP 200 request, but yeah.*/
 		// console.log("Alright this part works now I think");
 		// console.log(hi);
 	// }, 10000);
+//
 window.onload = (event) => {
 	console.log("Page is loaded");
 	
@@ -195,38 +192,46 @@ window.onload = (event) => {
 			console.log("Failed to delete anonymous login account from the promised land(also should not show)")
 		})
 		.then((value) => {
+			//Yeah this happened after many hours of work and perseverance
 			console.log("LETS GO I GOT IT I AM THE PROGRAMMER YES YES YESSSSSSSS IT WORKS IT AC TUALLY WAORKS!!!")
 		});
 }
 
-
+//Create part of CRUD
 async function insertathing() {
+	//hellopeople database, secondtry collection
 	let mongo = app.currentUser.mongoClient("mongodb-atlas");
 	let collection = mongo.db("hellopeople").collection("secondtry");
+	//Get the values and log them
 	const notename = document.getElementById("notenme").value;
 	const noteinfo = document.getElementById("noteinfo").value;
-	const user = app.currentUser;
 	console.log(`"Stuff is this: ${notename} , and ${noteinfo}"`);
+	//Send the value
 	const result = await collection.insertOne({
 		name: notename,
 		noteinformation: noteinfo
 	})
+	//Show result
 	console.log(result);
 }
-
+//Read part of CRUD: Uses the findOne function
 async function findthenote() {
+	//hellopeople database, secondtry collection
 	let mongo = app.currentUser.mongoClient("mongodb-atlas");
 	let collection = mongo.db("hellopeople").collection("secondtry");
+	//Get the values and log them
 	const notename = document.getElementById("notedisplayer");
 	const notestuff = document.getElementById("note2displayer")
 	const noteinfo = document.getElementById("notefinder").value;
 	console.log(`"Finding a note with name of ${noteinfo}"`);
+	//Send the value
 	const found = await collection.findOne({ name: noteinfo })
+	//Show result
 	console.log(`"Found the note: ${found.name}, and has ${found.noteinformation} in it"`);
 	notename.innerText = found.name;
 	notestuff.innerText = found.noteinformation;	
 }
-
+//Read part of CRUD: Uses the find function (and finds many)
 async function findthemall() {
 	let mongo = app.currentUser.mongoClient("mongodb-atlas");
 	let collection = mongo.db("hellopeople").collection("secondtry");
@@ -235,7 +240,7 @@ async function findthemall() {
 	const foundthem = await collection.find({type: findinfo})
 	console.log(`"Found them: ${foundthem}`);
 }
-
+//Update part of CRUD: Uses the updateOne function
 async function updatetheone() {
 	let mongo = app.currentUser.mongoClient("mongodb-atlas");
 	let collection = mongo.db("hellopeople").collection("secondtry");
